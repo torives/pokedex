@@ -82,9 +82,7 @@
 				A369268C24536343003C1784 /* AppDelegate.swift */,
 				A369268E24536343003C1784 /* SceneDelegate.swift */,
 				A369269024536343003C1784 /* ContentView.swift */,
-				A369269224536347003C1784 /* Assets.xcassets */,
-				A369269724536347003C1784 /* LaunchScreen.storyboard */,
-				A369269A24536347003C1784 /* Info.plist */,
+				A36926AE245365D0003C1784 /* Resources */,
 				A369269424536347003C1784 /* Preview Content */,
 			);
 			path = pokedex;
@@ -105,6 +103,16 @@
 				A36926A524536347003C1784 /* Info.plist */,
 			);
 			path = pokedexTests;
+			sourceTree = "<group>";
+		};
+		A36926AE245365D0003C1784 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A369269A24536347003C1784 /* Info.plist */,
+				A369269724536347003C1784 /* LaunchScreen.storyboard */,
+				A369269224536347003C1784 /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
