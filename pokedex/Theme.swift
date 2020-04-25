@@ -29,7 +29,7 @@ struct Theme {
         static let white = Color("text-white")
     }
     
-    struct `Type` {
+    struct PokemonType {
         static let bug = Color("type-bug")
         static let dark = Color("type-dark")
         static let dragon = Color("type-dragon")
