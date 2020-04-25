@@ -53,8 +53,10 @@ struct Badge: View {
     }
 }
 
+#if DEBUG
 struct Badge_Previews: PreviewProvider {
     static var previews: some View {
         Badge(type: .rock)
     }
 }
+#endif
