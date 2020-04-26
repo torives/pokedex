@@ -9,6 +9,9 @@
 import SwiftUI
 
 struct GenerationButton: View {
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    @Environment(\.verticalSizeClass) var verticalSizeClass
+    
     var body: some View {
         ZStack {
             GeometryReader { parent in
@@ -18,7 +21,9 @@ struct GenerationButton: View {
                     .padding(.top, 10)
                 
                 Pokeball()
-                    .frame(maxWidth: parent.size.width * 0.6875, maxHeight: parent.size.width * 0.6875)
+                    .frame(maxWidth: self.horizontalSizeClass == .compact ? parent.size.width : parent.size.height,
+                           maxHeight: self.verticalSizeClass == .compact ? parent.size.height : parent.size.width)
+                    .offset(x: 0, y: 0)
                     .position(x: parent.size.width - parent.size.width * 0.375, y: parent.size.height)
                     .border(Color.blue)
             }
@@ -26,6 +31,9 @@ struct GenerationButton: View {
     }
 }
 
+// 10*100/160 = 6.25
+//60*100/160 = 37,5%
+//110*100/160 = 68,75%
 private struct DotPattern: View {
     var body: some View {
         Gradients.vector_gray
@@ -60,8 +68,8 @@ struct GenerationButton_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             GenerationButton().previewLayout(.fixed(width: 160, height: 129))
-            GenerationButton()
-            GenerationButton().previewLayout(.fixed(width: 568, height: 320))
+            GenerationButton().previewLayout(.fixed(width: 750, height: 1334))
+            GenerationButton().previewLayout(.fixed(width: 1366, height: 1024))
         }
     }
 }
