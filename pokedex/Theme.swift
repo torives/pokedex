@@ -13,6 +13,7 @@ struct Theme {
         static let default_input = Color("background-default-input")
         static let modal = Color("background-modal")
         static let pressed_input = Color("background-pressed-input")
+        static let selected_input = Color("background-selected-input")
         static let white = Color("background-white")
     }
     
