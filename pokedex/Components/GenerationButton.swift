@@ -15,35 +15,48 @@ struct GenerationButton: View {
     var body: some View {
         ZStack {
             GeometryReader { parent in
-                VStack(spacing: parent.size.height * 0.1937) {
+                
                     HStack {
-                        DotPattern()
-                            .frame(maxHeight: parent.size.height * 0.2913)
-                            .border(Color.yellow)
+                        VStack {
+                            DotPattern()
+                                .border(Color.yellow)
+                            Spacer()
+                                .frame(minHeight: parent.size.height * 0.1937)
+                        }
+                        .padding(.leading, parent.size.width * 0.0937)
+                        .padding(.top, parent.size.height * 0.0775)
+                        .border(Color.red)
+                        
                         Spacer()
-                            .frame(minWidth: parent.size.width * 0.406)
+                            .frame(minWidth: parent.size.width * 0.4)
                     }
-                    .padding([.leading, .trailing], parent.size.width * 0.0937)
-                    .padding(.top, parent.size.height * 0.0775)
+                    
                     HStack {
                         Spacer()
-                            .frame(minWidth: parent.size.width * 0.375)
-                        Pokeball()
-                            .calculateFrame(parent.size)
-                            .border(Color.blue)
+                            .frame(minWidth: parent.size.width * 0.312)
+                        
+                        VStack {
+//                            Spacer()
+//                                .frame(minWidth: parent.size.width * 0.375)
+                            Pokeball()
+                                .offset(x: parent.size.width * 0.0625, y: parent.size.height/2.1)
+                                .border(Color.blue)
+                        }
                     }
-                }
+                
             }
         }.background(Color.black)
     }
 }
 
-//15*100/160 =
+//15*100/160 = 9,375%
 //10*100/160 = 6.25
 //10*100/129 = 7.75%
 //25*100/129 = 19.37%
+//50*100/160 = 31,25%
 //60*100/160 = 37,5%
 //65*100/160 = 37,5%
+//95*100/160 = 59,375%
 //110*100/160 = 68,75%
 private struct DotPattern: View {
     var body: some View {
