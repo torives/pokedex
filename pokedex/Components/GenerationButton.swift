@@ -23,12 +23,13 @@ struct GenerationButton: View {
                         Spacer()
                             .frame(minWidth: parent.size.width * 0.406)
                     }
-                    .padding([.leading, .trailing], parent.size.width * 0.0937)
+                    .padding([.leading, .trailing], parent.size.width * 0.0937)
                     .padding(.top, parent.size.height * 0.0775)
                     HStack {
                         Spacer()
                             .frame(minWidth: parent.size.width * 0.375)
                         Pokeball()
+                            .calculateFrame(parent.size)
                             .border(Color.blue)
                     }
                 }
@@ -61,6 +62,17 @@ private struct Pokeball: View {
                 Image("pokeball")
                     .resizable()
                     .aspectRatio(1, contentMode: .fit))
+    }
+    
+    func calculateFrame(_ parent: CGSize) -> some View {
+        var maxWidth = CGFloat.zero
+        
+        if(parent.width > parent.height) {
+            maxWidth = parent.height * 0.6875
+        } else {
+            maxWidth = parent.width * 0.6875
+        }
+        return self.frame(maxWidth: maxWidth, maxHeight: maxWidth)
     }
 }
 
