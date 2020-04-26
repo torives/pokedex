@@ -11,44 +11,45 @@ import SwiftUI
 struct GenerationButton: View {
     var body: some View {
         ZStack {
-            DotPattern()
-            Pokeball()
-        }
-        .frame(width: 160, height: 129)
-        .background(Theme.PokemonType.fighting)
-    }
-    
-   private struct DotPattern: View {
-        private let dotPatternSize = CGSize(width: 80, height: 35)
-        
-        var body: some View {
-            GeometryReader { geometry in
-                Gradients.vector_gray
-                    .mask(
-                        Image("6x3")
-                            .resizable()
-                            .frame(width: self.dotPatternSize.width, height: self.dotPatternSize.height)
-                            .scaledToFit())
-                    .offset(x: -(geometry.size.width/2 - 15) + self.dotPatternSize.width/2,
-                            y: -(geometry.size.height/2 - 10) + self.dotPatternSize.height/2)
+            GeometryReader { parent in
+                Image("6x3")
+                    .resizable()
+                    .aspectRatio(2.28, contentMode: .fit)
+                    .frame(maxWidth: parent.size.width * 0.6)
+                    .padding([.leading, .trailing], 15)
+                    .padding(.top, 10)
+                    .border(Color.yellow)
+                
+                Pokeball().border(Color.blue)
             }
-        }
+        }.background(Color.yellow)
     }
+}
+
+private struct DotPattern: View {
+    private let dotPatternSize = CGSize(width: 80, height: 35)
     
-    private struct Pokeball: View {
-        private let pokeballSize = CGSize(width: 110, height: 110)
-        
-        var body: some View {
-            GeometryReader { geometry in
-                Gradients.vector_gray
-                    .mask(
-                        Image("pokeball")
-                            .resizable()
-                            .frame(width: self.pokeballSize.width, height: self.pokeballSize.height)
-                            .scaledToFit())
-                    .offset(x: -(geometry.size.width/2 - 60) + self.pokeballSize.width/2,
-                            y: -(geometry.size.height/2 - 70) + self.pokeballSize.height/2)
-            }
+    var body: some View {
+        Gradients.vector_gray
+            .mask(
+                Image("6x3").border(Color.pink)
+                //                            .resizable()
+                //                            .aspectRatio(2.28, contentMode: .fit)
+        )
+    }
+}
+
+private struct Pokeball: View {
+    private let pokeballSize = CGSize(width: 110, height: 110)
+    
+    var body: some View {
+        GeometryReader { geometry in
+            Gradients.vector_gray
+                .mask(
+                    Image("pokeball")
+                        .resizable()
+                        .aspectRatio(1, contentMode: .fit)
+            )
         }
     }
 }
@@ -65,7 +66,11 @@ struct Gradients {
 #if DEBUG
 struct GenerationButton_Previews: PreviewProvider {
     static var previews: some View {
-        GenerationButton()
+        Group {
+            GenerationButton().previewLayout(.fixed(width: 160, height: 129))
+            GenerationButton()
+            GenerationButton().previewLayout(.fixed(width: 568, height: 320))
+        }
     }
 }
 #endif
