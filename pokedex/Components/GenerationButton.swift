@@ -15,24 +15,34 @@ struct GenerationButton: View {
     var body: some View {
         ZStack {
             GeometryReader { parent in
-                DotPattern()
-                    .frame(maxWidth: parent.size.width * 0.5, maxHeight: parent.size.height * 0.2913)
-                    .padding([.leading, .trailing], 15)
-                    .padding(.top, 10)
-                
-                Pokeball()
-                    .frame(maxWidth: self.horizontalSizeClass == .compact ? parent.size.width : parent.size.height,
-                           maxHeight: self.verticalSizeClass == .compact ? parent.size.height : parent.size.width)
-                    .offset(x: 0, y: 0)
-                    .position(x: parent.size.width - parent.size.width * 0.375, y: parent.size.height)
-                    .border(Color.blue)
+                VStack(spacing: parent.size.height * 0.1937) {
+                    HStack {
+                        DotPattern()
+                            .frame(maxHeight: parent.size.height * 0.2913)
+                            .border(Color.yellow)
+                        Spacer()
+                            .frame(minWidth: parent.size.width * 0.406)
+                    }
+                    .padding([.leading, .trailing], parent.size.width * 0.0937)
+                    .padding(.top, parent.size.height * 0.0775)
+                    HStack {
+                        Spacer()
+                            .frame(minWidth: parent.size.width * 0.375)
+                        Pokeball()
+                            .border(Color.blue)
+                    }
+                }
             }
         }.background(Color.black)
     }
 }
 
-// 10*100/160 = 6.25
+//15*100/160 =
+//10*100/160 = 6.25
+//10*100/129 = 7.75%
+//25*100/129 = 19.37%
 //60*100/160 = 37,5%
+//65*100/160 = 37,5%
 //110*100/160 = 68,75%
 private struct DotPattern: View {
     var body: some View {
