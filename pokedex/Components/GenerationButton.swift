@@ -12,36 +12,29 @@ struct GenerationButton: View {
     var body: some View {
         ZStack {
             GeometryReader { parent in
-                Image("6x3")
-                    .resizable()
-                    .aspectRatio(2.28, contentMode: .fit)
-                    .frame(maxWidth: parent.size.width * 0.6)
+                DotPattern()
+                    .frame(maxWidth: parent.size.width * 0.5, maxHeight: parent.size.height * 0.2913)
                     .padding([.leading, .trailing], 15)
                     .padding(.top, 10)
                     .border(Color.yellow)
                 
-                Pokeball().border(Color.blue)
+                Pokeball()
+//                    .position(x: 100 , y: parent.siz )
+                    .border(Color.blue)
             }
-        }.background(Color.yellow)
+        }.background(Color.black)
     }
 }
 
 private struct DotPattern: View {
-    private let dotPatternSize = CGSize(width: 80, height: 35)
-    
     var body: some View {
         Gradients.vector_gray
-            .mask(
-                Image("6x3").border(Color.pink)
-                //                            .resizable()
-                //                            .aspectRatio(2.28, contentMode: .fit)
-        )
+            .mask(Image("6x3").resizable().aspectRatio(2.28, contentMode: .fit))
+            .border(Color.pink)
     }
 }
 
 private struct Pokeball: View {
-    private let pokeballSize = CGSize(width: 110, height: 110)
-    
     var body: some View {
         GeometryReader { geometry in
             Gradients.vector_gray
