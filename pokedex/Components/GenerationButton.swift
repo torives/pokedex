@@ -9,47 +9,46 @@
 import SwiftUI
 
 struct GenerationButton: View {
-    @Environment(\.horizontalSizeClass) var horizontalSizeClass
-    @Environment(\.verticalSizeClass) var verticalSizeClass
-    
     var body: some View {
         ZStack {
             GeometryReader { parent in
-                
                     HStack {
                         VStack {
                             DotPattern()
-                                .border(Color.yellow)
-                            Spacer()
-                                .frame(minHeight: parent.size.height * 0.1937)
+                            Spacer().frame(minHeight: parent.size.height * 0.193)
                         }
                         .padding(.leading, parent.size.width * 0.0937)
                         .padding(.top, parent.size.height * 0.0775)
-                        .border(Color.red)
                         
-                        Spacer()
-                            .frame(minWidth: parent.size.width * 0.4)
+                        Spacer().frame(minWidth: parent.size.width * 0.4)
                     }
                     
                     HStack {
-                        Spacer()
-                            .frame(minWidth: parent.size.width * 0.312)
-                        
+                        Spacer().frame(minWidth: parent.size.width * 0.312)
                         VStack {
-//                            Spacer()
-//                                .frame(minWidth: parent.size.width * 0.375)
-                            Pokeball()
-                                .offset(x: parent.size.width * 0.0625, y: parent.size.height/2.1)
-                                .border(Color.blue)
+                            Pokeball().offset(x: parent.size.width * 0.0625, y: parent.size.height/2.1)
                         }
                     }
-                
             }
-        }.background(Color.black)
+            GeometryReader { parent in
+                VStack {
+                    HStack {
+                        Image("001").resizable().aspectRatio(1, contentMode: .fit)
+                        Image("004").resizable().aspectRatio(1, contentMode: .fit)
+                        Image("007").resizable().aspectRatio(1, contentMode: .fit)
+                    }
+                    .padding([.leading, .trailing], parent.size.width * 0.112)
+                    Text("Generation VIII")
+                        .font(Font.custom("SFProDisplay-Regular", size: 16))
+                        .foregroundColor(Theme.Text.grey)
+                }
+            }
+        }.background(Theme.Background.selected_input)
     }
 }
 
 //15*100/160 = 9,375%
+// 18*100/160 = 11,25%
 //10*100/160 = 6.25
 //10*100/129 = 7.75%
 //25*100/129 = 19.37%
@@ -90,10 +89,16 @@ private struct Pokeball: View {
 }
 
 struct Gradients {
-    static let vector_gray = LinearGradient(
-        gradient: Gradient(colors: [
-            Color(red: 255, green: 255, blue: 255, opacity: 0.3),
-            Color(red: 255, green: 255, blue: 255, opacity: 0)
+    static let vector_white = LinearGradient(gradient:
+        Gradient(colors: [
+            Color(red: 1, green: 1, blue: 1, opacity: 1),
+            Color(red: 1, green: 1, blue: 1, opacity: 0)
+        ]), startPoint: .topLeading, endPoint: .bottomTrailing)
+    
+    static let vector_gray = LinearGradient(gradient:
+        Gradient(colors: [
+            Color(red: 0.899, green: 0.899, blue: 0.899, opacity: 1),
+            Color(red: 0.961, green: 0.961, blue: 0.961, opacity: 0)
         ]), startPoint: .topLeading, endPoint: .bottomTrailing)
 }
 
@@ -103,8 +108,8 @@ struct GenerationButton_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             GenerationButton().previewLayout(.fixed(width: 160, height: 129))
-            GenerationButton().previewLayout(.fixed(width: 750, height: 1334))
-            GenerationButton().previewLayout(.fixed(width: 1366, height: 1024))
+//            GenerationButton().previewLayout(.fixed(width: 1366, height: 1024))
+//            GenerationButton().previewLayout(.fixed(width: 750, height: 1334))
         }
     }
 }
