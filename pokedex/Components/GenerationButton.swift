@@ -8,27 +8,29 @@
 
 import SwiftUI
 
-struct GenerationButton: View {
-    var body: some View {
+
+struct GenerationButtonStyle: ButtonStyle {
+    func makeBody(configuration: ButtonStyleConfiguration) -> some View {
         ZStack {
             GeometryReader { parent in
-                    HStack {
-                        VStack {
-                            DotPattern()
-                            Spacer().frame(minHeight: parent.size.height * 0.193)
-                        }
-                        .padding(.leading, parent.size.width * 0.0937)
-                        .padding(.top, parent.size.height * 0.0775)
-                        
-                        Spacer().frame(minWidth: parent.size.width * 0.4)
+                HStack {
+                    VStack {
+                        DotPattern().border(Color.red)
+                        Spacer().frame(minHeight: parent.size.height * 0.6)
                     }
+                    .padding(.leading, parent.size.width * 0.0937)
+                    .padding(.top, parent.size.height * 0.0775)
                     
-                    HStack {
-                        Spacer().frame(minWidth: parent.size.width * 0.312)
-                        VStack {
-                            Pokeball().offset(x: parent.size.width * 0.0625, y: parent.size.height/2.1)
-                        }
+                    Spacer().frame(minWidth: parent.size.width * 0.4)
+                }
+                
+                HStack {
+                    Spacer().frame(minWidth: parent.size.width * 0.312)
+                    VStack {
+                        Pokeball()
+                            .offset(x: parent.size.width * 0.0625, y: parent.size.height/2.1)
                     }
+                }
             }
             GeometryReader { parent in
                 VStack {
@@ -38,12 +40,23 @@ struct GenerationButton: View {
                         Image("007").resizable().aspectRatio(1, contentMode: .fit)
                     }
                     .padding([.leading, .trailing], parent.size.width * 0.112)
-                    Text("Generation VIII")
+                    configuration.label
                         .font(Font.custom("SFProDisplay-Regular", size: 16))
-                        .foregroundColor(Theme.Text.grey)
+                        .foregroundColor(configuration.isPressed ? Theme.Text.white : Theme.Text.grey)
                 }
             }
-        }.background(Theme.Background.selected_input)
+            }
+        .cornerRadius(10)
+        .background(configuration.isPressed ? Theme.Background.selected_input : Theme.Background.default_input)
+    }
+}
+
+
+struct GenerationButton: View {
+    var body: some View {
+        Button(action: {}) {
+             Text("Generation VIII")
+        }.buttonStyle(GenerationButtonStyle())
     }
 }
 
@@ -74,17 +87,6 @@ private struct Pokeball: View {
                 Image("pokeball")
                     .resizable()
                     .aspectRatio(1, contentMode: .fit))
-    }
-    
-    func calculateFrame(_ parent: CGSize) -> some View {
-        var maxWidth = CGFloat.zero
-        
-        if(parent.width > parent.height) {
-            maxWidth = parent.height * 0.6875
-        } else {
-            maxWidth = parent.width * 0.6875
-        }
-        return self.frame(maxWidth: maxWidth, maxHeight: maxWidth)
     }
 }
 
