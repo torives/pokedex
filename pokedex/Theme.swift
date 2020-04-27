@@ -73,4 +73,13 @@ struct Theme {
         static let light = Color("weight-light")
         static let normal = Color("weight-normal")
     }
+    
+    struct Gradients {
+        static let vector_gray = [
+            Color(red: 0.899, green: 0.899, blue: 0.899, opacity: 1),
+            Color(red: 0.961, green: 0.961, blue: 0.961, opacity: 0)]
+        static let vector_white = [
+            Color(red: 1, green: 1, blue: 1, opacity: 1),
+            Color(red: 1, green: 1, blue: 1, opacity: 0)]
+    }
 }
