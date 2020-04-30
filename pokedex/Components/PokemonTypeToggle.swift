@@ -46,9 +46,15 @@ struct PokemonTypeToggle: View {
 #if DEBUG
 struct PokemonTypeToggle_Previews: PreviewProvider {
     static var previews: some View {
-        StatefulPreviewWrapper(false) {
-            PokemonTypeToggle(type: .fighting, isOn: $0)
-                .previewLayout(.fixed(width: 100, height: 100))
+        Group {
+            StatefulPreviewWrapper(false) {
+                PokemonTypeToggle(type: .bug, isOn: $0)
+                    .previewLayout(.fixed(width: 100, height: 100))
+            }
+            StatefulPreviewWrapper(true) {
+                PokemonTypeToggle(type: .bug, isOn: $0)
+                    .previewLayout(.fixed(width: 100, height: 100))
+            }
         }
     }
 }
