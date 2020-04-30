@@ -114,4 +114,12 @@ extension Color {
             case .tall: return Color.Heights.tall
         }
     }
+    
+    static func from(weight: PokemonWeight) -> Color {
+        switch weight {
+            case .light: return Color.Weights.light
+            case .normal: return Color.Weights.normal
+            case .heavy: return Color.Weights.heavy
+        }
+    }
 }
