@@ -8,27 +8,29 @@
 
 import SwiftUI
 
-struct ToggleStyle: ButtonStyle {
+struct PokemonTypeToggleStyle: ButtonStyle {
     func makeBody(configuration: ButtonStyleConfiguration) -> some View {
         Circle()
     }
 }
 
 
-struct ToggleButton: View {
+struct PokemonTypeToggle: View {
+    @State var isOn = false
+    
     var body: some View {
-        Button(action: {}) {
+        Toggle(isOn: $isOn) {
             Text("Toggle")
         }
-        .buttonStyle(ToggleStyle())
+        .buttonStyle(PokemonTypeToggleStyle())
     }
 }
 
 
 #if DEBUG
-struct ToggleButton_Previews: PreviewProvider {
+struct PokemonTypeToggle_Previews: PreviewProvider {
     static var previews: some View {
-        ToggleButton().previewLayout(.fixed(width: 100, height: 100))
+        PokemonTypeToggle().previewLayout(.fixed(width: 100, height: 100))
     }
 }
 #endif
