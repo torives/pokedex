@@ -12,8 +12,19 @@ struct PokemonTypeToggleStyle: ToggleStyle {
     let type: PokemonType
     
     func makeBody(configuration: ToggleStyleConfiguration) -> some View {
-        Image(configuration.isOn ? "\(type.rawValue)-button-selected" : "\(type.rawValue)-button-unselected")
-            .onTapGesture { configuration.isOn.toggle() }
+        ZStack {
+            if configuration.isOn {
+                Circle()
+                    .frame(width: 50, height: 50)
+                    .foregroundColor(Color.from(type: type))
+                    .shadow(color: Color.from(type: type).opacity(0.3), radius: 10, x: 0, y: 20)
+            }
+            Image(configuration.isOn ? "\(type.rawValue)-icon" : "\(type.rawValue)-icon")
+                .resizable()
+                .foregroundColor(configuration.isOn ? Color.white : Color.from(type: type))
+                .frame(width: 25, height: 25)
+                .onTapGesture { configuration.isOn.toggle() }
+        }
     }
 }
 
