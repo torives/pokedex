@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct PokemonTypeToggleStyle: ToggleStyle {
-    var type: PokemonType
+    let type: PokemonType
     
     func makeBody(configuration: ToggleStyleConfiguration) -> some View {
         Image(configuration.isOn ? "\(type.rawValue)-button-selected" : "\(type.rawValue)-button-unselected")
