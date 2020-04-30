@@ -8,7 +8,6 @@
 
 import SwiftUI
 
-
 struct PokemonTypeToggleStyle: CircleImageToggleStyle {
     let type: PokemonType
     
@@ -20,7 +19,6 @@ struct PokemonTypeToggleStyle: CircleImageToggleStyle {
         Color.from(type: type)
     }
 }
-
 
 struct PokemonTypeToggle: View {
     let type: PokemonType
@@ -34,7 +32,6 @@ struct PokemonTypeToggle: View {
         .toggleStyle(PokemonTypeToggleStyle(type: type))
     }
 }
-
 
 #if DEBUG
 struct PokemonTypeToggle_Previews: PreviewProvider {

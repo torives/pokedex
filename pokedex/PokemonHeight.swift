@@ -8,8 +8,6 @@
 
 import Foundation
 
-
 enum PokemonHeight: String {
     case short, medium, tall
 }
-

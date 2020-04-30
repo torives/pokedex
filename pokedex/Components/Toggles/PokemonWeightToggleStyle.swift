@@ -8,7 +8,6 @@
 
 import SwiftUI
 
-
 struct PokemonWeightToggleStyle: CircleImageToggleStyle {
     let weight: PokemonWeight
     
@@ -20,7 +19,6 @@ struct PokemonWeightToggleStyle: CircleImageToggleStyle {
         Color.from(weight: weight)
     }
 }
-
 
 struct PokemonWeightToggle: View {
     let weight: PokemonWeight
