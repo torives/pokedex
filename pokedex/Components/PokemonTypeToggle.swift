@@ -19,7 +19,7 @@ struct PokemonTypeToggleStyle: ToggleStyle {
                     .foregroundColor(Color.from(type: type))
                     .shadow(color: Color.from(type: type).opacity(0.3), radius: 10, x: 0, y: 20)
             }
-            Image(configuration.isOn ? "\(type.rawValue)-icon" : "\(type.rawValue)-icon")
+            Image("\(type.rawValue)-icon")
                 .resizable()
                 .foregroundColor(configuration.isOn ? Color.white : Color.from(type: type))
                 .frame(width: 25, height: 25)
