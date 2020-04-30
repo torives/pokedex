@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A324B0C024566A80003B9966 /* PokemonTypeToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A324B0BF24566A80003B9966 /* PokemonTypeToggle.swift */; };
+		A3269B88245A6297002604D4 /* StatefulPreviewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3269B87245A6297002604D4 /* StatefulPreviewWrapper.swift */; };
 		A334BDE224549A6300CACC84 /* sf-pro-display-bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A334BDDF24549A6300CACC84 /* sf-pro-display-bold.ttf */; };
 		A334BDE324549A6300CACC84 /* sf-pro-display-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A334BDE024549A6300CACC84 /* sf-pro-display-regular.ttf */; };
 		A334BDE424549A6300CACC84 /* sf-pro-display-medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A334BDE124549A6300CACC84 /* sf-pro-display-medium.ttf */; };
@@ -36,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		A324B0BF24566A80003B9966 /* PokemonTypeToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonTypeToggle.swift; sourceTree = "<group>"; };
+		A3269B87245A6297002604D4 /* StatefulPreviewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatefulPreviewWrapper.swift; sourceTree = "<group>"; };
 		A334BDDF24549A6300CACC84 /* sf-pro-display-bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "sf-pro-display-bold.ttf"; sourceTree = "<group>"; };
 		A334BDE024549A6300CACC84 /* sf-pro-display-regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "sf-pro-display-regular.ttf"; sourceTree = "<group>"; };
 		A334BDE124549A6300CACC84 /* sf-pro-display-medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "sf-pro-display-medium.ttf"; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 			children = (
 				A334BDEC2454C64900CACC84 /* Badge.swift */,
 				A324B0BF24566A80003B9966 /* PokemonTypeToggle.swift */,
+				A3269B87245A6297002604D4 /* StatefulPreviewWrapper.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 			files = (
 				A324B0C024566A80003B9966 /* PokemonTypeToggle.swift in Sources */,
 				A369268D24536343003C1784 /* AppDelegate.swift in Sources */,
+				A3269B88245A6297002604D4 /* StatefulPreviewWrapper.swift in Sources */,
 				A334BDED2454C64900CACC84 /* Badge.swift in Sources */,
 				A334BDE92454C57500CACC84 /* Theme.swift in Sources */,
 				A33CA6962454D2E000E14593 /* PokemonType.swift in Sources */,
