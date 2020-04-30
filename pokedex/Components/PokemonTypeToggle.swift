@@ -8,25 +8,40 @@
 
 import SwiftUI
 
-//TODO: Extract CircleImageToggleStyle to use with height and weight toggles
-struct PokemonTypeToggleStyle: ToggleStyle {
-    let type: PokemonType
-    
+protocol CircleImageToggleStyle: ToggleStyle {
+    var imageName: String { get }
+    var imageColor: Color { get }
+}
+
+extension CircleImageToggleStyle {
     func makeBody(configuration: ToggleStyleConfiguration) -> some View {
         ZStack {
             if configuration.isOn {
                 Circle()
                     .frame(width: 50, height: 50)
-                    .foregroundColor(Color.from(type: type))
-                    .shadow(color: Color.from(type: type).opacity(0.3), radius: 10, x: 0, y: 20)
+                    .foregroundColor(imageColor)
+                    .shadow(color: imageColor.opacity(0.3), radius: 10, x: 0, y: 20)
             }
-            Image("\(type.rawValue)-colored-icon")
+            Image(imageName)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .foregroundColor(configuration.isOn ? Color.white : Color.from(type: type))
+                .foregroundColor(configuration.isOn ? Color.white : imageColor)
                 .frame(width: 25, height: 25)
                 .onTapGesture { configuration.isOn.toggle() }
         }
+    }
+}
+
+
+struct PokemonTypeToggleStyle: CircleImageToggleStyle {
+    let type: PokemonType
+    
+    var imageName: String {
+        "\(type.rawValue)-colored-icon"
+    }
+    
+    var imageColor: Color {
+        Color.from(type: type)
     }
 }
 
