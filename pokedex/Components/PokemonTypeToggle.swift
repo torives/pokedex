@@ -8,9 +8,12 @@
 
 import SwiftUI
 
-struct PokemonTypeToggleStyle: ButtonStyle {
-    func makeBody(configuration: ButtonStyleConfiguration) -> some View {
-        Circle()
+struct PokemonTypeToggleStyle: ToggleStyle {
+    var type: PokemonType
+    
+    func makeBody(configuration: ToggleStyleConfiguration) -> some View {
+        Image(configuration.isOn ? "\(type.rawValue)-button-selected" : "\(type.rawValue)-button-unselected")
+            .onTapGesture { configuration.isOn.toggle() }
     }
 }
 
@@ -22,7 +25,8 @@ struct PokemonTypeToggle: View {
         Toggle(isOn: $isOn) {
             Text("Toggle")
         }
-        .buttonStyle(PokemonTypeToggleStyle())
+        .labelsHidden()
+        .toggleStyle(PokemonTypeToggleStyle(type: .fighting))
     }
 }
 
