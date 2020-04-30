@@ -19,8 +19,9 @@ struct PokemonTypeToggleStyle: ToggleStyle {
                     .foregroundColor(Color.from(type: type))
                     .shadow(color: Color.from(type: type).opacity(0.3), radius: 10, x: 0, y: 20)
             }
-            Image("\(type.rawValue)-icon")
+            Image("\(type.rawValue)-colored-icon")
                 .resizable()
+                .aspectRatio(contentMode: .fit)
                 .foregroundColor(configuration.isOn ? Color.white : Color.from(type: type))
                 .frame(width: 25, height: 25)
                 .onTapGesture { configuration.isOn.toggle() }
