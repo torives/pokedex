@@ -106,4 +106,12 @@ extension Color {
             case .water: return Color.Pokemon.water
         }
     }
+    
+    static func from(height: PokemonHeight) -> Color {
+        switch height {
+            case .short: return Color.Heights.short
+            case .medium: return Color.Heights.medium
+            case .tall: return Color.Heights.tall
+        }
+    }
 }
