@@ -1,5 +1,5 @@
 //
-//  Theme.swift
+//  Color+Ext.swift
 //  pokedex
 //
 //  Created by Victor Yves Crispim on 25/04/20.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct Theme {
+extension Color {
     struct Background {
         static let default_input = Color("background-default-input")
         static let modal = Color("background-modal")
@@ -30,7 +30,7 @@ struct Theme {
         static let white = Color("text-white")
     }
     
-    struct PokemonType {
+    struct Pokemon {
         static let bug = Color("type-bug")
         static let dark = Color("type-dark")
         static let dragon = Color("type-dragon")
@@ -82,5 +82,28 @@ struct Theme {
         static let vector_white = [
             Color(red: 1, green: 1, blue: 1, opacity: 1),
             Color(red: 1, green: 1, blue: 1, opacity: 0)]
+    }
+    
+    static func from(type: PokemonType) -> Color {
+        switch type {
+            case .bug: return Color.Pokemon.bug
+            case .dark: return Color.Pokemon.dark
+            case .dragon: return Color.Pokemon.dragon
+            case .electric: return Color.Pokemon.electric
+            case .fairy: return Color.Pokemon.fairy
+            case .fighting: return Color.Pokemon.fighting
+            case .fire: return Color.Pokemon.fire
+            case .flying: return Color.Pokemon.flying
+            case .ghost: return Color.Pokemon.ghost
+            case .grass: return Color.Pokemon.grass
+            case .ground: return Color.Pokemon.ground
+            case .ice: return Color.Pokemon.ice
+            case .normal: return Color.Pokemon.normal
+            case .poison: return Color.Pokemon.poison
+            case .psychic: return Color.Pokemon.psychic
+            case .rock: return Color.Pokemon.rock
+            case .steel: return Color.Pokemon.steel
+            case .water: return Color.Pokemon.water
+        }
     }
 }
