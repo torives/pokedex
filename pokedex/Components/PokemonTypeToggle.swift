@@ -20,7 +20,7 @@ struct PokemonTypeToggleStyle: ToggleStyle {
 
 struct PokemonTypeToggle: View {
     let type: PokemonType
-    @State var isOn = false
+    @Binding var isOn: Bool
     
     var body: some View {
         Toggle(isOn: $isOn) {
@@ -35,9 +35,10 @@ struct PokemonTypeToggle: View {
 #if DEBUG
 struct PokemonTypeToggle_Previews: PreviewProvider {
     static var previews: some View {
-        PokemonTypeToggle(type: .fighting)
-            .previewLayout(.fixed(width: 100, height: 100))
+        StatefulPreviewWrapper(false) {
+            PokemonTypeToggle(type: .fighting, isOn: $0)
+                .previewLayout(.fixed(width: 100, height: 100))
+        }
     }
 }
 #endif
-
