@@ -1,0 +1,11 @@
+disabled_rules: 
+  
+opt_in_rules: 
+  
+included: 
+  
+excluded: 
+  - Pods
+analyzer_rules: 
+
+reporter: "json" # reporter type (xcode, json, csv, checkstyle, junit, html, emoji, sonarqube, markdown)
