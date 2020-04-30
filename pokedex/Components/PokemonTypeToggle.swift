@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+//TODO: Extract CircleImageToggleStyle to use with height and weight toggles
 struct PokemonTypeToggleStyle: ToggleStyle {
     let type: PokemonType
     
