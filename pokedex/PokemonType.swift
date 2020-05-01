@@ -6,7 +6,7 @@
 //  Copyright © 2020 yves. All rights reserved.
 //
 
-enum PokemonType: String {
+enum PokemonType: String, CaseIterable {
     case bug
     case dark
     case dragon

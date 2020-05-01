@@ -42,6 +42,10 @@ struct PokemonHeightToggle_Previews: PreviewProvider {
                     .previewLayout(.fixed(width: 100, height: 100))
             }
             StatefulPreviewWrapper(true) {
+                PokemonHeightToggle(height: .medium, isOn: $0)
+                    .previewLayout(.fixed(width: 100, height: 100))
+            }
+            StatefulPreviewWrapper(true) {
                 PokemonHeightToggle(height: .tall, isOn: $0)
                     .previewLayout(.fixed(width: 100, height: 100))
             }

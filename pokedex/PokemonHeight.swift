@@ -8,6 +8,6 @@
 
 import Foundation
 
-enum PokemonHeight: String {
+enum PokemonHeight: String, CaseIterable {
     case short, medium, tall
 }

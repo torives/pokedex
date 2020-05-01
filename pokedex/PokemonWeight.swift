@@ -8,6 +8,6 @@
 
 import Foundation
 
-enum PokemonWeight: String {
+enum PokemonWeight: String, CaseIterable {
     case light, normal, heavy
 }
