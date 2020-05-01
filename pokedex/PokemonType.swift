@@ -6,6 +6,7 @@
 //  Copyright © 2020 yves. All rights reserved.
 //
 
+//swiftlint:disable identifier_name
 enum PokemonType: String, CaseIterable, Identifiable {
     var id: String { self.rawValue }
     

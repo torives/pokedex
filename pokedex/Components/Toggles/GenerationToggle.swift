@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct GenerationButton: View {
+struct GenerationToggle: View {
     var body: some View {
         ZStack {
             DotPattern()
@@ -71,7 +71,7 @@ struct Gradients {
 #if DEBUG
 struct GenerationButton_Previews: PreviewProvider {
     static var previews: some View {
-        GenerationButton()
+        GenerationToggle()
             .previewLayout(.fixed(width: 160, height: 129))
     }
 }
