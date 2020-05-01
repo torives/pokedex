@@ -11,18 +11,32 @@ import SwiftUI
 struct GenerationButton: View {
     var body: some View {
         ZStack {
-            HStack {
-                VStack() {
-                    DotPattern()
-                    Spacer()
-                }
-                Spacer()
-            }.padding()
-            
+            DotPattern()
+                .offset(x: -25, y: -35)
             Pokeball()
+                .offset(x: 35, y: 62)
+            VStack {
+                HStack(spacing: -5.0) {
+                    Image("001")
+                        .resizable()
+                        .frame(width: 45, height: 45)
+                    Image("004")
+                        .resizable()
+                        .frame(width: 45, height: 45)
+                    Image("007")
+                        .resizable()
+                        .frame(width: 45, height: 45)
+                }
+                .padding([.leading, .trailing], 18)
+                .padding(.top, 16)
+                Text("Generation I")
+                    .font(Font.custom("SFProDisplay-Regular", size: 16))
+                    .foregroundColor(Color.Text.white)
+                    .padding(.top, 4)
+            }
         }
         .frame(width: 160, height: 129)
-        .background(Color.from(type: .fighting))
+        .background(Color.Background.selectedInput)
     }
     
     private struct DotPattern: View {
@@ -30,12 +44,8 @@ struct GenerationButton: View {
         
         var body: some View {
             Gradients.vectorGray
-                .mask(
-                    Image("6x3")
-                        .resizable()
-                        .scaledToFit()
-                )
-            .frame(width: self.dotPatternSize.width, height: self.dotPatternSize.height)
+                .mask(Image("6x3").resizable().scaledToFit())
+                .frame(width: self.dotPatternSize.width, height: self.dotPatternSize.height)
         }
     }
     
@@ -44,11 +54,8 @@ struct GenerationButton: View {
         
         var body: some View {
             Gradients.vectorGray
-                .mask(
-                    Image("pokeball")
-                        .resizable()
-                        .frame(width: self.pokeballSize.width, height: self.pokeballSize.height)
-                        .scaledToFit())
+                .mask(Image("pokeball").resizable().scaledToFit())
+                .frame(width: self.pokeballSize.width, height: self.pokeballSize.height)
         }
     }
 }
@@ -65,6 +72,7 @@ struct Gradients {
 struct GenerationButton_Previews: PreviewProvider {
     static var previews: some View {
         GenerationButton()
+            .previewLayout(.fixed(width: 160, height: 129))
     }
 }
 #endif
