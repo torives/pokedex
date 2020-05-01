@@ -38,11 +38,11 @@ struct GenerationToggleStyle: ToggleStyle {
         
         var body: some View {
             if isOn {
-                return Gradients.dotPatternWhite
+                return Color.Gradients.dotPatternWhite
                     .mask(Image("6x3").resizable().scaledToFit())
                     .frame(width: self.dotPatternSize.width, height: self.dotPatternSize.height)
             } else {
-                return Gradients.dotPatternGray
+                return Color.Gradients.dotPatternGray
                     .mask(Image("6x3").resizable().scaledToFit())
                     .frame(width: self.dotPatternSize.width, height: self.dotPatternSize.height)
             }
@@ -55,11 +55,11 @@ struct GenerationToggleStyle: ToggleStyle {
         
         var body: some View {
             if isOn {
-                return Gradients.pokeballWhite
+                return Color.Gradients.pokeballWhite
                     .mask(Image("pokeball").resizable().scaledToFit())
                     .frame(width: self.pokeballSize.width, height: self.pokeballSize.height)
             } else {
-                return Gradients.pokeballGray
+                return Color.Gradients.pokeballGray
                     .mask(Image("pokeball").resizable().scaledToFit())
                     .frame(width: self.pokeballSize.width, height: self.pokeballSize.height)
             }
@@ -96,32 +96,6 @@ struct GenerationToggle: View {
         .labelsHidden()
         .toggleStyle(GenerationToggleStyle(generation: generation))
     }
-}
-
-struct Gradients {
-    static let dotPatternGray = LinearGradient(
-        gradient: Gradient(colors: [
-            Color(red: 0.899, green: 0.899, blue: 0.899, opacity: 1),
-            Color(red: 0.961, green: 0.961, blue: 0.961, opacity: 0)
-        ]), startPoint: .topLeading, endPoint: .bottomTrailing)
-    
-    static let dotPatternWhite = LinearGradient(gradient:
-        Gradient(colors: [
-            Color(red: 1, green: 1, blue: 1, opacity: 0.3),
-            Color(red: 1, green: 1, blue: 1, opacity: 0)
-        ]), startPoint: .topLeading, endPoint: .bottomTrailing)
-    
-    static let pokeballWhite = LinearGradient(gradient:
-        Gradient(colors: [
-            Color(red: 1, green: 1, blue: 1, opacity: 0.1),
-            Color(red: 1, green: 1, blue: 1, opacity: 0)
-        ]), startPoint: .topLeading, endPoint: .bottomTrailing)
-    
-    static let pokeballGray = LinearGradient(gradient:
-        Gradient(colors: [
-            Color(red: 0.925, green: 0.925, blue: 0.925, opacity: 1),
-            Color(red: 0.961, green: 0.961, blue: 0.961, opacity: 1)
-        ]), startPoint: .topLeading, endPoint: .bottomTrailing)
 }
 
 #if DEBUG

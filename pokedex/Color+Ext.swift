@@ -77,12 +77,29 @@ extension Color {
     }
     
     struct Gradients {
-        static let vectorGray = [
-            Color(red: 0.899, green: 0.899, blue: 0.899, opacity: 1),
-            Color(red: 0.961, green: 0.961, blue: 0.961, opacity: 0)]
-        static let vectorWhite = [
-            Color(red: 1, green: 1, blue: 1, opacity: 1),
-            Color(red: 1, green: 1, blue: 1, opacity: 0)]
+        static let dotPatternGray = LinearGradient(
+            gradient: Gradient(colors: [
+                Color(red: 0.899, green: 0.899, blue: 0.899, opacity: 1),
+                Color(red: 0.961, green: 0.961, blue: 0.961, opacity: 0)
+            ]), startPoint: .topLeading, endPoint: .bottomTrailing)
+        
+        static let dotPatternWhite = LinearGradient(gradient:
+            Gradient(colors: [
+                Color(red: 1, green: 1, blue: 1, opacity: 0.3),
+                Color(red: 1, green: 1, blue: 1, opacity: 0)
+            ]), startPoint: .topLeading, endPoint: .bottomTrailing)
+        
+        static let pokeballWhite = LinearGradient(gradient:
+            Gradient(colors: [
+                Color(red: 1, green: 1, blue: 1, opacity: 0.1),
+                Color(red: 1, green: 1, blue: 1, opacity: 0)
+            ]), startPoint: .topLeading, endPoint: .bottomTrailing)
+        
+        static let pokeballGray = LinearGradient(gradient:
+            Gradient(colors: [
+                Color(red: 0.925, green: 0.925, blue: 0.925, opacity: 1),
+                Color(red: 0.961, green: 0.961, blue: 0.961, opacity: 1)
+            ]), startPoint: .topLeading, endPoint: .bottomTrailing)
     }
     
     static func from(type: PokemonType) -> Color {
