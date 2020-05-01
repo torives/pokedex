@@ -18,19 +18,9 @@ struct GenerationToggleStyle: ToggleStyle {
             Pokeball(isOn: configuration.isOn)
                 .offset(x: 35, y: 62)
             VStack {
-                HStack(spacing: -5.0) {
-                    Image("001")
-                        .resizable()
-                        .frame(width: 45, height: 45)
-                    Image("004")
-                        .resizable()
-                        .frame(width: 45, height: 45)
-                    Image("007")
-                        .resizable()
-                        .frame(width: 45, height: 45)
-                }
-                .padding([.leading, .trailing], 18)
-                .padding(.top, 16)
+                StarterPokemons(generation: generation)
+                    .padding([.leading, .trailing], 18)
+                    .padding(.top, 16)
                 Text("Generation \(generation.rawValue)")
                     .font(Font.custom("SFProDisplay-Regular", size: 16))
                     .foregroundColor(configuration.isOn ? Color.Text.white : Color.Text.grey)
@@ -39,6 +29,7 @@ struct GenerationToggleStyle: ToggleStyle {
         }
         .frame(width: 160, height: 129)
         .background(configuration.isOn ? Color.Background.selectedInput : Color.Background.defaultInput)
+        .clipped()
     }
     
     private struct DotPattern: View {
@@ -74,6 +65,24 @@ struct GenerationToggleStyle: ToggleStyle {
             }
         }
     }
+    
+    private struct StarterPokemons: View {
+        let generation: PokemonGeneration
+        
+        var body: some View {
+            HStack(spacing: -5.0) {
+                Image("gen-\(generation.rawValue)-grass-starter")
+                    .resizable()
+                    .frame(width: 45, height: 45)
+                Image("gen-\(generation.rawValue)-fire-starter")
+                    .resizable()
+                    .frame(width: 45, height: 45)
+                Image("gen-\(generation.rawValue)-water-starter")
+                    .resizable()
+                    .frame(width: 45, height: 45)
+            }
+        }
+    }
 }
 
 struct GenerationToggle: View {
@@ -90,7 +99,9 @@ struct GenerationToggle: View {
 }
 
 //swiftlint:disable identifier_name
-enum PokemonGeneration: String {
+enum PokemonGeneration: String, CaseIterable, Identifiable {
+    var id: String { self.rawValue }
+    
     case I, II, III, IV, V, VI, VII, VIII
 }
 
@@ -106,7 +117,6 @@ struct Gradients {
             Color(red: 1, green: 1, blue: 1, opacity: 0.3),
             Color(red: 1, green: 1, blue: 1, opacity: 0)
         ]), startPoint: .topLeading, endPoint: .bottomTrailing)
-    
     
     static let pokeballWhite = LinearGradient(gradient:
         Gradient(colors: [
@@ -124,17 +134,22 @@ struct Gradients {
 #if DEBUG
 struct GenerationButton_Previews: PreviewProvider {
     static var previews: some View {
-        Group {
-            StatefulPreviewWrapper(false) {
-                GenerationToggle(generation: .I, isOn: $0)
-                    .previewLayout(.fixed(width: 160, height: 129))
-            }
-            StatefulPreviewWrapper(true) {
-                GenerationToggle(generation: .I, isOn: $0)
-                    .previewLayout(.fixed(width: 160, height: 129))
+        ScrollView(.vertical) {
+            VStack {
+                ForEach(PokemonGeneration.allCases) { generation in
+                    HStack {
+                        StatefulPreviewWrapper(false) {
+                            GenerationToggle(generation: generation, isOn: $0)
+                                .previewLayout(.fixed(width: 160, height: 129))
+                        }
+                        StatefulPreviewWrapper(true) {
+                            GenerationToggle(generation: generation, isOn: $0)
+                                .previewLayout(.fixed(width: 160, height: 129))
+                        }
+                    }
+                }
             }
         }
-        
     }
 }
 #endif
