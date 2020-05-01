@@ -1,5 +1,5 @@
 //
-//  PokemonHeightToggleStyle.swift
+//  PokemonHeightToggle.swift
 //  pokedex
 //
 //  Created by yves on 30/04/20.

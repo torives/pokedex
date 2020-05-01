@@ -25,10 +25,10 @@
 		A369269924536347003C1784 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A369269724536347003C1784 /* LaunchScreen.storyboard */; };
 		A36926A424536347003C1784 /* pokedexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36926A324536347003C1784 /* pokedexTests.swift */; };
 		A376EE5C245B776000E63352 /* CircleImageToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A376EE5B245B776000E63352 /* CircleImageToggleStyle.swift */; };
-		A376EE5E245B77CC00E63352 /* PokemonHeightToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A376EE5D245B77CC00E63352 /* PokemonHeightToggleStyle.swift */; };
+		A376EE5E245B77CC00E63352 /* PokemonHeightToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A376EE5D245B77CC00E63352 /* PokemonHeightToggle.swift */; };
 		A376EE60245B782A00E63352 /* PokemonHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = A376EE5F245B782A00E63352 /* PokemonHeight.swift */; };
 		A376EE62245B797700E63352 /* PokemonWeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = A376EE61245B797700E63352 /* PokemonWeight.swift */; };
-		A376EE64245B79BC00E63352 /* PokemonWeightToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A376EE63245B79BC00E63352 /* PokemonWeightToggleStyle.swift */; };
+		A376EE64245B79BC00E63352 /* PokemonWeightToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A376EE63245B79BC00E63352 /* PokemonWeightToggle.swift */; };
 		A396A0F6245BBDF1004384F8 /* PokemonGenerationToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A396A0F5245BBDF1004384F8 /* PokemonGenerationToggle.swift */; };
 		A396A0F8245C67BD004384F8 /* PokemonGeneration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A396A0F7245C67BD004384F8 /* PokemonGeneration.swift */; };
 		A396A0FA245C6AF8004384F8 /* Typography.swift in Sources */ = {isa = PBXBuildFile; fileRef = A396A0F9245C6AF8004384F8 /* Typography.swift */; };
@@ -68,10 +68,10 @@
 		A36926A324536347003C1784 /* pokedexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pokedexTests.swift; sourceTree = "<group>"; };
 		A36926A524536347003C1784 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A376EE5B245B776000E63352 /* CircleImageToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImageToggleStyle.swift; sourceTree = "<group>"; };
-		A376EE5D245B77CC00E63352 /* PokemonHeightToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonHeightToggleStyle.swift; sourceTree = "<group>"; };
+		A376EE5D245B77CC00E63352 /* PokemonHeightToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonHeightToggle.swift; sourceTree = "<group>"; };
 		A376EE5F245B782A00E63352 /* PokemonHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonHeight.swift; sourceTree = "<group>"; };
 		A376EE61245B797700E63352 /* PokemonWeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonWeight.swift; sourceTree = "<group>"; };
-		A376EE63245B79BC00E63352 /* PokemonWeightToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonWeightToggleStyle.swift; sourceTree = "<group>"; };
+		A376EE63245B79BC00E63352 /* PokemonWeightToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonWeightToggle.swift; sourceTree = "<group>"; };
 		A396A0F5245BBDF1004384F8 /* PokemonGenerationToggle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokemonGenerationToggle.swift; sourceTree = "<group>"; };
 		A396A0F7245C67BD004384F8 /* PokemonGeneration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonGeneration.swift; sourceTree = "<group>"; };
 		A396A0F9245C6AF8004384F8 /* Typography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typography.swift; sourceTree = "<group>"; };
@@ -187,9 +187,9 @@
 			children = (
 				A376EE5B245B776000E63352 /* CircleImageToggleStyle.swift */,
 				A396A0F5245BBDF1004384F8 /* PokemonGenerationToggle.swift */,
-				A376EE5D245B77CC00E63352 /* PokemonHeightToggleStyle.swift */,
+				A376EE5D245B77CC00E63352 /* PokemonHeightToggle.swift */,
 				A324B0BF24566A80003B9966 /* PokemonTypeToggle.swift */,
-				A376EE63245B79BC00E63352 /* PokemonWeightToggleStyle.swift */,
+				A376EE63245B79BC00E63352 /* PokemonWeightToggle.swift */,
 			);
 			path = Toggles;
 			sourceTree = "<group>";
@@ -390,13 +390,13 @@
 				A369268D24536343003C1784 /* AppDelegate.swift in Sources */,
 				A396A0FA245C6AF8004384F8 /* Typography.swift in Sources */,
 				A396A0F8245C67BD004384F8 /* PokemonGeneration.swift in Sources */,
-				A376EE5E245B77CC00E63352 /* PokemonHeightToggleStyle.swift in Sources */,
+				A376EE5E245B77CC00E63352 /* PokemonHeightToggle.swift in Sources */,
 				A376EE62245B797700E63352 /* PokemonWeight.swift in Sources */,
 				A3269B88245A6297002604D4 /* StatefulPreviewWrapper.swift in Sources */,
 				A334BDED2454C64900CACC84 /* Badge.swift in Sources */,
 				A334BDE92454C57500CACC84 /* Color+Ext.swift in Sources */,
 				A33CA6962454D2E000E14593 /* PokemonType.swift in Sources */,
-				A376EE64245B79BC00E63352 /* PokemonWeightToggleStyle.swift in Sources */,
+				A376EE64245B79BC00E63352 /* PokemonWeightToggle.swift in Sources */,
 				A396A0F6245BBDF1004384F8 /* PokemonGenerationToggle.swift in Sources */,
 				A376EE5C245B776000E63352 /* CircleImageToggleStyle.swift in Sources */,
 				A369268F24536343003C1784 /* SceneDelegate.swift in Sources */,
