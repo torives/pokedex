@@ -14,9 +14,9 @@ struct PokemonGenerationToggleStyle: ToggleStyle {
     func makeBody(configuration: ToggleStyleConfiguration) -> some View {
         ZStack {
             DotPattern(isOn: configuration.isOn)
-                .offset(x: -25, y: -35)
+                .position(x: 56, y: 31.5)
             Pokeball(isOn: configuration.isOn)
-                .offset(x: 35, y: 62)
+                .position(x: 115, y: 130)
             VStack {
                 StarterPokemons(generation: generation)
                     .padding([.leading, .trailing], 18)
