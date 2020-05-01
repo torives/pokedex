@@ -1,5 +1,5 @@
 //
-//  GenerationButton.swift
+//  PokemonGenerationToggle.swift
 //  pokedex
 //
 //  Created by Victor Yves Crispim on 25/04/20.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct GenerationToggleStyle: ToggleStyle {
+struct PokemonGenerationToggleStyle: ToggleStyle {
     let generation: PokemonGeneration
     
     func makeBody(configuration: ToggleStyleConfiguration) -> some View {
@@ -22,7 +22,7 @@ struct GenerationToggleStyle: ToggleStyle {
                     .padding([.leading, .trailing], 18)
                     .padding(.top, 16)
                 Text("Generation \(generation.rawValue)")
-                    .font(Font.custom("SFProDisplay-Regular", size: 16))
+                    .descriptionTextStyle()
                     .foregroundColor(configuration.isOn ? Color.Text.white : Color.Text.grey)
                     .padding(.top, 4)
             }
@@ -85,7 +85,7 @@ struct GenerationToggleStyle: ToggleStyle {
     }
 }
 
-struct GenerationToggle: View {
+struct PokemonGenerationToggle: View {
     let generation: PokemonGeneration
     @Binding var isOn: Bool
     
@@ -94,7 +94,7 @@ struct GenerationToggle: View {
             Text("Toggle")
         }
         .labelsHidden()
-        .toggleStyle(GenerationToggleStyle(generation: generation))
+        .toggleStyle(PokemonGenerationToggleStyle(generation: generation))
     }
 }
 
@@ -106,11 +106,11 @@ struct GenerationButton_Previews: PreviewProvider {
                 ForEach(PokemonGeneration.allCases) { generation in
                     HStack {
                         StatefulPreviewWrapper(false) {
-                            GenerationToggle(generation: generation, isOn: $0)
+                            PokemonGenerationToggle(generation: generation, isOn: $0)
                                 .previewLayout(.fixed(width: 160, height: 129))
                         }
                         StatefulPreviewWrapper(true) {
-                            GenerationToggle(generation: generation, isOn: $0)
+                            PokemonGenerationToggle(generation: generation, isOn: $0)
                                 .previewLayout(.fixed(width: 160, height: 129))
                         }
                     }
