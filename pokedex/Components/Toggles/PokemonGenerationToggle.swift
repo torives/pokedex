@@ -29,7 +29,7 @@ struct PokemonGenerationToggleStyle: ToggleStyle {
         }
         .frame(width: 160, height: 129)
         .background(configuration.isOn ? Color.Background.selectedInput : Color.Background.defaultInput)
-        .clipped()
+        .cornerRadius(10)
     }
     
     private struct DotPattern: View {
