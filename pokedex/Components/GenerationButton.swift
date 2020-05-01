@@ -11,7 +11,14 @@ import SwiftUI
 struct GenerationButton: View {
     var body: some View {
         ZStack {
-            DotPattern()
+            HStack {
+                VStack() {
+                    DotPattern()
+                    Spacer()
+                }
+                Spacer()
+            }.padding()
+            
             Pokeball()
         }
         .frame(width: 160, height: 129)
@@ -26,8 +33,9 @@ struct GenerationButton: View {
                 .mask(
                     Image("6x3")
                         .resizable()
-                        .frame(width: self.dotPatternSize.width, height: self.dotPatternSize.height)
-                        .scaledToFit())
+                        .scaledToFit()
+                )
+            .frame(width: self.dotPatternSize.width, height: self.dotPatternSize.height)
         }
     }
     
