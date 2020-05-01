@@ -98,13 +98,6 @@ struct GenerationToggle: View {
     }
 }
 
-//swiftlint:disable identifier_name
-enum PokemonGeneration: String, CaseIterable, Identifiable {
-    var id: String { self.rawValue }
-    
-    case I, II, III, IV, V, VI, VII, VIII
-}
-
 struct Gradients {
     static let dotPatternGray = LinearGradient(
         gradient: Gradient(colors: [
