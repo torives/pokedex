@@ -8,12 +8,14 @@
 
 import SwiftUI
 
-struct GenerationToggle: View {
-    var body: some View {
+struct GenerationToggleStyle: ToggleStyle {
+    let generation: PokemonGeneration
+    
+    func makeBody(configuration: ToggleStyleConfiguration) -> some View {
         ZStack {
-            DotPattern()
+            DotPattern(isOn: configuration.isOn)
                 .offset(x: -25, y: -35)
-            Pokeball()
+            Pokeball(isOn: configuration.isOn)
                 .offset(x: 35, y: 62)
             VStack {
                 HStack(spacing: -5.0) {
@@ -29,50 +31,110 @@ struct GenerationToggle: View {
                 }
                 .padding([.leading, .trailing], 18)
                 .padding(.top, 16)
-                Text("Generation I")
+                Text("Generation \(generation.rawValue)")
                     .font(Font.custom("SFProDisplay-Regular", size: 16))
-                    .foregroundColor(Color.Text.white)
+                    .foregroundColor(configuration.isOn ? Color.Text.white : Color.Text.grey)
                     .padding(.top, 4)
             }
         }
         .frame(width: 160, height: 129)
-        .background(Color.Background.selectedInput)
+        .background(configuration.isOn ? Color.Background.selectedInput : Color.Background.defaultInput)
     }
     
     private struct DotPattern: View {
+        let isOn: Bool
         private let dotPatternSize = CGSize(width: 80, height: 35)
         
         var body: some View {
-            Gradients.vectorGray
-                .mask(Image("6x3").resizable().scaledToFit())
-                .frame(width: self.dotPatternSize.width, height: self.dotPatternSize.height)
+            if isOn {
+                return Gradients.dotPatternWhite
+                    .mask(Image("6x3").resizable().scaledToFit())
+                    .frame(width: self.dotPatternSize.width, height: self.dotPatternSize.height)
+            } else {
+                return Gradients.dotPatternGray
+                    .mask(Image("6x3").resizable().scaledToFit())
+                    .frame(width: self.dotPatternSize.width, height: self.dotPatternSize.height)
+            }
         }
     }
     
     private struct Pokeball: View {
+        let isOn: Bool
         private let pokeballSize = CGSize(width: 110, height: 110)
         
         var body: some View {
-            Gradients.vectorGray
-                .mask(Image("pokeball").resizable().scaledToFit())
-                .frame(width: self.pokeballSize.width, height: self.pokeballSize.height)
+            if isOn {
+                return Gradients.pokeballWhite
+                    .mask(Image("pokeball").resizable().scaledToFit())
+                    .frame(width: self.pokeballSize.width, height: self.pokeballSize.height)
+            } else {
+                return Gradients.pokeballGray
+                    .mask(Image("pokeball").resizable().scaledToFit())
+                    .frame(width: self.pokeballSize.width, height: self.pokeballSize.height)
+            }
         }
     }
 }
 
+struct GenerationToggle: View {
+    let generation: PokemonGeneration
+    @Binding var isOn: Bool
+    
+    var body: some View {
+        Toggle(isOn: $isOn) {
+            Text("Toggle")
+        }
+        .labelsHidden()
+        .toggleStyle(GenerationToggleStyle(generation: generation))
+    }
+}
+
+//swiftlint:disable identifier_name
+enum PokemonGeneration: String {
+    case I, II, III, IV, V, VI, VII, VIII
+}
+
 struct Gradients {
-    static let vectorGray = LinearGradient(
+    static let dotPatternGray = LinearGradient(
         gradient: Gradient(colors: [
-            Color(red: 255, green: 255, blue: 255, opacity: 0.3),
-            Color(red: 255, green: 255, blue: 255, opacity: 0)
+            Color(red: 0.899, green: 0.899, blue: 0.899, opacity: 1),
+            Color(red: 0.961, green: 0.961, blue: 0.961, opacity: 0)
+        ]), startPoint: .topLeading, endPoint: .bottomTrailing)
+    
+    static let dotPatternWhite = LinearGradient(gradient:
+        Gradient(colors: [
+            Color(red: 1, green: 1, blue: 1, opacity: 0.3),
+            Color(red: 1, green: 1, blue: 1, opacity: 0)
+        ]), startPoint: .topLeading, endPoint: .bottomTrailing)
+    
+    
+    static let pokeballWhite = LinearGradient(gradient:
+        Gradient(colors: [
+            Color(red: 1, green: 1, blue: 1, opacity: 0.1),
+            Color(red: 1, green: 1, blue: 1, opacity: 0)
+        ]), startPoint: .topLeading, endPoint: .bottomTrailing)
+    
+    static let pokeballGray = LinearGradient(gradient:
+        Gradient(colors: [
+            Color(red: 0.925, green: 0.925, blue: 0.925, opacity: 1),
+            Color(red: 0.961, green: 0.961, blue: 0.961, opacity: 1)
         ]), startPoint: .topLeading, endPoint: .bottomTrailing)
 }
 
 #if DEBUG
 struct GenerationButton_Previews: PreviewProvider {
     static var previews: some View {
-        GenerationToggle()
-            .previewLayout(.fixed(width: 160, height: 129))
+        Group {
+            StatefulPreviewWrapper(false) {
+                GenerationToggle(generation: .I, isOn: $0)
+                    .previewLayout(.fixed(width: 160, height: 129))
+            }
+            StatefulPreviewWrapper(true) {
+                GenerationToggle(generation: .I, isOn: $0)
+                    .previewLayout(.fixed(width: 160, height: 129))
+            }
+        }
+        
     }
 }
 #endif
