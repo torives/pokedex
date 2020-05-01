@@ -9,20 +9,20 @@
 import SwiftUI
 
 struct Badge: View {
-    private let type: PokemonType
-    
-    init(type: PokemonType) {
-        self.type = type
-    }
+    let type: PokemonType
+    let showLabel: Bool
     
     var body: some View {
         HStack(alignment: .center, spacing: 5.0) {
             Image("\(type.rawValue)-icon")
                 .frame(width: 15.0, height: 15.0)
                 .foregroundColor(Color.Text.white)
-            Text( type.rawValue.capitalized)
-                .font(Font.custom("SFProDisplay-Medium", size: 12))
-                .foregroundColor(Color.Text.white)
+            
+            if showLabel {
+                Text(type.rawValue.capitalized)
+                    .font(Font.custom("SFProDisplay-Medium", size: 12))
+                    .foregroundColor(Color.Text.white)
+            }
         }
         .padding(.all, 5)
         .background(Color.from(type: type))
@@ -33,7 +33,21 @@ struct Badge: View {
 #if DEBUG
 struct Badge_Previews: PreviewProvider {
     static var previews: some View {
-        Badge(type: .rock)
+        HStack {
+            Spacer()
+            VStack {
+                ForEach(PokemonType.allCases) { type in
+                    Badge(type: type, showLabel: false)
+                }
+            }
+            Spacer()
+            VStack {
+                ForEach(PokemonType.allCases) { type in
+                    Badge(type: type, showLabel: true)
+                }
+            }
+            Spacer()
+        }
     }
 }
 #endif

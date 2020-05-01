@@ -6,7 +6,9 @@
 //  Copyright © 2020 yves. All rights reserved.
 //
 
-enum PokemonType: String, CaseIterable {
+enum PokemonType: String, CaseIterable, Identifiable {
+    var id: String { self.rawValue }
+    
     case bug
     case dark
     case dragon
