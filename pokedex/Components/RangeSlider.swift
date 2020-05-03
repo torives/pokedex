@@ -38,19 +38,19 @@ struct RangeSlider: View {
                                 accentColor: self.accentColor,
                                 secondaryColor: self.secondaryColor,
                                 handleDiameter: self.handleDiameter)
-                                .offset(x: geometry.size.width - self.handleDiameter/2, y: -8)
-//                                .offset(
-//                                    x: self.handlerXPosition.isZero ? self.handlerXPosition : self.handlerXPosition - self.handleDiameter/2,
-//                                    y: self.superviewSize.height/2)
-//                                .gesture(DragGesture(minimumDistance: 1, coordinateSpace: .local)
-//                                    .onChanged { value in
-//                                        print("Size \(geometry.size.width)")
-//                                        print(value.location.x)
-//                                        //                            guard value.location.x >= self.handleDiameter/2,
-//                                        //                                value.location.x <= (geometry.size.width - self.handleDiameter/2) else {
-//                                        //                                return
-//                                        //                            }
-//                                        self.handlerXPosition = value.location.x
+                                .offset(
+                                    x: self.handlerXPosition.isZero ? geometry.size.width - self.handleDiameter/2 : self.handlerXPosition,
+                                    y: -8)
+                                .gesture(DragGesture(minimumDistance: 1, coordinateSpace: .local)
+                                    .onChanged { value in
+                                        print("Size \(geometry.size.width)")
+                                        print(value.location.x)
+                                        guard value.location.x >= -self.handleDiameter/2,
+                                            value.location.x <= (geometry.size.width - self.handleDiameter/2) else {
+                                            return
+                                        }
+                                        self.handlerXPosition = value.location.x
+                                })
 //                                }).alignmentGuide(VerticalAlignment.center, computeValue: { _ in
 //                                    self.handleDiameter/2
 //                                })
