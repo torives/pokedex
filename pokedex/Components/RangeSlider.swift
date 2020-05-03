@@ -9,50 +9,79 @@
 import SwiftUI
 
 struct RangeSlider: View {
-    let lineWidth: CGFloat = 4.0
-    let accentColor: Color = Color.Background.selectedInput
-    let secondaryColor: Color = Color.Background.white
-    let circleRadius: CGFloat = 20
+    private let lineWidth: CGFloat = 4.0
+    private let accentColor: Color = Color.Background.selectedInput
+    private let secondaryColor: Color = Color.Background.white
+    private let handleDiameter: CGFloat = 20
+    @State private var handlerXPosition: CGFloat = 0
+    @State private var superviewSize: CGSize = .zero
     
     var body: some View {
-        ZStack {
-            Rectangle()
-                .fill(Color.Background.defaultInput)
-                .frame(maxHeight: lineWidth)
-                .cornerRadius(2)
-            Rectangle()
-                .fill(accentColor)
-                .frame(maxWidth: 150, maxHeight: lineWidth)
-                .cornerRadius(2)
-            SliderHandle(
-                accentColor: accentColor,
-                secondaryColor: secondaryColor,
-                circleRadius: circleRadius
-            )
-        }.padding()
+        GeometryReader { geometry in
+            ZStack {
+                Rectangle()
+                    .fill(Color.Background.defaultInput)
+                    .frame(maxHeight: self.lineWidth)
+                    .cornerRadius(2)
+                Rectangle()
+                    .fill(self.accentColor)
+                    .frame(maxHeight: self.lineWidth)
+                    .cornerRadius(2)
+                    .overlay(
+                        GeometryReader { geometry in
+                            SliderHandle(
+                                accentColor: self.accentColor,
+                                secondaryColor: self.secondaryColor,
+                                handleDiameter: self.handleDiameter)
+                            .offset(x: -self.handleDiameter/2, y: -8)
+                            SliderHandle(
+                                accentColor: self.accentColor,
+                                secondaryColor: self.secondaryColor,
+                                handleDiameter: self.handleDiameter)
+                                .offset(x: geometry.size.width - self.handleDiameter/2, y: -8)
+//                                .offset(
+//                                    x: self.handlerXPosition.isZero ? self.handlerXPosition : self.handlerXPosition - self.handleDiameter/2,
+//                                    y: self.superviewSize.height/2)
+//                                .gesture(DragGesture(minimumDistance: 1, coordinateSpace: .local)
+//                                    .onChanged { value in
+//                                        print("Size \(geometry.size.width)")
+//                                        print(value.location.x)
+//                                        //                            guard value.location.x >= self.handleDiameter/2,
+//                                        //                                value.location.x <= (geometry.size.width - self.handleDiameter/2) else {
+//                                        //                                return
+//                                        //                            }
+//                                        self.handlerXPosition = value.location.x
+//                                }).alignmentGuide(VerticalAlignment.center, computeValue: { _ in
+//                                    self.handleDiameter/2
+//                                })
+                        }
+                    )
+            }
+            .padding([.top, .bottom])
+            .padding([.leading, .trailing], 8 + self.handleDiameter/2)
+        }
     }
     
     private struct SliderHandle: View {
         let accentColor: Color
         let secondaryColor: Color
-        let circleRadius: CGFloat
+        let handleDiameter: CGFloat
         
         var body: some View {
             VStack {
                 Circle()
                     .fill(accentColor)
-                    .frame(width: circleRadius, height: circleRadius)
+                    .frame(width: handleDiameter, height: handleDiameter)
                     .overlay(
                         Circle()
                             .fill(secondaryColor)
-                            .frame(width: circleRadius - circleRadius/2, height: circleRadius - circleRadius/2)
+                            .frame(width: handleDiameter - handleDiameter/2,
+                                   height: handleDiameter - handleDiameter/2)
                 )
                 Text("78")
                     .pokemonTypeTextStyle()
                     .foregroundColor(Color.Text.grey)
-            }.alignmentGuide(VerticalAlignment.center, computeValue: { _ in
-                self.circleRadius/2
-            })
+            }
         }
     }
 }
@@ -61,6 +90,7 @@ struct RangeSlider: View {
 struct RangeSlider_Previews: PreviewProvider {
     static var previews: some View {
         RangeSlider()
+            //.previewLayout(.fixed(width: 300, height: 75))
     }
 }
 #endif
