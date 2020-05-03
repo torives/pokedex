@@ -38,14 +38,21 @@ struct RangeSlider: View {
         let circleRadius: CGFloat
         
         var body: some View {
-            Circle()
-                .fill(accentColor)
-                .frame(width: circleRadius, height: circleRadius)
-                .overlay(
-                    Circle()
-                        .fill(secondaryColor)
-                        .frame(width: circleRadius - circleRadius/2, height: circleRadius - circleRadius/2)
-            )
+            VStack {
+                Circle()
+                    .fill(accentColor)
+                    .frame(width: circleRadius, height: circleRadius)
+                    .overlay(
+                        Circle()
+                            .fill(secondaryColor)
+                            .frame(width: circleRadius - circleRadius/2, height: circleRadius - circleRadius/2)
+                )
+                Text("78")
+                    .pokemonTypeTextStyle()
+                    .foregroundColor(Color.Text.grey)
+            }.alignmentGuide(VerticalAlignment.center, computeValue: { _ in
+                self.circleRadius/2
+            })
         }
     }
 }
