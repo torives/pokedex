@@ -24,22 +24,51 @@ struct RangeSlider: View {
             .overlay(
                 GeometryReader { geometry in
                      Track(color: self.accentColor)
-                        .frame(maxWidth: self.rightThumbXPosition.isZero ? CGFloat.greatestFiniteMagnitude : self.rightThumbXPosition)
+                        .frame(maxWidth: self.rightThumbXPosition.isZero ?
+                            geometry.size.width : self.rightThumbXPosition)
                         .offset(x: self.leftThumbXPosition, y: 0)
                     SliderThumb(
                         accentColor: self.accentColor,
                         secondaryColor: self.secondaryColor,
                         handleDiameter: self.thumbDiameter)
-                        .offset(x: -self.thumbDiameter/2, y: -8)
+                        .offset(x: self.leftTumbXOffset(parentSize: geometry.size), y: -8)
+                        .gesture(DragGesture(minimumDistance: 1, coordinateSpace: .local)
+                            .onChanged { value in
+                                print("Size \(geometry.size.width)")
+                                print(value.location.x)
+                                self.leftThumbXPosition = value.location.x
+                        })
                     SliderThumb(
                         accentColor: self.accentColor,
                         secondaryColor: self.secondaryColor,
                         handleDiameter: self.thumbDiameter)
-                        .offset(x: geometry.size.width - self.thumbDiameter/2, y: -8)
+                        .offset(x: self.rightTumbXOffset(parentSize: geometry.size), y: -8)
+                        .gesture(DragGesture(minimumDistance: 1, coordinateSpace: .local)
+                            .onChanged { value in
+                                print("Size \(geometry.size.width)")
+                                print(value.location.x)
+                                self.rightThumbXPosition = value.location.x
+                        })
                 }
         )
             .padding([.top, .bottom])
             .padding([.leading, .trailing], 8 + self.thumbDiameter/2)
+    }
+    
+    private func rightTumbXOffset(parentSize: CGSize) -> CGFloat {
+        if self.rightThumbXPosition.isZero {
+            return parentSize.width - self.thumbDiameter/2
+        } else {
+            return self.rightThumbXPosition - self.thumbDiameter/2
+        }
+    }
+    
+    private func leftTumbXOffset(parentSize: CGSize) -> CGFloat {
+        if self.leftThumbXPosition.isZero {
+            return -self.thumbDiameter/2
+        } else {
+            return self.leftThumbXPosition - self.thumbDiameter/2
+        }
     }
     
     private struct Track: View {
