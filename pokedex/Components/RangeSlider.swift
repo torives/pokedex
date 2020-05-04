@@ -8,61 +8,51 @@
 
 import SwiftUI
 
+//swiftlint:disable identifier_name
 struct RangeSlider: View {
-    private let lineWidth: CGFloat = 4.0
+    private let maximumTrackHeight: CGFloat = 4.0
     private let accentColor: Color = Color.Background.selectedInput
     private let secondaryColor: Color = Color.Background.white
-    private let handleDiameter: CGFloat = 20
-    @State private var handlerXPosition: CGFloat = 0
+    private let thumbDiameter: CGFloat = 20
+    @State private var leftThumbXPosition: CGFloat = 0
+    @State private var rightThumbXPosition: CGFloat = 0
     @State private var superviewSize: CGSize = .zero
     
     var body: some View {
-        GeometryReader { geometry in
-            ZStack {
-                Rectangle()
-                    .fill(Color.Background.defaultInput)
-                    .frame(maxHeight: self.lineWidth)
-                    .cornerRadius(2)
-                Rectangle()
-                    .fill(self.accentColor)
-                    .frame(maxHeight: self.lineWidth)
-                    .cornerRadius(2)
-                    .overlay(
-                        GeometryReader { geometry in
-                            SliderHandle(
-                                accentColor: self.accentColor,
-                                secondaryColor: self.secondaryColor,
-                                handleDiameter: self.handleDiameter)
-                            .offset(x: -self.handleDiameter/2, y: -8)
-                            SliderHandle(
-                                accentColor: self.accentColor,
-                                secondaryColor: self.secondaryColor,
-                                handleDiameter: self.handleDiameter)
-                                .offset(
-                                    x: self.handlerXPosition.isZero ? geometry.size.width - self.handleDiameter/2 : self.handlerXPosition,
-                                    y: -8)
-                                .gesture(DragGesture(minimumDistance: 1, coordinateSpace: .local)
-                                    .onChanged { value in
-                                        print("Size \(geometry.size.width)")
-                                        print(value.location.x)
-                                        guard value.location.x >= -self.handleDiameter/2,
-                                            value.location.x <= (geometry.size.width - self.handleDiameter/2) else {
-                                            return
-                                        }
-                                        self.handlerXPosition = value.location.x
-                                })
-//                                }).alignmentGuide(VerticalAlignment.center, computeValue: { _ in
-//                                    self.handleDiameter/2
-//                                })
-                        }
-                    )
-            }
+        Track(color: Color.Background.defaultInput)
+            .frame(maxHeight: self.maximumTrackHeight)
+            .overlay(
+                GeometryReader { geometry in
+                     Track(color: self.accentColor)
+                        .frame(maxWidth: self.rightThumbXPosition.isZero ? CGFloat.greatestFiniteMagnitude : self.rightThumbXPosition)
+                        .offset(x: self.leftThumbXPosition, y: 0)
+                    SliderThumb(
+                        accentColor: self.accentColor,
+                        secondaryColor: self.secondaryColor,
+                        handleDiameter: self.thumbDiameter)
+                        .offset(x: -self.thumbDiameter/2, y: -8)
+                    SliderThumb(
+                        accentColor: self.accentColor,
+                        secondaryColor: self.secondaryColor,
+                        handleDiameter: self.thumbDiameter)
+                        .offset(x: geometry.size.width - self.thumbDiameter/2, y: -8)
+                }
+        )
             .padding([.top, .bottom])
-            .padding([.leading, .trailing], 8 + self.handleDiameter/2)
+            .padding([.leading, .trailing], 8 + self.thumbDiameter/2)
+    }
+    
+    private struct Track: View {
+        let color: Color
+        
+        var body: some View {
+            Rectangle()
+                .fill(color)
+                .cornerRadius(2)
         }
     }
     
-    private struct SliderHandle: View {
+    private struct SliderThumb: View {
         let accentColor: Color
         let secondaryColor: Color
         let handleDiameter: CGFloat
@@ -81,7 +71,7 @@ struct RangeSlider: View {
                 Text("78")
                     .pokemonTypeTextStyle()
                     .foregroundColor(Color.Text.grey)
-            }
+            }.alignmentGuide(VerticalAlignment.center) { d in d[.top] + self.handleDiameter/2}
         }
     }
 }
@@ -90,7 +80,7 @@ struct RangeSlider: View {
 struct RangeSlider_Previews: PreviewProvider {
     static var previews: some View {
         RangeSlider()
-            //.previewLayout(.fixed(width: 300, height: 75))
+        //.previewLayout(.fixed(width: 300, height: 75))
     }
 }
 #endif
