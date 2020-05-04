@@ -14,6 +14,8 @@ struct RangeSlider: View {
     private let accentColor: Color = Color.Background.selectedInput
     private let secondaryColor: Color = Color.Background.white
     private let thumbDiameter: CGFloat = 20
+    @State private var maxTrackWidth = CGFloat.zero
+    @State private var trackXOffset = CGFloat.zero
     @State private var leftThumbXPosition: CGFloat = 0
     @State private var rightThumbXPosition: CGFloat = 0
     @State private var superviewSize: CGSize = .zero
@@ -24,9 +26,8 @@ struct RangeSlider: View {
             .overlay(
                 GeometryReader { geometry in
                      Track(color: self.accentColor)
-                        .frame(maxWidth: self.rightThumbXPosition.isZero ?
-                            geometry.size.width : self.rightThumbXPosition)
-                        .offset(x: self.leftThumbXPosition, y: 0)
+                        .frame(maxWidth: self.maxTrackWidth(with: geometry.size))
+                        .offset(x: self.trackXOffset, y: 0)
                     SliderThumb(
                         accentColor: self.accentColor,
                         secondaryColor: self.secondaryColor,
@@ -36,7 +37,7 @@ struct RangeSlider: View {
                             .onChanged { value in
                                 print("Size \(geometry.size.width)")
                                 print(value.location.x)
-                                self.leftThumbXPosition = value.location.x
+                                self.onLeftThumbUpdate(newX: value.location.x, oldSize: geometry.size)
                         })
                     SliderThumb(
                         accentColor: self.accentColor,
@@ -47,12 +48,33 @@ struct RangeSlider: View {
                             .onChanged { value in
                                 print("Size \(geometry.size.width)")
                                 print(value.location.x)
-                                self.rightThumbXPosition = value.location.x
+                                self.onRightThumbUpdate(newX: value.location.x)
                         })
                 }
         )
             .padding([.top, .bottom])
             .padding([.leading, .trailing], 8 + self.thumbDiameter/2)
+    }
+    
+    private func maxTrackWidth(with size: CGSize) -> CGFloat {
+        if self.maxTrackWidth.isZero {
+            self.maxTrackWidth = size.width
+        }
+        return self.maxTrackWidth
+    }
+    
+    private func onLeftThumbUpdate(newX: CGFloat, oldSize: CGSize) {
+        self.maxTrackWidth = self.rightThumbXPosition.isZero ?
+            oldSize.width - newX : self.rightThumbXPosition - newX
+        self.trackXOffset = newX
+        self.leftThumbXPosition = newX
+    }
+    
+    //FIXME: newX é posicionamento e maxTrackWidth é tamanho, não dá pra comparar direto
+    private func onRightThumbUpdate(newX: CGFloat) {
+        self.maxTrackWidth = min(self.maxTrackWidth, newX)
+//        self.trackXOffset = newX
+        self.rightThumbXPosition = newX
     }
     
     private func rightTumbXOffset(parentSize: CGSize) -> CGFloat {
