@@ -14,11 +14,20 @@ struct RangeSlider: View {
     let secondaryColor: Color = Color.Background.white
     let thumbDiameter: CGFloat = 20
     let spacerMinLength: CGFloat = 0
-    @State var leftSpacerLength: CGFloat = 100
-    @State var rightSpacerLength: CGFloat = 100
+    @Binding var leftSpacerLength: CGFloat
+    @State var rightSpacerLength: CGFloat = 0
     
     var body: some View {
-        ZStack {
+        let leftThumbGesture = DragGesture(minimumDistance: 1, coordinateSpace: .local)
+            .onChanged { value in
+                print((value.startLocation.x, value.location.x))
+                self.leftSpacerLength = value.location.x
+            }
+        
+        let rightThumbGesture = DragGesture(minimumDistance: 1, coordinateSpace: .local)
+            .onChanged { value in print((value.startLocation.x, value.location.x)) }
+        
+        return ZStack {
             Track(color: Color.Background.defaultInput)
                 .frame(maxHeight: lineWidth)
             HStack(spacing: 0.0) {
@@ -28,21 +37,23 @@ struct RangeSlider: View {
                 Spacer(minLength: rightSpacerLength)
             }
             HStack {
-                Spacer()
-                Thumb(
-                    accentColor: accentColor,
-                    secondaryColor: secondaryColor,
-                    diameter: thumbDiameter).border(Color.green)
-                Spacer().frame(width: -thumbDiameter/2 + rightSpacerLength)
-            }.border(Color.red)
-            HStack {
                 Spacer().frame(width: -thumbDiameter/2 + leftSpacerLength)
                 Thumb(
                     accentColor: accentColor,
                     secondaryColor: secondaryColor,
-                    diameter: thumbDiameter).border(Color.green)
+                    diameter: thumbDiameter)
+                    .gesture(leftThumbGesture)
                 Spacer()
-            }.border(Color.purple)
+            }
+            HStack {
+                Spacer()
+                Thumb(
+                    accentColor: accentColor,
+                    secondaryColor: secondaryColor,
+                    diameter: thumbDiameter)
+                    .gesture(rightThumbGesture)
+                Spacer().frame(width: -thumbDiameter/2 + rightSpacerLength)
+            }
         }.padding()
     }
     
@@ -76,8 +87,14 @@ struct RangeSlider: View {
 
 #if DEBUG
 struct RangeSlider_Previews: PreviewProvider {
+    
+    @State static var leftSpacerLength: CGFloat = 0
+    
     static var previews: some View {
-        RangeSlider()
+        
+        StatefulPreviewWrapper(leftSpacerLength) {
+            RangeSlider(leftSpacerLength: $0)
+        }
     }
 }
 #endif
