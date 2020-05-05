@@ -13,18 +13,36 @@ struct RangeSlider: View {
     let accentColor: Color = Color.Background.selectedInput
     let secondaryColor: Color = Color.Background.white
     let thumbDiameter: CGFloat = 20
+    let spacerMinLength: CGFloat = 0
+    @State var leftSpacerLength: CGFloat = 100
+    @State var rightSpacerLength: CGFloat = 100
     
     var body: some View {
         ZStack {
             Track(color: Color.Background.defaultInput)
                 .frame(maxHeight: lineWidth)
-            Track(color: accentColor)
-                .frame(maxHeight: lineWidth)
-            Thumb(
-                accentColor: accentColor,
-                secondaryColor: secondaryColor,
-                diameter: thumbDiameter
-            )
+            HStack(spacing: 0.0) {
+                Spacer(minLength: leftSpacerLength)
+                Track(color: accentColor)
+                    .frame(maxHeight: lineWidth)
+                Spacer(minLength: rightSpacerLength)
+            }
+            HStack {
+                Spacer()
+                Thumb(
+                    accentColor: accentColor,
+                    secondaryColor: secondaryColor,
+                    diameter: thumbDiameter).border(Color.green)
+                Spacer().frame(width: -thumbDiameter/2 + rightSpacerLength)
+            }.border(Color.red)
+            HStack {
+                Spacer().frame(width: -thumbDiameter/2 + leftSpacerLength)
+                Thumb(
+                    accentColor: accentColor,
+                    secondaryColor: secondaryColor,
+                    diameter: thumbDiameter).border(Color.green)
+                Spacer()
+            }.border(Color.purple)
         }.padding()
     }
     
@@ -37,7 +55,7 @@ struct RangeSlider: View {
                 .cornerRadius(2)
         }
     }
-
+    
     private struct Thumb: View {
         let accentColor: Color
         let secondaryColor: Color
