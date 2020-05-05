@@ -16,14 +16,10 @@ struct RangeSlider: View {
     
     var body: some View {
         ZStack {
-            Rectangle()
-                .fill(Color.Background.defaultInput)
+            Track(color: Color.Background.defaultInput)
                 .frame(maxHeight: lineWidth)
-                .cornerRadius(2)
-            Rectangle()
-                .fill(accentColor)
-                .frame(maxWidth: 150, maxHeight: lineWidth)
-                .cornerRadius(2)
+            Track(color: accentColor)
+                .frame(maxHeight: lineWidth)
             SliderHandle(
                 accentColor: accentColor,
                 secondaryColor: secondaryColor,
@@ -32,6 +28,16 @@ struct RangeSlider: View {
         }.padding()
     }
     
+    private struct Track: View {
+        let color: Color
+        
+        var body: some View {
+            Rectangle()
+                .fill(color)
+                .cornerRadius(2)
+        }
+    }
+
     private struct SliderHandle: View {
         let accentColor: Color
         let secondaryColor: Color
