@@ -12,7 +12,7 @@ struct RangeSlider: View {
     let lineWidth: CGFloat = 4.0
     let accentColor: Color = Color.Background.selectedInput
     let secondaryColor: Color = Color.Background.white
-    let circleRadius: CGFloat = 20
+    let thumbDiameter: CGFloat = 20
     
     var body: some View {
         ZStack {
@@ -20,10 +20,10 @@ struct RangeSlider: View {
                 .frame(maxHeight: lineWidth)
             Track(color: accentColor)
                 .frame(maxHeight: lineWidth)
-            SliderHandle(
+            Thumb(
                 accentColor: accentColor,
                 secondaryColor: secondaryColor,
-                circleRadius: circleRadius
+                diameter: thumbDiameter
             )
         }.padding()
     }
@@ -38,19 +38,19 @@ struct RangeSlider: View {
         }
     }
 
-    private struct SliderHandle: View {
+    private struct Thumb: View {
         let accentColor: Color
         let secondaryColor: Color
-        let circleRadius: CGFloat
+        let diameter: CGFloat
         
         var body: some View {
             Circle()
                 .fill(accentColor)
-                .frame(width: circleRadius, height: circleRadius)
+                .frame(width: diameter, height: diameter)
                 .overlay(
                     Circle()
                         .fill(secondaryColor)
-                        .frame(width: circleRadius - circleRadius/2, height: circleRadius - circleRadius/2)
+                        .frame(width: diameter - diameter/2, height: diameter - diameter/2)
             )
         }
     }
