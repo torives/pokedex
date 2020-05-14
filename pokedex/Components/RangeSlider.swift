@@ -13,17 +13,11 @@ struct RangeSlider: View {
     let accentColor: Color = Color.Background.selectedInput
     let secondaryColor: Color = Color.Background.white
     let thumbDiameter: CGFloat = 20
-    let spacerMinLength: CGFloat = 0
-    @Binding var leftSpacerLength: CGFloat
-    @State var rightSpacerLength: CGFloat = 0
+    @State var leftSpacerLength = CGFloat.zero
+    @State var rightSpacerLength = CGFloat.zero
     
     var body: some View {
-        
-        
-        let rightThumbGesture = DragGesture(minimumDistance: 1, coordinateSpace: .local)
-            .onChanged { value in print((value.startLocation.x, value.location.x)) }
-        
-        return GeometryReader { geometry in
+        GeometryReader { geometry in
             ZStack {
                 Track(color: Color.Background.defaultInput)
                     .frame(maxHeight: self.lineWidth)
@@ -35,19 +29,24 @@ struct RangeSlider: View {
                         secondaryColor: self.secondaryColor,
                         diameter: self.thumbDiameter
                     )
-                        .gesture(DragGesture(minimumDistance: 1, coordinateSpace: .local)
-                            .onChanged { value in
-                                print("Translado: \(value.translation.width)")
-                                let displacement = value.translation.width
-                                
-                                if displacement.isLess(than: 0) {
-                                    self.leftSpacerLength = max(self.leftSpacerLength + displacement, 0)
-                                    print("Diminuiu para: \(self.leftSpacerLength)")
-                                } else {
-                                    self.leftSpacerLength = min(self.leftSpacerLength + displacement, geometry.size.width - (self.thumbDiameter + 60))
-                                    print("Cresceu para: \(self.leftSpacerLength)")
-                                }
-                        })
+                    .gesture(
+                        DragGesture(
+                            minimumDistance: 1,
+                            coordinateSpace: .local
+                        )
+                        .onChanged { value in
+                            print("Translado: \(value.translation.width)")
+                            let displacement = value.translation.width
+                            
+                            if displacement.isLess(than: 0) {
+                                self.leftSpacerLength = max(self.leftSpacerLength + displacement, 0)
+                                print("Diminuiu para: \(self.leftSpacerLength)")
+                            } else {
+                                self.leftSpacerLength = min(self.leftSpacerLength + displacement, geometry.size.width - (self.thumbDiameter + 60))
+                                print("Cresceu para: \(self.leftSpacerLength)")
+                            }
+                        }
+                    )
                     .zIndex(1)
                     
                     Track(color: self.accentColor)
@@ -60,25 +59,30 @@ struct RangeSlider: View {
                         secondaryColor: self.secondaryColor,
                         diameter: self.thumbDiameter
                     )
-                        .gesture(DragGesture(minimumDistance: 1, coordinateSpace: .local)
-                            .onChanged { value in
-                                print("Translado: \(value.translation.width)")
-                                let displacement = value.translation.width
-                                
-                                if displacement.isLess(than: 0) {
-                                    self.rightSpacerLength = min(self.rightSpacerLength + -displacement, geometry.size.width - (self.thumbDiameter + 60))
-                                    print("Diminuiu para: \(self.leftSpacerLength)")
-                                } else {
-                                    self.rightSpacerLength = max(self.rightSpacerLength - displacement, 0)
-                                    print("Cresceu para: \(self.leftSpacerLength)")
-                                }
-                            })
+                    .gesture(
+                        DragGesture(
+                            minimumDistance: 1,
+                            coordinateSpace: .local
+                        )
+                        .onChanged { value in
+                            print("Translado: \(value.translation.width)")
+                            let displacement = value.translation.width
+                            
+                            if displacement.isLess(than: 0) {
+                                self.rightSpacerLength = min(self.rightSpacerLength + -displacement, geometry.size.width - (self.thumbDiameter + 60))
+                                print("Diminuiu para: \(self.leftSpacerLength)")
+                            } else {
+                                self.rightSpacerLength = max(self.rightSpacerLength - displacement, 0)
+                                print("Cresceu para: \(self.leftSpacerLength)")
+                            }
+                        }
+                    )
                     .zIndex(1)
                     
                     Spacer(minLength: self.rightSpacerLength)
                 }
             }.padding()
-        }
+        }.scaledToFit()
     }
     
     private struct Track: View {
@@ -111,14 +115,8 @@ struct RangeSlider: View {
 
 #if DEBUG
 struct RangeSlider_Previews: PreviewProvider {
-    
-    @State static var leftSpacerLength: CGFloat = 0
-    
     static var previews: some View {
-        
-        StatefulPreviewWrapper(leftSpacerLength) {
-            RangeSlider(leftSpacerLength: $0)
-        }
+        RangeSlider()
     }
 }
 #endif
