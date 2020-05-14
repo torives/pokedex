@@ -20,7 +20,7 @@ struct Badge: View {
             
             if showLabel {
                 Text(type.rawValue.capitalized)
-                    .font(Font.custom("SFProDisplay-Medium", size: 12))
+                    .font(.pokemonType)
                     .foregroundColor(Color.Text.white)
             }
         }

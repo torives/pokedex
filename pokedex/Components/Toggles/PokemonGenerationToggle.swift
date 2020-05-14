@@ -22,7 +22,7 @@ struct PokemonGenerationToggleStyle: ToggleStyle {
                     .padding([.leading, .trailing], 18)
                     .padding(.top, 16)
                 Text("Generation \(generation.rawValue)")
-                    .descriptionTextStyle()
+                    .font(.description)
                     .foregroundColor(configuration.isOn ? Color.Text.white : Color.Text.grey)
                     .padding(.top, 4)
             }
