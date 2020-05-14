@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+//TODO: passar as cores como objetos do ambiente
 struct RangeSlider: View {
     let lineWidth: CGFloat = 4.0
     let accentColor: Color = Color.Background.selectedInput
@@ -42,7 +43,10 @@ struct RangeSlider: View {
                                 self.leftSpacerLength = max(self.leftSpacerLength + displacement, 0)
                                 print("Diminuiu para: \(self.leftSpacerLength)")
                             } else {
-                                self.leftSpacerLength = min(self.leftSpacerLength + displacement, geometry.size.width - (self.thumbDiameter + 60))
+                                self.leftSpacerLength = min(
+                                    self.leftSpacerLength + displacement,
+                                    (geometry.size.width - self.rightSpacerLength) - (self.thumbDiameter + 60)
+                                )
                                 print("Cresceu para: \(self.leftSpacerLength)")
                             }
                         }
@@ -69,7 +73,10 @@ struct RangeSlider: View {
                             let displacement = value.translation.width
                             
                             if displacement.isLess(than: 0) {
-                                self.rightSpacerLength = min(self.rightSpacerLength + -displacement, geometry.size.width - (self.thumbDiameter + 60))
+                                self.rightSpacerLength = min(
+                                    self.rightSpacerLength + -displacement,
+                                    (geometry.size.width - self.leftSpacerLength) - (self.thumbDiameter + 60)
+                                )
                                 print("Diminuiu para: \(self.leftSpacerLength)")
                             } else {
                                 self.rightSpacerLength = max(self.rightSpacerLength - displacement, 0)
