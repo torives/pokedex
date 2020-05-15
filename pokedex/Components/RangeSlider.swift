@@ -14,6 +14,12 @@ struct RangeSlider: View {
     let accentColor: Color = Color.Background.selectedInput
     let secondaryColor: Color = Color.Background.white
     let thumbDiameter: CGFloat = 20
+    let defaultPadding: CGFloat = 8
+    let minValue = 1
+    let maxValue = 890
+    @State var leftValue = 1
+    @State var rightValue = 890
+    
     @State var leftSpacerLength = CGFloat.zero
     @State var rightSpacerLength = CGFloat.zero
     
@@ -38,6 +44,7 @@ struct RangeSlider: View {
                         .onChanged { value in
                             print("Translado: \(value.translation.width)")
                             let displacement = value.translation.width
+                            let trackWidth = geometry.size.width - self.defaultPadding - self.thumbDiameter/2
                             
                             if displacement.isLess(than: 0) {
                                 self.leftSpacerLength = max(self.leftSpacerLength + displacement, 0)
@@ -49,6 +56,15 @@ struct RangeSlider: View {
                                 )
                                 print("Cresceu para: \(self.leftSpacerLength)")
                             }
+                            
+                            let leftThumbMiddle = max(0, self.leftSpacerLength)// + self.thumbDiameter/2)
+                            let percentage = Float(leftThumbMiddle/geometry.size.width)
+                            self.leftValue = max(1, Int(roundf(Float(self.maxValue) * percentage)))
+                            print("\ntrackSize: \(trackWidth)")
+                            print("width: \(geometry.size.width)")
+                            print("middle: \(leftThumbMiddle)")
+                            print("percentage: \(percentage)")
+                            print("leftValue: \(self.leftValue)")
                         }
                     )
                     .zIndex(1)
@@ -69,7 +85,7 @@ struct RangeSlider: View {
                             coordinateSpace: .local
                         )
                         .onChanged { value in
-                            print("Translado: \(value.translation.width)")
+//                            print("Translado: \(value.translation.width)")
                             let displacement = value.translation.width
                             
                             if displacement.isLess(than: 0) {
@@ -77,10 +93,10 @@ struct RangeSlider: View {
                                     self.rightSpacerLength + -displacement,
                                     (geometry.size.width - self.leftSpacerLength) - (self.thumbDiameter + 60)
                                 )
-                                print("Diminuiu para: \(self.leftSpacerLength)")
+//                                print("Diminuiu para: \(self.leftSpacerLength)")
                             } else {
                                 self.rightSpacerLength = max(self.rightSpacerLength - displacement, 0)
-                                print("Cresceu para: \(self.leftSpacerLength)")
+//                                print("Cresceu para: \(self.leftSpacerLength)")
                             }
                         }
                     )
@@ -88,8 +104,10 @@ struct RangeSlider: View {
                     
                     Spacer(minLength: self.rightSpacerLength)
                 }
-            }.padding()
-        }.scaledToFit()
+            }
+        }
+        .padding([.all], defaultPadding)
+        .scaledToFit()
     }
     
     private struct Track: View {
