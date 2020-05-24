@@ -33,11 +33,21 @@ struct Home: View {
                 }, label: {
                     Text("Filter")
                 })
+                NavigationLink(destination: PokemonDetail()) {
+                    Text("Pokemon Detail")
+                }
             }
             .sheet(isPresented: $isPresentingSheet) {
                 Text(self.sheetText)
             }
         }
+    }
+}
+
+struct PokemonDetail: View {
+       
+    var body: some View {
+        Text("Pokemon Detail")
     }
 }
 
