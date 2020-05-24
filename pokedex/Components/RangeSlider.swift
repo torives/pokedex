@@ -15,19 +15,30 @@ struct RangeSlider: View {
     let secondaryColor: Color = Color.Background.white
     let thumbDiameter: CGFloat = 20
     let defaultPadding: CGFloat = 8
-    let minValue = 1
-    let maxValue = 890
-    @State var leftValue = 1
-    @State var rightValue = 890
     
+   
     @State var leftSpacerLength = CGFloat.zero
     @State var rightSpacerLength = CGFloat.zero
+    
+    @Binding var leftValue: Int
+    @Binding var rightValue: Int
+    
+    let bounds: ClosedRange<Int>
+    let step: Int
+    
+    public init(selectedLowerBound: Binding<Int>, selectedUpperBound: Binding<Int>, in bounds: ClosedRange<Int>, step: Int = 1) {
+        self._leftValue = selectedLowerBound
+        self._rightValue = selectedUpperBound
+        self.bounds = bounds
+        self.step = step
+    }
     
     var body: some View {
         GeometryReader { geometry in
             ZStack {
                 Track(color: Color.Background.defaultInput)
                     .frame(maxHeight: self.lineWidth)
+               
                 HStack(spacing: 0.0) {
                     Spacer(minLength: self.leftSpacerLength)
                     
@@ -41,9 +52,9 @@ struct RangeSlider: View {
                             minimumDistance: 1,
                             coordinateSpace: .local
                         )
-                        .onChanged { value in
-                            print("Translado: \(value.translation.width)")
-                            let displacement = value.translation.width
+                        .onChanged { gesture in
+                            print("Translado: \(gesture.translation.width)")
+                            let displacement = gesture.translation.width
                             let trackWidth = geometry.size.width - self.defaultPadding - self.thumbDiameter/2
                             
                             if displacement.isLess(than: 0) {
@@ -56,10 +67,11 @@ struct RangeSlider: View {
                                 )
                                 print("Cresceu para: \(self.leftSpacerLength)")
                             }
-                            
+
                             let leftThumbMiddle = max(0, self.leftSpacerLength)// + self.thumbDiameter/2)
                             let percentage = Float(leftThumbMiddle/geometry.size.width)
-                            self.leftValue = max(1, Int(roundf(Float(self.maxValue) * percentage)))
+                            self.leftValue = max(self.bounds.lowerBound, Int(roundf(Float(self.bounds.upperBound) * percentage)))
+                            
                             print("\ntrackSize: \(trackWidth)")
                             print("width: \(geometry.size.width)")
                             print("middle: \(leftThumbMiddle)")
@@ -107,7 +119,6 @@ struct RangeSlider: View {
             }
         }
         .padding([.all], defaultPadding)
-        .scaledToFit()
     }
     
     private struct Track: View {
@@ -140,8 +151,13 @@ struct RangeSlider: View {
 
 #if DEBUG
 struct RangeSlider_Previews: PreviewProvider {
+    
+    @State static var leftValue = 1
+    @State static var rightValue = 890
+    
     static var previews: some View {
-        RangeSlider()
+        RangeSlider(selectedLowerBound: $leftValue, selectedUpperBound: $rightValue, in: leftValue...rightValue)
+            .previewLayout(.fixed(width: 500, height: 300))
     }
 }
 #endif
