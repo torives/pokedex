@@ -20,15 +20,15 @@ struct RangeSlider: View {
     @State var leftSpacerLength = CGFloat.zero
     @State var rightSpacerLength = CGFloat.zero
     
-    @Binding var lowerBound: Int
-    @Binding var upperBound: Int
+    @Binding var lowerValue: Int
+    @Binding var upperValue: Int
     
     let bounds: ClosedRange<Int>
     let step: Int
     
     public init(selectedLowerBound: Binding<Int>, selectedUpperBound: Binding<Int>, in bounds: ClosedRange<Int>, step: Int = 1) {
-        self._lowerBound = selectedLowerBound
-        self._upperBound = selectedUpperBound
+        self._lowerValue = selectedLowerBound
+        self._upperValue = selectedUpperBound
         self.bounds = bounds
         self.step = step
         
@@ -61,22 +61,22 @@ struct RangeSlider: View {
                             let newLenght = self.leftSpacerLength + xTranslation
                             let maxLenght = (geometry.size.width - self.rightSpacerLength) - (self.minimumSpaceBetweenThumbs)
                             
-                            //If dragged to the left
                             if xTranslation.isLess(than: 0) {
                                 self.leftSpacerLength = max(0, newLenght)
-                            } else { //If dragged to the right
+                            } else {
                                 self.leftSpacerLength = min(newLenght, maxLenght)
                             }
 
-                            let leftThumbMiddle = max(0, self.leftSpacerLength + self.thumbDiameter/2 + self.defaultPadding)
-                            let percentage = Float(leftThumbMiddle/geometry.size.width)
-                            self.lowerBound = max(self.bounds.lowerBound, Int(Float(self.bounds.upperBound) * percentage))
+                            let leftThumbMiddle = max(0, self.leftSpacerLength + self.thumbDiameter/2)
+                            let percentage = Float(leftThumbMiddle/trackWidth)
+                            let newLowerValue = Int(Float(self.bounds.upperBound) * percentage)
+                            self.lowerValue = max(self.bounds.lowerBound, newLowerValue)
                             
                             print("\ntrackSize: \(trackWidth)")
                             print("width: \(geometry.size.width)")
                             print("middle: \(leftThumbMiddle)")
                             print("percentage: \(percentage)")
-                            print("leftValue: \(self.lowerBound)")
+                            print("leftValue: \(self.lowerValue)")
                         }
                     )
                     .zIndex(1)
@@ -152,11 +152,11 @@ struct RangeSlider: View {
 #if DEBUG
 struct RangeSlider_Previews: PreviewProvider {
     
-    @State static var lowerBound = 1
-    @State static var upperBound = 890
+    @State static var lowerValue = 1
+    @State static var upperValue = 890
     
     static var previews: some View {
-        RangeSlider(selectedLowerBound: $lowerBound, selectedUpperBound: $upperBound, in: lowerBound...upperBound)
+        RangeSlider(selectedLowerBound: $lowerValue, selectedUpperBound: $upperValue, in: lowerValue...upperValue)
             .previewLayout(.fixed(width: 500, height: 300))
     }
 }
