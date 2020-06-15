@@ -9,8 +9,8 @@
 import SwiftUI
 
 struct Home: View {
-    @State var isPresentingSheet = false
-    @State var sheetText = ""
+    @State private var isPresentingSheet = false
+    @State private var sheetText = ""
     
     var body: some View {
         NavigationView {
