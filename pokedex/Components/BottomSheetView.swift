@@ -15,6 +15,16 @@ struct BottomSheetView<Content: View>: View {
     private let minHeight: CGFloat
     private let content: Content
     
+    private var offset: CGFloat {
+        isExpanded ? 0 : maxHeight - minHeight
+    }
+    
+    private var indicator: some View {
+        RoundedRectangle(cornerRadius: 25)
+            .fill(Color.secondary)
+            .frame(width: 80, height: 6)
+    }
+    
     init(isExpanded: Binding<Bool>, maxHeight: CGFloat, @ViewBuilder content: () -> Content) {
         self._isExpanded = isExpanded
         self.maxHeight = maxHeight
@@ -23,7 +33,17 @@ struct BottomSheetView<Content: View>: View {
     }
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        GeometryReader { geometry in
+            VStack(spacing: 0) {
+                self.indicator
+                    .padding(.bottom, 6)
+                    .padding(.top, self.maxHeight * 0.05)
+                self.content
+                    .cornerRadius(25)
+            }
+            .frame(height: geometry.size.height, alignment: .bottom)
+            .offset(y: self.offset)
+        }
     }
 }
 
@@ -31,6 +51,6 @@ struct BottomSheetView_Previews: PreviewProvider {
     static var previews: some View {
         BottomSheetView(isExpanded: .constant(false), maxHeight: 600) {
             Rectangle().fill(Color.red)
-        }.edgesIgnoringSafeArea(.all)
+        }
     }
 }
