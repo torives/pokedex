@@ -15,6 +15,7 @@
 		A334BDE324549A6300CACC84 /* SFProDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A334BDE024549A6300CACC84 /* SFProDisplay-Regular.ttf */; };
 		A334BDE424549A6300CACC84 /* SFProDisplay-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A334BDE124549A6300CACC84 /* SFProDisplay-Medium.ttf */; };
 		A32C83BA2498292500C3FF97 /* BottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32C83B92498292500C3FF97 /* BottomSheetView.swift */; };
+		A32C83BC2498379C00C3FF97 /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32C83BB2498379C00C3FF97 /* View+Ext.swift */; };
 		A334BDE72454A45600CACC84 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A334BDE62454A45600CACC84 /* Colors.xcassets */; };
 		A334BDE92454C57500CACC84 /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = A334BDE82454C57500CACC84 /* Color+Ext.swift */; };
 		A334BDED2454C64900CACC84 /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = A334BDEC2454C64900CACC84 /* Badge.swift */; };
@@ -68,6 +69,7 @@
 		A334BDE024549A6300CACC84 /* SFProDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Regular.ttf"; sourceTree = "<group>"; };
 		A334BDE124549A6300CACC84 /* SFProDisplay-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFProDisplay-Medium.ttf"; sourceTree = "<group>"; };
 		A32C83B92498292500C3FF97 /* BottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetView.swift; sourceTree = "<group>"; };
+		A32C83BB2498379C00C3FF97 /* View+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
 		A334BDE62454A45600CACC84 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		A334BDE82454C57500CACC84 /* Color+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
 		A334BDEC2454C64900CACC84 /* Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				A3C13DEA24A4230500667C3F /* ListPokemon */,
 				A3C13DED24A4235A00667C3F /* Models */,
 				A36926AE245365D0003C1784 /* Resources */,
+				A32C83BB2498379C00C3FF97 /* View+Ext.swift */,
 			);
 			path = pokedex;
 			sourceTree = "<group>";
@@ -502,6 +505,7 @@
 				A334BDE92454C57500CACC84 /* Color+Ext.swift in Sources */,
 				A3D42FCB24A5754F009DA071 /* PokemonListItem.swift in Sources */,
 				A33CA6962454D2E000E14593 /* PokemonType.swift in Sources */,
+				A32C83BC2498379C00C3FF97 /* View+Ext.swift in Sources */,
 				A32C83BA2498292500C3FF97 /* BottomSheetView.swift in Sources */,
 				A376EE64245B79BC00E63352 /* PokemonWeightToggle.swift in Sources */,
 				A396A0F6245BBDF1004384F8 /* PokemonGenerationToggle.swift in Sources */,

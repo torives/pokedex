@@ -39,7 +39,7 @@ struct BottomSheetView<Content: View>: View {
                     .padding(.bottom, 6)
                     .padding(.top, self.maxHeight * 0.05)
                 self.content
-                    .cornerRadius(25)
+                    .cornerRadius(25, corners: [.topLeft, .topRight])
             }
             .frame(height: geometry.size.height, alignment: .bottom)
             .offset(y: self.offset)
@@ -49,7 +49,7 @@ struct BottomSheetView<Content: View>: View {
 
 struct BottomSheetView_Previews: PreviewProvider {
     static var previews: some View {
-        BottomSheetView(isExpanded: .constant(false), maxHeight: 600) {
+        BottomSheetView(isExpanded: .constant(true), maxHeight: 600) {
             Rectangle().fill(Color.red)
         }
     }
