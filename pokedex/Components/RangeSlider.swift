@@ -42,7 +42,7 @@ struct RangeSlider: View {
                     .frame(maxHeight: self.lineWidth)
                
                 HStack(spacing: 0.0) {
-                    Spacer(minLength: self.leftSpacerLength)
+                    self.generateLeftSpacer(with: geometry.size.width)
                     
                     Thumb(
                         accentColor: self.accentColor,
@@ -51,32 +51,11 @@ struct RangeSlider: View {
                     )
                     .gesture(
                         DragGesture(
-                            minimumDistance: 1,
-                            coordinateSpace: .local
+                       
                         )
                         .onChanged { gesture in
-                            print("Translado: \(gesture.translation.width)")
-                            let xTranslation = gesture.translation.width
                             let trackWidth = geometry.size.width - self.defaultPadding - self.thumbDiameter/2
-                            let newLenght = self.leftSpacerLength + xTranslation
-                            let maxLenght = (geometry.size.width - self.rightSpacerLength) - (self.minimumSpaceBetweenThumbs)
-                            
-                            if xTranslation.isLess(than: 0) {
-                                self.leftSpacerLength = max(0, newLenght)
-                            } else {
-                                self.leftSpacerLength = min(newLenght, maxLenght)
-                            }
-
-                            let leftThumbMiddle = max(0, self.leftSpacerLength + self.thumbDiameter/2)
-                            let percentage = Float(leftThumbMiddle/trackWidth)
-                            let newLowerValue = Int(Float(self.bounds.upperBound) * percentage)
-                            self.lowerValue = max(self.bounds.lowerBound, newLowerValue)
-                            
-                            print("\ntrackSize: \(trackWidth)")
-                            print("width: \(geometry.size.width)")
-                            print("middle: \(leftThumbMiddle)")
-                            print("percentage: \(percentage)")
-                            print("leftValue: \(self.lowerValue)")
+                            self.updateLeftThumbPosition(with: gesture.translation.width, trackWidth: trackWidth)
                         }
                     )
                     .zIndex(1)
@@ -119,6 +98,45 @@ struct RangeSlider: View {
             }
         }
         .padding([.all], defaultPadding)
+    }
+    
+    private func generateLeftSpacer(with parentWidth: CGFloat) -> some View {
+        let trackWidth = parentWidth - self.defaultPadding - self.thumbDiameter/2
+//        self.lowerValue
+//        self.upperValue
+        
+        
+        let lenght = 0
+        
+        
+        return Spacer(minLength: self.leftSpacerLength)
+    }
+    
+    private func updateLeftThumbPosition(with xTranslation: CGFloat, trackWidth: CGFloat) {
+        let newLenght = self.leftSpacerLength + xTranslation
+        let maxLenght = (trackWidth - self.rightSpacerLength) - (self.minimumSpaceBetweenThumbs)
+        
+        if xTranslation.isLess(than: 0) {
+            self.leftSpacerLength = max(0, newLenght)
+        } else {
+            self.leftSpacerLength = min(newLenght, maxLenght)
+        }
+        
+        let leftThumbCenter = max(0, self.leftSpacerLength + self.thumbDiameter/2)
+        let percentage = Float(leftThumbCenter/trackWidth)
+               
+        updateLowerValue(by: percentage)
+        
+        print("\nTrackSize: \(trackWidth)")
+        print("Left thumb position: \(leftThumbCenter)")
+        print("percentage: \(percentage)")
+        print("leftValue: \(self.lowerValue)")
+    }
+    
+    private func updateLowerValue(by percentage: Float) {
+        let newLowerValue = Int(Float(self.bounds.upperBound) * percentage)
+        
+        self.lowerValue = max(self.bounds.lowerBound, newLowerValue)
     }
     
     private struct Track: View {
