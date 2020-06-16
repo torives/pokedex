@@ -12,7 +12,7 @@ struct BottomSheetView<Content: View>: View {
     @Binding private var isPresented: Bool
     @GestureState private var translation: CGFloat = 0
     
-    private let maxHeight: CGFloat
+    private let maxHeight = UIScreen.main.bounds.height
     private let minHeight: CGFloat
     private let content: Content
     
@@ -26,9 +26,8 @@ struct BottomSheetView<Content: View>: View {
             .frame(width: 80, height: 6)
     }
     
-    init(isPresented: Binding<Bool>, maxHeight: CGFloat, @ViewBuilder content: () -> Content) {
+    init(isPresented: Binding<Bool>, @ViewBuilder content: () -> Content) {
         self._isPresented = isPresented
-        self.maxHeight = maxHeight
         self.minHeight = maxHeight * 0.5
         self.content = content()
     }
@@ -62,7 +61,7 @@ struct BottomSheetView<Content: View>: View {
 
 struct BottomSheetView_Previews: PreviewProvider {
     static var previews: some View {
-        BottomSheetView(isPresented: .constant(false), maxHeight: 600) {
+        BottomSheetView(isPresented: .constant(false)) {
             Rectangle().fill(Color.red)
         }
     }
