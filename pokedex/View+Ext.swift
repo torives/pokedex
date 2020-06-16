@@ -16,9 +16,13 @@ extension View {
     }
     
     func bottomSheet<Content: View>(isPresented: Binding<Bool>, @ViewBuilder content: () -> Content) -> some View {
-        ZStack {
+        return ZStack {
             self
-            BottomSheetView(isPresented: isPresented, content: content)
+            if(isPresented.wrappedValue) {
+                BottomSheetView(isPresented: isPresented, content: content)
+            } else {
+                EmptyView()
+            }
         }
     }
 }
