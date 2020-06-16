@@ -9,14 +9,15 @@
 import SwiftUI
 
 struct BottomSheetView<Content: View>: View {
-    @Binding private var isExpanded: Bool
+    @Binding private var isPresented: Bool
+    @GestureState private var translation: CGFloat = 0
     
     private let maxHeight: CGFloat
     private let minHeight: CGFloat
     private let content: Content
     
     private var offset: CGFloat {
-        isExpanded ? 0 : maxHeight - minHeight
+        isPresented ? 0 : maxHeight - minHeight
     }
     
     private var indicator: some View {
@@ -25,8 +26,8 @@ struct BottomSheetView<Content: View>: View {
             .frame(width: 80, height: 6)
     }
     
-    init(isExpanded: Binding<Bool>, maxHeight: CGFloat, @ViewBuilder content: () -> Content) {
-        self._isExpanded = isExpanded
+    init(isPresented: Binding<Bool>, maxHeight: CGFloat, @ViewBuilder content: () -> Content) {
+        self._isPresented = isPresented
         self.maxHeight = maxHeight
         self.minHeight = maxHeight * 0.5
         self.content = content()
@@ -42,14 +43,26 @@ struct BottomSheetView<Content: View>: View {
                     .cornerRadius(25, corners: [.topLeft, .topRight])
             }
             .frame(height: geometry.size.height, alignment: .bottom)
-            .offset(y: self.offset)
+            .offset(y: max(self.offset + self.translation, 0))
+            .animation(.interactiveSpring())
+            .gesture(
+                DragGesture().updating(self.$translation) { value, state, _ in
+                    state = value.translation.height
+                }.onEnded { value in
+                    let snapDistance = self.maxHeight * 0.25
+                    guard abs(value.translation.height) > snapDistance else {
+                        return
+                    }
+                    self.isPresented = value.translation.height > 0
+                }
+            )
         }
     }
 }
 
 struct BottomSheetView_Previews: PreviewProvider {
     static var previews: some View {
-        BottomSheetView(isExpanded: .constant(true), maxHeight: 600) {
+        BottomSheetView(isPresented: .constant(false), maxHeight: 600) {
             Rectangle().fill(Color.red)
         }
     }
