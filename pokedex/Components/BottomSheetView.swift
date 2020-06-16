@@ -10,6 +10,7 @@ import SwiftUI
 
 struct BottomSheetView<Content: View>: View {
     @Binding private var isPresented: Bool
+    @State private var isExtended: Bool = false
     @GestureState private var translation: CGFloat = 0
     
     private let maxHeight = UIScreen.main.bounds.height
@@ -17,7 +18,7 @@ struct BottomSheetView<Content: View>: View {
     private let content: Content
     
     private var offset: CGFloat {
-        isPresented ? 0 : maxHeight - minHeight
+        isExtended ? 0 : maxHeight - minHeight
     }
     
     private var indicator: some View {
@@ -36,11 +37,28 @@ struct BottomSheetView<Content: View>: View {
         let dragGesture =  DragGesture().updating(self.$translation) { value, state, _ in
             state = value.translation.height
         }.onEnded { value in
-            let snapDistance = self.maxHeight * 0.25
+            let snapDistance = self.maxHeight * 0.20
+            let dismissDistance = self.maxHeight * 0.35
+                       
             guard abs(value.translation.height) > snapDistance else {
                 return
             }
-            self.isPresented = value.translation.height > 0
+            
+            if self.isExtended {
+                if value.translation.height > 0 {
+                    if value.translation.height > dismissDistance {
+                        self.isPresented = false
+                    } else {
+                        self.isExtended = false
+                    }
+                }
+            } else {
+                if value.translation.height < 0 {
+                    self.isExtended = true
+                } else {
+                    self.isPresented = false
+                }
+            }
         }
         
         return GeometryReader { geometry in
