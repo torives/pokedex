@@ -34,7 +34,17 @@ struct BottomSheetView<Content: View>: View {
     }
     
     var body: some View {
-        GeometryReader { geometry in
+        let dragGesture =  DragGesture().updating(self.$translation) { value, state, _ in
+            state = value.translation.height
+        }.onEnded { value in
+            let snapDistance = self.maxHeight * 0.25
+            guard abs(value.translation.height) > snapDistance else {
+                return
+            }
+            self.isPresented = value.translation.height > 0
+        }
+        
+        return GeometryReader { geometry in
             VStack(spacing: 0) {
                 self.indicator
                     .padding(.bottom, 6)
@@ -45,17 +55,7 @@ struct BottomSheetView<Content: View>: View {
             .frame(height: geometry.size.height, alignment: .bottom)
             .offset(y: max(self.offset + self.translation, 0))
             .animation(.interactiveSpring())
-            .gesture(
-                DragGesture().updating(self.$translation) { value, state, _ in
-                    state = value.translation.height
-                }.onEnded { value in
-                    let snapDistance = self.maxHeight * 0.25
-                    guard abs(value.translation.height) > snapDistance else {
-                        return
-                    }
-                    self.isPresented = value.translation.height > 0
-                }
-            )
+            .gesture(dragGesture)
         }
     }
 }
