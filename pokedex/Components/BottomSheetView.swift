@@ -44,20 +44,11 @@ struct BottomSheetView<Content: View>: View {
                 return
             }
             
-            if self.isExtended {
-                if value.translation.height > 0 {
-                    if value.translation.height > dismissDistance {
-                        self.isPresented = false
-                    } else {
-                        self.isExtended = false
-                    }
-                }
+            if value.translation.height < 0 {
+                self.isExtended = true
             } else {
-                if value.translation.height < 0 {
-                    self.isExtended = true
-                } else {
-                    self.isPresented = false
-                }
+                self.isPresented = self.isExtended ? value.translation.height < dismissDistance : false
+                self.isExtended = false
             }
         }
         
