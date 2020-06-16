@@ -14,6 +14,13 @@ extension View {
             RoundedCorner(radius: radius, corners: corners)
         )
     }
+    
+    func bottomSheet<Content: View>(isPresented: Binding<Bool>, @ViewBuilder content: () -> Content) -> some View {
+        ZStack {
+            self
+            BottomSheetView(isPresented: isPresented, content: content)
+        }
+    }
 }
 
 struct RoundedCorner: Shape {
