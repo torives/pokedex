@@ -15,6 +15,7 @@ struct ColoredBackgroundButtonStyle: PrimitiveButtonStyle {
     
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
+            .descriptionTextStyle()
             .foregroundColor(self.labelColor)
             .padding(20)
             .background(
