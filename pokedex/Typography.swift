@@ -11,9 +11,7 @@ import SwiftUI
 struct TitleTextStyle: ViewModifier {
     func body(content: Content) -> some View {
         content.font(
-            Font
-                .custom("SFProDisplay", size: 100)
-                .weight(.bold)
+            Font.custom("SFProDisplay-Bold", size: 100)
         )
     }
 }
@@ -21,9 +19,7 @@ struct TitleTextStyle: ViewModifier {
 struct AppTitleTextStyle: ViewModifier {
     func body(content: Content) -> some View {
         content.font(
-            Font
-                .custom("SFProDisplay", size: 32)
-                .weight(.bold)
+            Font.custom("SFProDisplay-Bold", size: 32)
         )
     }
 }
@@ -31,9 +27,7 @@ struct AppTitleTextStyle: ViewModifier {
 struct PokemonNameTextStyle: ViewModifier {
     func body(content: Content) -> some View {
         content.font(
-            Font
-                .custom("SFProDisplay", size: 26)
-                .weight(.bold)
+            Font.custom("SFProDisplay-Bold", size: 26)
         )
     }
 }
@@ -41,9 +35,7 @@ struct PokemonNameTextStyle: ViewModifier {
 struct FilterTitleTextStyle: ViewModifier {
     func body(content: Content) -> some View {
         content.font(
-            Font
-                .custom("SFProDisplay", size: 16)
-                .weight(.bold)
+            Font.custom("SFProDisplay-Bold", size: 16)
         )
     }
 }
@@ -51,9 +43,7 @@ struct FilterTitleTextStyle: ViewModifier {
 struct DescriptionTextStyle: ViewModifier {
     func body(content: Content) -> some View {
         content.font(
-            Font
-                .custom("SFProDisplay", size: 16)
-                .weight(.regular)
+            Font.custom("SFProDisplay-Regular", size: 16)
         )
     }
 }
@@ -61,9 +51,7 @@ struct DescriptionTextStyle: ViewModifier {
 struct PokemonNumberTextStyle: ViewModifier {
     func body(content: Content) -> some View {
         content.font(
-            Font
-                .custom("SFProDisplay", size: 12)
-                .weight(.bold)
+            Font.custom("SFProDisplay-Bold", size: 12)
         )
     }
 }
@@ -71,9 +59,7 @@ struct PokemonNumberTextStyle: ViewModifier {
 struct PokemonTypeTextStyle: ViewModifier {
     func body(content: Content) -> some View {
         content.font(
-            Font
-                .custom("SFProDisplay", size: 12)
-                .weight(.medium)
+            Font.custom("SFProDisplay-Medium", size: 12)
         )
     }
 }
@@ -107,7 +93,7 @@ struct Typography_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
             Text("Title").titleTextStyle()
-            Text("App Title").appTitleTextStyle()
+            Text("Application Title").appTitleTextStyle()
             Text("Pokemon Name").pokemonNameTextStyle()
             Text("Filter Title").filterTitleTextStyle()
             Text("Description").descriptionTextStyle()

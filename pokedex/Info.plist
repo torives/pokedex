@@ -51,9 +51,9 @@
 	</array>
 	<key>UIAppFonts</key>
 	<array>
-		<string>sf-pro-display-bold.ttf</string>
-		<string>sf-pro-display-medium.ttf</string>
-		<string>sf-pro-display-regular.ttf</string>
+		<string>SFProDisplay-Regular.ttf</string>
+		<string>SFProDisplay-Medium.ttf</string>
+		<string>SFProDisplay-Bold.ttf</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
