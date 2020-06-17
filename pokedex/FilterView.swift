@@ -68,12 +68,12 @@ struct FilterView: View {
             Slider(value: $number)
             
             HStack(alignment: .center) {
-                Button("Reset") {
-                    
-                }
-                Button("Apply") {
-                    
-                }
+                Button("Reset"){}
+                    .buttonStyle(SecondaryButtonStyle())
+                    .frame(width: 160, height: 60)
+                Button("Apply"){}
+                    .buttonStyle(PrimaryButtonStyle())
+                    .frame(width: 160, height: 60)
             }
             
         }.padding()
