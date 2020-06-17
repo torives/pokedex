@@ -28,6 +28,9 @@ extension CircleImageToggleStyle {
                 .foregroundColor(configuration.isOn ? Color.white : imageColor)
                 .frame(width: 25, height: 25)
                 .onTapGesture { configuration.isOn.toggle() }
+        }.frame(width: 50, height: 50)
+    }
+}
 
 struct CircleImageToggleStyle_Previews: PreviewProvider {
     static var previews: some View {
