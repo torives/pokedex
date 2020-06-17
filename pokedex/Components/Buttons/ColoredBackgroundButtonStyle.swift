@@ -15,13 +15,23 @@ protocol ColoredBackgroundButtonStyle: ButtonStyle {
 
 extension ColoredBackgroundButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .descriptionTextStyle()
-            .foregroundColor(self.labelColor)
-            .padding(20)
-            .background(
-                RoundedRectangle(cornerRadius: 10)
-                    .fill(self.backgroundColor)
-        )
+        RoundedRectangle(cornerRadius: 10)
+            .fill(self.backgroundColor)
+            .overlay(
+                configuration.label
+                    .descriptionTextStyle()
+                    .foregroundColor(self.labelColor)
+            )
+    }
+}
+
+struct ColoredBackgroundButtonStyle_Previews: PreviewProvider {
+    static var previews: some View {
+        VStack(spacing: 8.0) {
+            Button("Hello World") {}
+                .buttonStyle(PrimaryButtonStyle())
+            Button("Hello World") {}
+                .buttonStyle(SecondaryButtonStyle())
+        }
     }
 }

@@ -68,10 +68,10 @@ struct FilterView: View {
             Slider(value: $number)
             
             HStack(alignment: .center) {
-                Button("Reset"){}
+                Button("Reset") {}
                     .buttonStyle(SecondaryButtonStyle())
                     .frame(width: 160, height: 60)
-                Button("Apply"){}
+                Button("Apply") {}
                     .buttonStyle(PrimaryButtonStyle())
                     .frame(width: 160, height: 60)
             }
@@ -79,7 +79,6 @@ struct FilterView: View {
         }.padding()
     }
 }
-
 
 struct FilterView_Previews: PreviewProvider {
     static var previews: some View {
