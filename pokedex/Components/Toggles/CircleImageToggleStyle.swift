@@ -28,6 +28,18 @@ extension CircleImageToggleStyle {
                 .foregroundColor(configuration.isOn ? Color.white : imageColor)
                 .frame(width: 25, height: 25)
                 .onTapGesture { configuration.isOn.toggle() }
+
+struct CircleImageToggleStyle_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            StatefulPreviewWrapper(false) {
+                PokemonTypeToggle(type: .bug, isOn: $0)
+                    .previewLayout(.fixed(width: 100, height: 100))
+            }
+            StatefulPreviewWrapper(true) {
+                PokemonTypeToggle(type: .bug, isOn: $0)
+                    .previewLayout(.fixed(width: 100, height: 100))
+            }
         }
     }
 }
