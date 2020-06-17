@@ -125,7 +125,6 @@
 				A334BDEC2454C64900CACC84 /* Badge.swift */,
 				A3269B87245A6297002604D4 /* StatefulPreviewWrapper.swift */,
 				A376EE65245B7B6500E63352 /* Toggles */,
-				A3B4994A249AB6C200BDBF3D /* ColoredBackgroundButtonStyle.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
