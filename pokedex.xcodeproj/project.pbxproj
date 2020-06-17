@@ -121,9 +121,9 @@
 		A334BDEA2454C61800CACC84 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				A3A6DB46249ABD6D001C5375 /* Buttons */,
 				A334BDEC2454C64900CACC84 /* Badge.swift */,
 				A3269B87245A6297002604D4 /* StatefulPreviewWrapper.swift */,
+				A3A6DB46249ABD6D001C5375 /* Buttons */,
 				A376EE65245B7B6500E63352 /* Toggles */,
 			);
 			path = Components;
