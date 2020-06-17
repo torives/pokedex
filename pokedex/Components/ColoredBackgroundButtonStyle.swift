@@ -8,11 +8,12 @@
 
 import SwiftUI
 
-struct ColoredBackgroundButtonStyle: PrimitiveButtonStyle {
-    
-    let backgroundColor: Color
-    let labelColor: Color
-    
+protocol ColoredBackgroundButtonStyle: ButtonStyle {
+    var backgroundColor: Color { get }
+    var labelColor: Color { get }
+}
+
+extension ColoredBackgroundButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .descriptionTextStyle()
@@ -21,14 +22,6 @@ struct ColoredBackgroundButtonStyle: PrimitiveButtonStyle {
             .background(
                 RoundedRectangle(cornerRadius: 10)
                     .fill(self.backgroundColor)
-            )
-    }
-}
-
-struct ColoredBackgroundButtonStyle_Previews: PreviewProvider {
-    static var previews: some View {
-        Button("Hello World") {
-            
-        }.buttonStyle(ColoredBackgroundButtonStyle(backgroundColor: .blue, labelColor: .yellow))
+        )
     }
 }
