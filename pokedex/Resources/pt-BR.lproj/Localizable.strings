@@ -5,3 +5,14 @@
   Created by yves on 18/06/20.
   Copyright © 2020 yves. All rights reserved.
 */
+
+// MARK: FilterView
+"FilterViewTitle" = "Filtros";
+"FilterViewSubtitle" = "Use a busca avançada para explorar Pokémons por tipo, fraqueza, altura e mais";
+"Types" = "Tipos";
+"Weaknesses" = "Fraquezas";
+"Heights" = "Alturas";
+"Weights" = "Pesos";
+"Number Range" = "Faixa de Números";
+"Reset" = "Redefinir";
+"Apply" = "Aplicar";

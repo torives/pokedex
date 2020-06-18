@@ -17,14 +17,11 @@ struct FilterView: View {
             
             VStack(alignment: .leading, spacing: defaultVerticalSpacing) {
                 
-                ViewHeader(
-                    title: "Filters",
-                    subtitle: "Use advanced search to explore Pokémon by type, weakness, height and more"
-                )
-                .padding(.horizontal, defaultHorizontalSpacing)
+                ViewHeader(title: Strings.filterViewTitle, subtitle: Strings.filterViewSubtitle)
+                    .padding(.horizontal, defaultHorizontalSpacing)
                 
                 VStack(alignment: .leading, spacing: horizontalListVerticalSpacing) {
-                    Text("Types")
+                    Text(Strings.filterViewTypes)
                         .filterTitleTextStyle()
                         .padding(.leading, defaultHorizontalSpacing)
                     
@@ -40,7 +37,7 @@ struct FilterView: View {
                 }
                 
                 VStack(alignment: .leading, spacing: horizontalListVerticalSpacing) {
-                    Text("Weaknesses")
+                    Text(Strings.filterViewWeaknesses)
                         .filterTitleTextStyle()
                         .padding(.leading, defaultHorizontalSpacing)
                     
@@ -58,7 +55,7 @@ struct FilterView: View {
                 
                 Group {
                     VStack(alignment: .leading, spacing: horizontalListVerticalSpacing) {
-                        Text("Heights")
+                        Text(Strings.filterViewHeights)
                             .filterTitleTextStyle()
                         HStack(spacing: horizontalListItemSpacing) {
                             ForEach(PokemonHeight.allCases, id: \.rawValue) { height in
@@ -68,7 +65,7 @@ struct FilterView: View {
                     }
                     
                     VStack(alignment: .leading, spacing: horizontalListVerticalSpacing) {
-                        Text("Weights")
+                        Text(Strings.filterViewWeights)
                             .filterTitleTextStyle()
                         HStack(spacing: horizontalListItemSpacing) {
                             ForEach(PokemonWeight.allCases, id: \.rawValue) { weight in
@@ -78,16 +75,16 @@ struct FilterView: View {
                     }
                     
                     VStack(alignment: .leading, spacing: sliderVerticalSpacing) {
-                        Text("Number Range")
+                        Text(Strings.filterViewNumberRange)
                             .filterTitleTextStyle()
                         Slider(value: $number)
                     }
                     
                     HStack(alignment: .center, spacing: buttonHorizontalSpacing) {
-                        Button("Reset") {}
+                        Button(Strings.filterViewReset) {}
                             .buttonStyle(SecondaryButtonStyle())
                             .frame(width: buttonWidth, height: buttonHeight)
-                        Button("Apply") {}
+                        Button(Strings.filterViewApply) {}
                             .buttonStyle(PrimaryButtonStyle())
                             .frame(width: buttonWidth, height: buttonHeight)
                     }
