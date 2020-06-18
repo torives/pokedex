@@ -102,8 +102,8 @@ private let defaultHorizontalSpacing: CGFloat = 40
 private let defaultVerticalSpacing: CGFloat = 35
 private let horizontalListVerticalSpacing: CGFloat = 10
 private let horizontalListItemSpacing: CGFloat = 10
-private let shadowVisibilityOffset: CGFloat = 35
-private let buttonVerticalSpacing: CGFloat = 15 // 35 + 15 = 50
+private let shadowVisibilityOffset: CGFloat = 25
+private let buttonVerticalSpacing: CGFloat = 25
 private let buttonHorizontalSpacing: CGFloat = 14
 private let buttonHeight: CGFloat = 60
 private let buttonWidth: CGFloat = 160

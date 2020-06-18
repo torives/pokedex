@@ -20,7 +20,7 @@ extension CircleImageToggleStyle {
                 Circle()
                     .frame(width: 50, height: 50)
                     .foregroundColor(imageColor)
-                    .shadow(color: imageColor.opacity(0.3), radius: 10, x: 0, y: 20)
+                    .shadow(color: imageColor.opacity(0.3), radius: 10, x: 0, y: 10)
             }
             Image(imageName)
                 .resizable()
