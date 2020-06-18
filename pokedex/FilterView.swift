@@ -17,15 +17,10 @@ struct FilterView: View {
             
             VStack(alignment: .leading, spacing: defaultVerticalSpacing) {
                 
-                VStack(alignment: .leading, spacing: headerVerticalSpacing) {
-                    Text("Filters")
-                        .pokemonNameTextStyle()
-                    
-                    Text("Use advanced search to explore Pokémon by type, weakness, height and more")
-                        .lineLimit(2)
-                        .descriptionTextStyle()
-                        .foregroundColor(Color.Text.grey)
-                }
+                ViewHeader(
+                    title: "Filters",
+                    subtitle: "Use advanced search to explore Pokémon by type, weakness, height and more"
+                )
                 .padding(.horizontal, defaultHorizontalSpacing)
                 
                 VStack(alignment: .leading, spacing: horizontalListVerticalSpacing) {
@@ -108,7 +103,6 @@ struct FilterView: View {
 
 private let defaultHorizontalSpacing: CGFloat = 40
 private let defaultVerticalSpacing: CGFloat = 35
-private let headerVerticalSpacing: CGFloat = 5
 private let horizontalListVerticalSpacing: CGFloat = 10
 private let horizontalListItemSpacing: CGFloat = 10
 private let shadowVisibilityOffset: CGFloat = 35

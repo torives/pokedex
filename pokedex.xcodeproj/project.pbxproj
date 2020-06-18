@@ -25,6 +25,7 @@
 		A369269624536347003C1784 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A369269524536347003C1784 /* Preview Assets.xcassets */; };
 		A369269924536347003C1784 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A369269724536347003C1784 /* LaunchScreen.storyboard */; };
 		A36926A424536347003C1784 /* pokedexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36926A324536347003C1784 /* pokedexTests.swift */; };
+		A3730D0D249BFB6400C04ABB /* ViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3730D0C249BFB6400C04ABB /* ViewHeader.swift */; };
 		A376EE5C245B776000E63352 /* CircleImageToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A376EE5B245B776000E63352 /* CircleImageToggleStyle.swift */; };
 		A376EE5E245B77CC00E63352 /* PokemonHeightToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A376EE5D245B77CC00E63352 /* PokemonHeightToggle.swift */; };
 		A376EE60245B782A00E63352 /* PokemonHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = A376EE5F245B782A00E63352 /* PokemonHeight.swift */; };
@@ -72,6 +73,7 @@
 		A369269F24536347003C1784 /* pokedexTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = pokedexTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A36926A324536347003C1784 /* pokedexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pokedexTests.swift; sourceTree = "<group>"; };
 		A36926A524536347003C1784 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A3730D0C249BFB6400C04ABB /* ViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewHeader.swift; sourceTree = "<group>"; };
 		A376EE5B245B776000E63352 /* CircleImageToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImageToggleStyle.swift; sourceTree = "<group>"; };
 		A376EE5D245B77CC00E63352 /* PokemonHeightToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonHeightToggle.swift; sourceTree = "<group>"; };
 		A376EE5F245B782A00E63352 /* PokemonHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonHeight.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				A3269B87245A6297002604D4 /* StatefulPreviewWrapper.swift */,
 				A3A6DB46249ABD6D001C5375 /* Buttons */,
 				A376EE65245B7B6500E63352 /* Toggles */,
+				A3730D0C249BFB6400C04ABB /* ViewHeader.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 				A3A6DB48249ABDA1001C5375 /* PokedexButtonStyles.swift in Sources */,
 				A31DA247247765B9000714D3 /* Home.swift in Sources */,
 				A3269B88245A6297002604D4 /* StatefulPreviewWrapper.swift in Sources */,
+				A3730D0D249BFB6400C04ABB /* ViewHeader.swift in Sources */,
 				A334BDED2454C64900CACC84 /* Badge.swift in Sources */,
 				A334BDE92454C57500CACC84 /* Color+Ext.swift in Sources */,
 				A33CA6962454D2E000E14593 /* PokemonType.swift in Sources */,
