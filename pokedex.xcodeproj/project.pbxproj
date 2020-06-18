@@ -26,6 +26,7 @@
 		A369269924536347003C1784 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A369269724536347003C1784 /* LaunchScreen.storyboard */; };
 		A36926A424536347003C1784 /* pokedexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36926A324536347003C1784 /* pokedexTests.swift */; };
 		A3730D0D249BFB6400C04ABB /* ViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3730D0C249BFB6400C04ABB /* ViewHeader.swift */; };
+		A3730D11249BFF6100C04ABB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A3730D0F249BFF6100C04ABB /* Localizable.strings */; };
 		A376EE5C245B776000E63352 /* CircleImageToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A376EE5B245B776000E63352 /* CircleImageToggleStyle.swift */; };
 		A376EE5E245B77CC00E63352 /* PokemonHeightToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A376EE5D245B77CC00E63352 /* PokemonHeightToggle.swift */; };
 		A376EE60245B782A00E63352 /* PokemonHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = A376EE5F245B782A00E63352 /* PokemonHeight.swift */; };
@@ -74,6 +75,9 @@
 		A36926A324536347003C1784 /* pokedexTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pokedexTests.swift; sourceTree = "<group>"; };
 		A36926A524536347003C1784 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A3730D0C249BFB6400C04ABB /* ViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewHeader.swift; sourceTree = "<group>"; };
+		A3730D0E249BFE3300C04ABB /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		A3730D10249BFF6100C04ABB /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A3730D12249BFF7B00C04ABB /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		A376EE5B245B776000E63352 /* CircleImageToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImageToggleStyle.swift; sourceTree = "<group>"; };
 		A376EE5D245B77CC00E63352 /* PokemonHeightToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonHeightToggle.swift; sourceTree = "<group>"; };
 		A376EE5F245B782A00E63352 /* PokemonHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonHeight.swift; sourceTree = "<group>"; };
@@ -192,6 +196,7 @@
 				A369269524536347003C1784 /* Preview Assets.xcassets */,
 				A334BDE524549A6C00CACC84 /* Fonts */,
 				A369269724536347003C1784 /* LaunchScreen.storyboard */,
+				A3730D0F249BFF6100C04ABB /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -304,6 +309,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"pt-BR",
 			);
 			mainGroup = A369268024536343003C1784;
 			productRefGroup = A369268A24536343003C1784 /* Products */;
@@ -326,6 +332,7 @@
 				A334BDE324549A6300CACC84 /* SFProDisplay-Regular.ttf in Resources */,
 				A334BDE424549A6300CACC84 /* SFProDisplay-Medium.ttf in Resources */,
 				A369269324536347003C1784 /* Assets.xcassets in Resources */,
+				A3730D11249BFF6100C04ABB /* Localizable.strings in Resources */,
 				A334BDE224549A6300CACC84 /* SFProDisplay-Bold.ttf in Resources */,
 				A334BDE72454A45600CACC84 /* Colors.xcassets in Resources */,
 			);
@@ -456,8 +463,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				A369269824536347003C1784 /* Base */,
+				A3730D0E249BFE3300C04ABB /* pt-BR */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		A3730D0F249BFF6100C04ABB /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A3730D10249BFF6100C04ABB /* Base */,
+				A3730D12249BFF7B00C04ABB /* pt-BR */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -467,6 +484,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -527,6 +545,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
