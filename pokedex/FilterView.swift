@@ -14,84 +14,109 @@ struct FilterView: View {
     
     var body: some View {
         ScrollView(.vertical) {
-            VStack(spacing: 50) {
-                VStack(alignment: .leading, spacing: 35) {
-                    VStack(alignment: .leading, spacing: 5) {
-                        Text("Filters")
-                            .pokemonNameTextStyle()
-                        
-                        Text("Use advanced search to explore Pokémon by type, weakness, height and more")
-                            .lineLimit(2)
-                            .descriptionTextStyle()
-                            .foregroundColor(Color.Text.grey)
-                    }
+            
+            VStack(alignment: .leading, spacing: defaultVerticalSpacing) {
+                
+                VStack(alignment: .leading, spacing: headerVerticalSpacing) {
+                    Text("Filters")
+                        .pokemonNameTextStyle()
                     
-                    VStack(alignment: .leading, spacing: 10) {
-                        Text("Types")
-                            .filterTitleTextStyle()
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack(spacing: 20.0) {
-                                ForEach(PokemonType.allCases, id: \.rawValue) { type in
-                                    PokemonTypeToggle(type: type, isOn: self.$isOn)
-                                }
+                    Text("Use advanced search to explore Pokémon by type, weakness, height and more")
+                        .lineLimit(2)
+                        .descriptionTextStyle()
+                        .foregroundColor(Color.Text.grey)
+                }
+                .padding(.horizontal, defaultHorizontalSpacing)
+                
+                VStack(alignment: .leading, spacing: horizontalListVerticalSpacing) {
+                    Text("Types")
+                        .filterTitleTextStyle()
+                        .padding(.leading, defaultHorizontalSpacing)
+                    
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: horizontalListItemSpacing) {
+                            ForEach(PokemonType.allCases, id: \.rawValue) { type in
+                                PokemonTypeToggle(type: type, isOn: self.$isOn)
                             }
                         }
+                        .padding(.horizontal, defaultHorizontalSpacing)
+                        .padding(.bottom, shadowVisibilityOffset)
                     }
+                }
+                
+                VStack(alignment: .leading, spacing: horizontalListVerticalSpacing) {
+                    Text("Weaknesses")
+                        .filterTitleTextStyle()
+                        .padding(.leading, defaultHorizontalSpacing)
                     
-                    VStack(alignment: .leading, spacing: 10) {
-                        Text("Weaknesses")
-                            .filterTitleTextStyle()
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack(spacing: 20.0) {
-                                ForEach(PokemonType.allCases, id: \.rawValue) { type in
-                                    PokemonTypeToggle(type: type, isOn: self.$isOn)
-                                }
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: horizontalListItemSpacing) {
+                            ForEach(PokemonType.allCases, id: \.rawValue) { type in
+                                PokemonTypeToggle(type: type, isOn: self.$isOn)
                             }
                         }
+                        .padding(.horizontal, defaultHorizontalSpacing)
+                        .padding(.bottom, shadowVisibilityOffset)
                     }
-                    
-                    VStack(alignment: .leading, spacing: 10) {
+                }
+                .offset(x: 0, y: -shadowVisibilityOffset)
+                
+                Group {
+                    VStack(alignment: .leading, spacing: horizontalListVerticalSpacing) {
                         Text("Heights")
                             .filterTitleTextStyle()
-                        HStack(spacing: 20.0) {
+                        HStack(spacing: horizontalListItemSpacing) {
                             ForEach(PokemonHeight.allCases, id: \.rawValue) { height in
                                 PokemonHeightToggle(height: height, isOn: self.$isOn)
                             }
                         }
                     }
                     
-                    VStack(alignment: .leading, spacing: 10) {
+                    VStack(alignment: .leading, spacing: horizontalListVerticalSpacing) {
                         Text("Weights")
                             .filterTitleTextStyle()
-                        HStack(spacing: 20.0) {
+                        HStack(spacing: horizontalListItemSpacing) {
                             ForEach(PokemonWeight.allCases, id: \.rawValue) { weight in
                                 PokemonWeightToggle(weight: weight, isOn: self.$isOn)
                             }
                         }
                     }
                     
-                    VStack(alignment: .leading, spacing: 20) {
+                    VStack(alignment: .leading, spacing: sliderVerticalSpacing) {
                         Text("Number Range")
                             .filterTitleTextStyle()
                         Slider(value: $number)
                     }
+                    
+                    HStack(alignment: .center, spacing: buttonHorizontalSpacing) {
+                        Button("Reset") {}
+                            .buttonStyle(SecondaryButtonStyle())
+                            .frame(width: buttonWidth, height: buttonHeight)
+                        Button("Apply") {}
+                            .buttonStyle(PrimaryButtonStyle())
+                            .frame(width: buttonWidth, height: buttonHeight)
+                    }
+                    .padding(.vertical, buttonVerticalSpacing)
                 }
-                
-                HStack(alignment: .center, spacing: 14) {
-                    Button("Reset") {}
-                        .buttonStyle(SecondaryButtonStyle())
-                        .frame(width: 160, height: 60)
-                    Button("Apply") {}
-                        .buttonStyle(PrimaryButtonStyle())
-                        .frame(width: 160, height: 60)
-                }
+                .padding(.horizontal, defaultHorizontalSpacing)
+                .offset(x: 0, y: -shadowVisibilityOffset * 2)
             }
-            .padding(.horizontal, 40.0)
             .padding(.top, 30)
-            .padding(.bottom, 50)
         }
     }
 }
+
+private let defaultHorizontalSpacing: CGFloat = 40
+private let defaultVerticalSpacing: CGFloat = 35
+private let headerVerticalSpacing: CGFloat = 5
+private let horizontalListVerticalSpacing: CGFloat = 10
+private let horizontalListItemSpacing: CGFloat = 10
+private let shadowVisibilityOffset: CGFloat = 35
+private let buttonVerticalSpacing: CGFloat = 15 // 35 + 15 = 50
+private let buttonHorizontalSpacing: CGFloat = 14
+private let buttonHeight: CGFloat = 60
+private let buttonWidth: CGFloat = 160
+private let sliderVerticalSpacing: CGFloat = 20
 
 struct FilterView_Previews: PreviewProvider {
     static var previews: some View {
