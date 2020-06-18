@@ -22,16 +22,20 @@ extension ColoredBackgroundButtonStyle {
                     .descriptionTextStyle()
                     .foregroundColor(self.labelColor)
             )
+            .shadow(color: self.backgroundColor.opacity(0.3), radius: 10, x: 0, y: 10)
     }
 }
 
 struct ColoredBackgroundButtonStyle_Previews: PreviewProvider {
     static var previews: some View {
-        VStack(spacing: 8.0) {
+        VStack(spacing: 20) {
             Button("Hello World") {}
                 .buttonStyle(PrimaryButtonStyle())
+                .frame(width: 160, height: 60)
+            
             Button("Hello World") {}
                 .buttonStyle(SecondaryButtonStyle())
+                .frame(width: 160, height: 60)
         }
     }
 }
