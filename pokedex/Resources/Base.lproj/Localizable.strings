@@ -1,0 +1,18 @@
+/* 
+  Localizable.strings
+  pokedex
+
+  Created by yves on 18/06/20.
+  Copyright © 2020 yves. All rights reserved.
+*/
+
+// MARK: FilterView
+"FilterViewTitle" = "Filters";
+"FilterViewSubtitle" = "Use advanced search to explore Pokémon by type, weakness, height and more";
+"Types" = "Types";
+"Weaknesses" = "Weaknesses";
+"Heights" = "Heights";
+"Weights" = "Weights";
+"Number Range" = "Number Range";
+"Reset" = "Reset";
+"Apply" = "Apply";

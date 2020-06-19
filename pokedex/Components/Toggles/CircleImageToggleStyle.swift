@@ -20,7 +20,7 @@ extension CircleImageToggleStyle {
                 Circle()
                     .frame(width: 50, height: 50)
                     .foregroundColor(imageColor)
-                    .shadow(color: imageColor.opacity(0.3), radius: 10, x: 0, y: 20)
+                    .shadow(color: imageColor.opacity(0.3), radius: 10, x: 0, y: 10)
             }
             Image(imageName)
                 .resizable()
@@ -28,6 +28,21 @@ extension CircleImageToggleStyle {
                 .foregroundColor(configuration.isOn ? Color.white : imageColor)
                 .frame(width: 25, height: 25)
                 .onTapGesture { configuration.isOn.toggle() }
+        }.frame(width: 50, height: 50)
+    }
+}
+
+struct CircleImageToggleStyle_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            StatefulPreviewWrapper(false) {
+                PokemonTypeToggle(type: .bug, isOn: $0)
+                    .previewLayout(.fixed(width: 100, height: 100))
+            }
+            StatefulPreviewWrapper(true) {
+                PokemonTypeToggle(type: .bug, isOn: $0)
+                    .previewLayout(.fixed(width: 100, height: 100))
+            }
         }
     }
 }
