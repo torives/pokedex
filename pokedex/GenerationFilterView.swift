@@ -13,23 +13,24 @@ struct GenerationFilterView: View {
 
     var body: some View {
         ScrollView {
-            VStack {
+            VStack(alignment: .leading, spacing: 35) {
                 ViewHeader(title: "Generations", subtitle: "Use search for generations to explore your Pokémon!")
-                HStack {
-                    VStack {
+                HStack(spacing: 14) {
+                    VStack(spacing: 14) {
                         PokemonGenerationToggle(generation: .I, isOn: self.$isOn)
                         PokemonGenerationToggle(generation: .III, isOn: self.$isOn)
                         PokemonGenerationToggle(generation: .V, isOn: self.$isOn)
                         PokemonGenerationToggle(generation: .VII, isOn: self.$isOn)
                     }
-                    VStack {
+                    VStack(spacing: 14) {
                         PokemonGenerationToggle(generation: .II, isOn: self.$isOn)
                         PokemonGenerationToggle(generation: .IV, isOn: self.$isOn)
                         PokemonGenerationToggle(generation: .VI, isOn: self.$isOn)
                         PokemonGenerationToggle(generation: .VIII, isOn: self.$isOn)
                     }
                 }
-            }
+                Spacer(minLength: 50)
+            }.padding(.horizontal, 40)
         }
     }
 }
