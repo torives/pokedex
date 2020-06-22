@@ -21,8 +21,8 @@ struct Strings {
     static let filterViewReset = NSLocalizedString("Reset", comment: "")
     static let filterViewApply = NSLocalizedString("Apply", comment: "")
     
-    // MARK: - GenerationFilterView
-    static let GenerationViewTitle = NSLocalizedString("GenerationViewTitle", comment: "")
-    static let GenerationViewSubtitle = NSLocalizedString("GenerationViewSubtitle", comment: "")
+    // MARK: - GenerationView
+    static let generationViewTitle = NSLocalizedString("GenerationViewTitle", comment: "")
+    static let generationViewSubtitle = NSLocalizedString("GenerationViewSubtitle", comment: "")
     static let generation = NSLocalizedString("Generation", comment: "")
 }
