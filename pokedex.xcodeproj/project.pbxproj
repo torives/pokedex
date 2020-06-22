@@ -28,7 +28,7 @@
 		A3730D0D249BFB6400C04ABB /* ViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3730D0C249BFB6400C04ABB /* ViewHeader.swift */; };
 		A3730D11249BFF6100C04ABB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A3730D0F249BFF6100C04ABB /* Localizable.strings */; };
 		A3730D14249C004600C04ABB /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3730D13249C004600C04ABB /* Strings.swift */; };
-		A3730D16249D329300C04ABB /* GenerationFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3730D15249D329300C04ABB /* GenerationFilterView.swift */; };
+		A3730D16249D329300C04ABB /* GenerationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3730D15249D329300C04ABB /* GenerationView.swift */; };
 		A376EE5C245B776000E63352 /* CircleImageToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A376EE5B245B776000E63352 /* CircleImageToggleStyle.swift */; };
 		A376EE5E245B77CC00E63352 /* PokemonHeightToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A376EE5D245B77CC00E63352 /* PokemonHeightToggle.swift */; };
 		A376EE60245B782A00E63352 /* PokemonHeight.swift in Sources */ = {isa = PBXBuildFile; fileRef = A376EE5F245B782A00E63352 /* PokemonHeight.swift */; };
@@ -81,7 +81,7 @@
 		A3730D10249BFF6100C04ABB /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A3730D12249BFF7B00C04ABB /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		A3730D13249C004600C04ABB /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
-		A3730D15249D329300C04ABB /* GenerationFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationFilterView.swift; sourceTree = "<group>"; };
+		A3730D15249D329300C04ABB /* GenerationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationView.swift; sourceTree = "<group>"; };
 		A376EE5B245B776000E63352 /* CircleImageToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImageToggleStyle.swift; sourceTree = "<group>"; };
 		A376EE5D245B77CC00E63352 /* PokemonHeightToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonHeightToggle.swift; sourceTree = "<group>"; };
 		A376EE5F245B782A00E63352 /* PokemonHeight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonHeight.swift; sourceTree = "<group>"; };
@@ -180,7 +180,7 @@
 				A31DA246247765B9000714D3 /* Home.swift */,
 				A3B49948249A9F3D00BDBF3D /* FilterView.swift */,
 				A3730D13249C004600C04ABB /* Strings.swift */,
-				A3730D15249D329300C04ABB /* GenerationFilterView.swift */,
+				A3730D15249D329300C04ABB /* GenerationView.swift */,
 			);
 			path = pokedex;
 			sourceTree = "<group>";
@@ -425,7 +425,7 @@
 				A324B0C024566A80003B9966 /* PokemonTypeToggle.swift in Sources */,
 				A369268D24536343003C1784 /* AppDelegate.swift in Sources */,
 				A396A0FA245C6AF8004384F8 /* Typography.swift in Sources */,
-				A3730D16249D329300C04ABB /* GenerationFilterView.swift in Sources */,
+				A3730D16249D329300C04ABB /* GenerationView.swift in Sources */,
 				A396A0F8245C67BD004384F8 /* PokemonGeneration.swift in Sources */,
 				A3B49949249A9F3D00BDBF3D /* FilterView.swift in Sources */,
 				A376EE5E245B77CC00E63352 /* PokemonHeightToggle.swift in Sources */,

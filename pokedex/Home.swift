@@ -40,7 +40,7 @@ struct Home: View {
             }
             .sheet(isPresented: $isPresentingSheet) {
                 if(self.activeSheet == .generation) {
-                    GenerationFilterView()
+                    GenerationView()
                 } else if(self.activeSheet == .sort) {
                     Text("Sort")
                 } else if(self.activeSheet == .filter) {

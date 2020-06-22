@@ -1,5 +1,5 @@
 //
-//  GenerationFilterView.swift
+//  GenerationView.swift
 //  pokedex
 //
 //  Created by yves on 19/06/20.
@@ -8,15 +8,15 @@
 
 import SwiftUI
 
-struct GenerationFilterView: View {
+struct GenerationView: View {
     @State private var isOn = false
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 35) {
                 ViewHeader(
-                    title: Strings.generationFilterViewTitle,
-                    subtitle: Strings.generationFilterViewSubtitle
+                    title: Strings.GenerationViewTitle,
+                    subtitle: Strings.GenerationViewSubtitle
                 )
                 
                 HStack(spacing: 14) {
@@ -43,6 +43,6 @@ struct GenerationFilterView: View {
 
 struct GenerationFilterView_Previews: PreviewProvider {
     static var previews: some View {
-        GenerationFilterView()
+        GenerationView()
     }
 }

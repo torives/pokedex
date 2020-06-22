@@ -17,8 +17,8 @@
 "Reset" = "Reset";
 "Apply" = "Apply";
 
-// MARK: GenerationFilterView
-"GenerationFilterViewTitle" = "Generations";
-"GenerationFilterViewSubtitle" = "Use search for generations to explore your Pokémon!";
+// MARK: GenerationView
+"GenerationViewTitle" = "Generations";
+"GenerationViewSubtitle" = "Use search for generations to explore your Pokémon!";
 "Generation" = "Generation";
 

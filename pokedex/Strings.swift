@@ -22,7 +22,7 @@ struct Strings {
     static let filterViewApply = NSLocalizedString("Apply", comment: "")
     
     // MARK: - GenerationFilterView
-    static let generationFilterViewTitle = NSLocalizedString("GenerationFilterViewTitle", comment: "")
-    static let generationFilterViewSubtitle = NSLocalizedString("GenerationFilterViewSubtitle", comment: "")
+    static let GenerationViewTitle = NSLocalizedString("GenerationViewTitle", comment: "")
+    static let GenerationViewSubtitle = NSLocalizedString("GenerationViewSubtitle", comment: "")
     static let generation = NSLocalizedString("Generation", comment: "")
 }

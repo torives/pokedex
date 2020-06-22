@@ -17,7 +17,7 @@
 "Reset" = "Redefinir";
 "Apply" = "Aplicar";
 
-// MARK: GenerationFilterView
-"GenerationFilterViewTitle" = "Gerações";
-"GenerationFilterViewSubtitle" = "Use a busca por gerações para explorar seus Pokemóns!";
+// MARK: GenerationView
+"GenerationViewTitle" = "Gerações";
+"GenerationViewSubtitle" = "Use a busca por gerações para explorar seus Pokemóns!";
 "Generation" = "Geração";
