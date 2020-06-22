@@ -21,7 +21,7 @@ struct PokemonGenerationToggleStyle: ToggleStyle {
                 StarterPokemons(generation: generation)
                     .padding([.leading, .trailing], 18)
                     .padding(.top, 16)
-                Text("Generation \(generation.rawValue)")
+                Text("\(Strings.generation) \(generation.rawValue)")
                     .descriptionTextStyle()
                     .foregroundColor(configuration.isOn ? Color.Text.white : Color.Text.grey)
                     .padding(.top, 4)
