@@ -10,38 +10,51 @@ import SwiftUI
 
 struct Home: View {
     @State private var isPresentingSheet = false
-    @State private var sheetText = ""
+    @State private var activeSheet: ActiveSheet = .none
     
     var body: some View {
         NavigationView {
             HStack {
                 Button(action: {
                     self.isPresentingSheet.toggle()
-                    self.sheetText = "Generation"
+                    self.activeSheet = .generation
                 }, label: {
                     Text("Generation")
                 })
                 Button(action: {
                     self.isPresentingSheet.toggle()
-                    self.sheetText = "Sort"
+                    self.activeSheet = .sort
                 }, label: {
                     Text("Sort")
                 })
                 Button(action: {
                     self.isPresentingSheet.toggle()
-                    self.sheetText = "Filter"
+                    self.activeSheet = .filter
                 }, label: {
                     Text("Filter")
                 })
+                
                 NavigationLink(destination: PokemonDetail()) {
                     Text("Pokemon Detail")
                 }
             }
             .sheet(isPresented: $isPresentingSheet) {
-                Text(self.sheetText)
+                if(self.activeSheet == .generation) {
+                    GenerationFilterView()
+                } else if(self.activeSheet == .sort) {
+                    Text("Sort")
+                } else if(self.activeSheet == .filter) {
+                    FilterView()
+                } else {
+                    EmptyView()
+                }
             }
         }
     }
+}
+
+enum ActiveSheet {
+    case none, filter, sort, generation
 }
 
 struct PokemonDetail: View {
