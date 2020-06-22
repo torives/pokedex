@@ -25,4 +25,12 @@ struct Strings {
     static let generationViewTitle = NSLocalizedString("GenerationViewTitle", comment: "")
     static let generationViewSubtitle = NSLocalizedString("GenerationViewSubtitle", comment: "")
     static let generation = NSLocalizedString("Generation", comment: "")
+    
+    // MARK: - SortView
+    static let sortViewTitle = NSLocalizedString("SortViewTitle", comment: "")
+    static let sortViewSubtitle = NSLocalizedString("SortViewSubtitle", comment: "")
+    static let sortViewOrderSmallestFirst = NSLocalizedString("Smallest number first", comment: "")
+    static let sortViewOrderHighestFirst = NSLocalizedString("Highest number first", comment: "")
+    static let sortViewOrderAlphabetical = NSLocalizedString("Alphabetical order", comment: "")
+    static let sortViewOrderReverseAlphabetical = NSLocalizedString("Reverse alphabetical order", comment: "")
 }

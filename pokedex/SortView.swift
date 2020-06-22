@@ -12,29 +12,29 @@ struct SortView: View {
     var body: some View {
         VStack(spacing: 35) {
             ViewHeader(
-                title: "Sort",
-                subtitle: "Sort Pokémons alphabetically or by National Pokédex number!"
+                title: Strings.sortViewTitle,
+                subtitle: Strings.sortViewSubtitle
             )
             
             VStack(spacing: buttonSpacing) {
                 Button(
                     action: {},
-                    label: { Text("Smallest number first") }
+                    label: { Text(Strings.sortViewOrderSmallestFirst) }
                 ).buttonStyle(PrimaryButtonStyle())
                 
                 Button(
                     action: {},
-                    label: { Text("Highest number first") }
+                    label: { Text(Strings.sortViewOrderHighestFirst) }
                 ).buttonStyle(PrimaryButtonStyle())
                 
                 Button(
                     action: {},
-                    label: { Text("A-Z") }
+                    label: { Text(Strings.sortViewOrderAlphabetical) }
                 ).buttonStyle(PrimaryButtonStyle())
                 
                 Button(
                     action: {},
-                    label: { Text("Z-A") }
+                    label: { Text(Strings.sortViewOrderReverseAlphabetical) }
                 ).buttonStyle(PrimaryButtonStyle())
             }
             .frame(maxHeight: 3 * buttonSpacing + 4 * buttonHeight)

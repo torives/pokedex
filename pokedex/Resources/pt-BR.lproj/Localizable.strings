@@ -21,3 +21,11 @@
 "GenerationViewTitle" = "Gerações";
 "GenerationViewSubtitle" = "Use a busca por gerações para explorar seus Pokemóns!";
 "Generation" = "Geração";
+
+// MARK: SortView
+"SortViewTitle" = "Ordenar";
+"SortViewSubtitle" = "Ordene Pokémons alfabeticamente ou pelo número do Pokédex Nacional!";
+"Smallest number first" = "Menor número primeiro";
+"Highest number first" = "Maior número primeiro";
+"Alphabetical order" = "A-Z";
+"Reverse alphabetical order" = "Z-A";
