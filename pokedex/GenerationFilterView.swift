@@ -14,7 +14,11 @@ struct GenerationFilterView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 35) {
-                ViewHeader(title: "Generations", subtitle: "Use search for generations to explore your Pokémon!")
+                ViewHeader(
+                    title: Strings.generationFilterViewTitle,
+                    subtitle: Strings.generationFilterViewSubtitle
+                )
+                
                 HStack(spacing: 14) {
                     VStack(spacing: 14) {
                         PokemonGenerationToggle(generation: .I, isOn: self.$isOn)

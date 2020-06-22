@@ -16,3 +16,8 @@
 "Number Range" = "Faixa de Números";
 "Reset" = "Redefinir";
 "Apply" = "Aplicar";
+
+// MARK: GenerationFilterView
+"GenerationFilterViewTitle" = "Gerações";
+"GenerationFilterViewSubtitle" = "Use a busca por gerações para explorar seus Pokemóns!";
+"Generation" = "Geração";

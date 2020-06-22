@@ -20,4 +20,9 @@ struct Strings {
     static let filterViewNumberRange = NSLocalizedString("Number Range", comment: "")
     static let filterViewReset = NSLocalizedString("Reset", comment: "")
     static let filterViewApply = NSLocalizedString("Apply", comment: "")
+    
+    // MARK: - GenerationFilterView
+    static let generationFilterViewTitle = NSLocalizedString("GenerationFilterViewTitle", comment: "")
+    static let generationFilterViewSubtitle = NSLocalizedString("GenerationFilterViewSubtitle", comment: "")
+    static let generation = NSLocalizedString("Generation", comment: "")
 }
