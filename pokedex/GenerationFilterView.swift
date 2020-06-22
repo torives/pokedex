@@ -34,7 +34,9 @@ struct GenerationFilterView: View {
                     }
                 }
                 Spacer(minLength: 50)
-            }.padding(.horizontal, 40)
+            }
+            .padding(.top, 30)
+            .padding(.horizontal, 40)
         }
     }
 }
