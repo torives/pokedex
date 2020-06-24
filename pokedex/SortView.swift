@@ -9,6 +9,12 @@
 import SwiftUI
 
 struct SortView: View {
+    @State var strategy: OrderingStrategy = .smallestNumber
+    @State var isSmallestFirst = true
+    @State var isHigherFirst = false
+    @State var isAlphabetical = false
+    @State var isReversedAlphabetical = false
+    
     var body: some View {
         VStack(spacing: 35) {
             ViewHeader(
@@ -17,32 +23,49 @@ struct SortView: View {
             )
             
             VStack(spacing: buttonSpacing) {
-                Button(
-                    action: {},
-                    label: { Text(Strings.sortViewOrderSmallestFirst) }
-                ).buttonStyle(PrimaryButtonStyle())
+                Toggle(isOn: $isSmallestFirst) {
+                    Text(Strings.sortViewOrderSmallestFirst)
+                }
                 
-                Button(
-                    action: {},
-                    label: { Text(Strings.sortViewOrderHighestFirst) }
-                ).buttonStyle(PrimaryButtonStyle())
+                Toggle(isOn: $isHigherFirst) {
+                    Text(Strings.sortViewOrderHighestFirst)
+                }
                 
-                Button(
-                    action: {},
-                    label: { Text(Strings.sortViewOrderAlphabetical) }
-                ).buttonStyle(PrimaryButtonStyle())
+                Toggle(isOn: $isAlphabetical) {
+                    Text(Strings.sortViewOrderAlphabetical)
+                }
                 
-                Button(
-                    action: {},
-                    label: { Text(Strings.sortViewOrderReverseAlphabetical) }
-                ).buttonStyle(PrimaryButtonStyle())
+                Toggle(isOn: $isReversedAlphabetical) {
+                    Text(Strings.sortViewOrderReverseAlphabetical)
+                }
             }
+            .toggleStyle(ColoredButtonToggleStyle())
             .frame(maxHeight: 3 * buttonSpacing + 4 * buttonHeight)
         }
         .padding(.top, 30)
-        .padding(.bottom, 50)
         .padding(.horizontal, 40)
     }
+}
+
+struct ColoredButtonToggleStyle: ToggleStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        RoundedRectangle(cornerRadius: 10)
+            .fill(configuration.isOn ? Color.Background.selectedInput : Color.Background.defaultInput)
+            .overlay(
+                configuration.label
+                    .descriptionTextStyle()
+                    .foregroundColor(configuration.isOn ? Color.Text.white : Color.Text.grey)
+            )
+            .shadow(
+                color: configuration.isOn ? Color.Background.selectedInput.opacity(0.3) : Color.Background.defaultInput.opacity(0.3),
+                radius: 10, x: 0, y: 10
+            )
+            .frame(maxHeight: 60)
+    }
+}
+
+enum OrderingStrategy {
+    case smallestNumber, highestNumber, alphabetical, reversedAlphabetical
 }
 
 private let buttonSpacing: CGFloat = 20
