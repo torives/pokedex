@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+//swiftlint:disable no_space_in_method_call
 struct ListPokemonView: View {
     @State private var isPresentingSheet = false
     @State private var activeSheet: ActiveSheet = .none
@@ -15,38 +16,36 @@ struct ListPokemonView: View {
     var body: some View {
         NavigationView {
             HStack {
-                Button(action: {
+                Button {
                     self.isPresentingSheet.toggle()
                     self.activeSheet = .generation
-                }, label: {
+                } label: {
                     Text("Generation")
-                })
-                Button(action: {
+                }
+                Button {
                     self.isPresentingSheet.toggle()
                     self.activeSheet = .sort
-                }, label: {
+                } label: {
                     Text("Sort")
-                })
-                Button(action: {
+                }
+                
+                Button {
                     self.isPresentingSheet.toggle()
                     self.activeSheet = .filter
-                }, label: {
+                } label: {
                     Text("Filter")
-                })
+                }
                 
                 NavigationLink(destination: PokemonDetail()) {
                     Text("Pokemon Detail")
                 }
             }
             .sheet(isPresented: $isPresentingSheet) {
-                if(self.activeSheet == .generation) {
-                    GenerationView()
-                } else if(self.activeSheet == .sort) {
-                    SortView()
-                } else if(self.activeSheet == .filter) {
-                    FilterView()
-                } else {
-                    EmptyView()
+                switch self.activeSheet {
+                    case .generation: GenerationView()
+                    case .sort: SortView()
+                    case .filter: FilterView()
+                    default: EmptyView()
                 }
             }
         }
@@ -58,7 +57,7 @@ enum ActiveSheet {
 }
 
 struct PokemonDetail: View {
-       
+    
     var body: some View {
         Text("Pokemon Detail")
     }
