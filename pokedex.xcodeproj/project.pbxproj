@@ -41,6 +41,7 @@
 		A3B4994B249AB6C200BDBF3D /* ColoredBackgroundButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B4994A249AB6C200BDBF3D /* ColoredBackgroundButtonStyle.swift */; };
 		A3C0341424A4293700C63C63 /* SharedBottomSheetLayoutConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C0341324A4293700C63C63 /* SharedBottomSheetLayoutConstants.swift */; };
 		A3C13DE824A4205A00667C3F /* ColoredButtonToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C13DE724A4205A00667C3F /* ColoredButtonToggleStyle.swift */; };
+		A3D42FC724A56CDA009DA071 /* PokemonEvolutionStageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3D42FC624A56CDA009DA071 /* PokemonEvolutionStageView.swift */; };
 		A3FDB58324A035790094CB2C /* SortView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FDB58224A035790094CB2C /* SortView.swift */; };
 		D4604BB1C54F282D6A84D21A /* Pods_pokedex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C16DD85083157522BA573D6F /* Pods_pokedex.framework */; };
 /* End PBXBuildFile section */
@@ -96,6 +97,7 @@
 		A3B4994A249AB6C200BDBF3D /* ColoredBackgroundButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredBackgroundButtonStyle.swift; sourceTree = "<group>"; };
 		A3C0341324A4293700C63C63 /* SharedBottomSheetLayoutConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedBottomSheetLayoutConstants.swift; sourceTree = "<group>"; };
 		A3C13DE724A4205A00667C3F /* ColoredButtonToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredButtonToggleStyle.swift; sourceTree = "<group>"; };
+		A3D42FC624A56CDA009DA071 /* PokemonEvolutionStageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonEvolutionStageView.swift; sourceTree = "<group>"; };
 		A3FDB58224A035790094CB2C /* SortView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortView.swift; sourceTree = "<group>"; };
 		A8FDE62AFF4FE4B98411977C /* Pods_pokedexTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pokedexTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB39B957D8A44326A3E7FE60 /* Pods-pokedexTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pokedexTests.debug.xcconfig"; path = "Target Support Files/Pods-pokedexTests/Pods-pokedexTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				A3730D0C249BFB6400C04ABB /* ViewHeader.swift */,
+				A3D42FC624A56CDA009DA071 /* PokemonEvolutionStageView.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -477,6 +480,7 @@
 				A376EE5E245B77CC00E63352 /* PokemonHeightToggle.swift in Sources */,
 				A376EE62245B797700E63352 /* PokemonWeight.swift in Sources */,
 				A3A6DB48249ABDA1001C5375 /* PokedexButtonStyles.swift in Sources */,
+				A3D42FC724A56CDA009DA071 /* PokemonEvolutionStageView.swift in Sources */,
 				A3C0341424A4293700C63C63 /* SharedBottomSheetLayoutConstants.swift in Sources */,
 				A31DA247247765B9000714D3 /* ListPokemonView.swift in Sources */,
 				A3C13DE824A4205A00667C3F /* ColoredButtonToggleStyle.swift in Sources */,
