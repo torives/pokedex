@@ -22,3 +22,10 @@
 "GenerationViewSubtitle" = "Use search for generations to explore your Pokémon!";
 "Generation" = "Generation";
 
+// MARK: SortView
+"SortViewTitle" = "Sort";
+"SortViewSubtitle" = "Sort Pokémons alphabetically or by National Pokédex number!";
+"Smallest number first" = "Smallest number first";
+"Highest number first" = "Highest number first";
+"Alphabetical order" = "A-Z";
+"Reverse alphabetical order" = "Z-A";

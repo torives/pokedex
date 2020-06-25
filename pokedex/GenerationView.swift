@@ -15,8 +15,8 @@ struct GenerationView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 35) {
                 ViewHeader(
-                    title: Strings.GenerationViewTitle,
-                    subtitle: Strings.GenerationViewSubtitle
+                    title: Strings.generationViewTitle,
+                    subtitle: Strings.generationViewSubtitle
                 )
                 
                 HStack(spacing: 14) {

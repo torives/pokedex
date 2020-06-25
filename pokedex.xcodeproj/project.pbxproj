@@ -40,6 +40,8 @@
 		A3A6DB48249ABDA1001C5375 /* PokedexButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A6DB47249ABDA1001C5375 /* PokedexButtonStyles.swift */; };
 		A3B49949249A9F3D00BDBF3D /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B49948249A9F3D00BDBF3D /* FilterView.swift */; };
 		A3B4994B249AB6C200BDBF3D /* ColoredBackgroundButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B4994A249AB6C200BDBF3D /* ColoredBackgroundButtonStyle.swift */; };
+		A3C13DE824A4205A00667C3F /* ColoredButtonToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C13DE724A4205A00667C3F /* ColoredButtonToggleStyle.swift */; };
+		A3FDB58324A035790094CB2C /* SortView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FDB58224A035790094CB2C /* SortView.swift */; };
 		D4604BB1C54F282D6A84D21A /* Pods_pokedex.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C16DD85083157522BA573D6F /* Pods_pokedex.framework */; };
 /* End PBXBuildFile section */
 
@@ -93,6 +95,8 @@
 		A3A6DB47249ABDA1001C5375 /* PokedexButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexButtonStyles.swift; sourceTree = "<group>"; };
 		A3B49948249A9F3D00BDBF3D /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		A3B4994A249AB6C200BDBF3D /* ColoredBackgroundButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredBackgroundButtonStyle.swift; sourceTree = "<group>"; };
+		A3C13DE724A4205A00667C3F /* ColoredButtonToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColoredButtonToggleStyle.swift; sourceTree = "<group>"; };
+		A3FDB58224A035790094CB2C /* SortView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortView.swift; sourceTree = "<group>"; };
 		A8FDE62AFF4FE4B98411977C /* Pods_pokedexTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_pokedexTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB39B957D8A44326A3E7FE60 /* Pods-pokedexTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pokedexTests.debug.xcconfig"; path = "Target Support Files/Pods-pokedexTests/Pods-pokedexTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BC130A68DCC56DBE457E6908 /* Pods-pokedexTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pokedexTests.release.xcconfig"; path = "Target Support Files/Pods-pokedexTests/Pods-pokedexTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -181,6 +185,7 @@
 				A3B49948249A9F3D00BDBF3D /* FilterView.swift */,
 				A3730D13249C004600C04ABB /* Strings.swift */,
 				A3730D15249D329300C04ABB /* GenerationView.swift */,
+				A3FDB58224A035790094CB2C /* SortView.swift */,
 			);
 			path = pokedex;
 			sourceTree = "<group>";
@@ -215,6 +220,7 @@
 				A376EE5D245B77CC00E63352 /* PokemonHeightToggle.swift */,
 				A324B0BF24566A80003B9966 /* PokemonTypeToggle.swift */,
 				A376EE63245B79BC00E63352 /* PokemonWeightToggle.swift */,
+				A3C13DE724A4205A00667C3F /* ColoredButtonToggleStyle.swift */,
 			);
 			path = Toggles;
 			sourceTree = "<group>";
@@ -432,8 +438,10 @@
 				A376EE62245B797700E63352 /* PokemonWeight.swift in Sources */,
 				A3A6DB48249ABDA1001C5375 /* PokedexButtonStyles.swift in Sources */,
 				A31DA247247765B9000714D3 /* Home.swift in Sources */,
+				A3C13DE824A4205A00667C3F /* ColoredButtonToggleStyle.swift in Sources */,
 				A3269B88245A6297002604D4 /* StatefulPreviewWrapper.swift in Sources */,
 				A3730D0D249BFB6400C04ABB /* ViewHeader.swift in Sources */,
+				A3FDB58324A035790094CB2C /* SortView.swift in Sources */,
 				A334BDED2454C64900CACC84 /* Badge.swift in Sources */,
 				A3730D14249C004600C04ABB /* Strings.swift in Sources */,
 				A334BDE92454C57500CACC84 /* Color+Ext.swift in Sources */,

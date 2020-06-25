@@ -21,8 +21,16 @@ struct Strings {
     static let filterViewReset = NSLocalizedString("Reset", comment: "")
     static let filterViewApply = NSLocalizedString("Apply", comment: "")
     
-    // MARK: - GenerationFilterView
-    static let GenerationViewTitle = NSLocalizedString("GenerationViewTitle", comment: "")
-    static let GenerationViewSubtitle = NSLocalizedString("GenerationViewSubtitle", comment: "")
+    // MARK: - GenerationView
+    static let generationViewTitle = NSLocalizedString("GenerationViewTitle", comment: "")
+    static let generationViewSubtitle = NSLocalizedString("GenerationViewSubtitle", comment: "")
     static let generation = NSLocalizedString("Generation", comment: "")
+    
+    // MARK: - SortView
+    static let sortViewTitle = NSLocalizedString("SortViewTitle", comment: "")
+    static let sortViewSubtitle = NSLocalizedString("SortViewSubtitle", comment: "")
+    static let sortViewOrderSmallestFirst = NSLocalizedString("Smallest number first", comment: "")
+    static let sortViewOrderHighestFirst = NSLocalizedString("Highest number first", comment: "")
+    static let sortViewOrderAlphabetical = NSLocalizedString("Alphabetical order", comment: "")
+    static let sortViewOrderReverseAlphabetical = NSLocalizedString("Reverse alphabetical order", comment: "")
 }

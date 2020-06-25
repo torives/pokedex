@@ -42,7 +42,7 @@ struct Home: View {
                 if(self.activeSheet == .generation) {
                     GenerationView()
                 } else if(self.activeSheet == .sort) {
-                    Text("Sort")
+                    SortView()
                 } else if(self.activeSheet == .filter) {
                     FilterView()
                 } else {
