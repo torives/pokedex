@@ -1,5 +1,5 @@
 //
-//  Home.swift
+//  ListPokemonView.swift
 //  pokedex
 //
 //  Created by yves on 21/05/20.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct Home: View {
+struct ListPokemonView: View {
     @State private var isPresentingSheet = false
     @State private var activeSheet: ActiveSheet = .none
     
@@ -64,8 +64,8 @@ struct PokemonDetail: View {
     }
 }
 
-struct Home_Previews: PreviewProvider {
+struct ListPokemonView_Previews: PreviewProvider {
     static var previews: some View {
-        Home()
+        ListPokemonView()
     }
 }
