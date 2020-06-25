@@ -16,7 +16,7 @@ struct SortView: View {
     @State var isReversedAlphabetical = false
     
     var body: some View {
-        VStack(spacing: 35) {
+        VStack(spacing: bottomSheetItensVerticalSpacing) {
             ViewHeader(
                 title: Strings.sortViewTitle,
                 subtitle: Strings.sortViewSubtitle
@@ -42,8 +42,9 @@ struct SortView: View {
             .toggleStyle(ColoredButtonToggleStyle())
             .frame(maxHeight: 3 * buttonSpacing + 4 * buttonHeight)
         }
-        .padding(.top, 30)
-        .padding(.horizontal, 40)
+        .padding(.top, bottomSheetTopPadding)
+        .padding(.bottom, bottomSheetBottomPadding)
+        .padding(.horizontal, bottomSheetHorizontalPadding)
     }
 }
 
@@ -51,11 +52,14 @@ enum OrderingStrategy {
     case smallestNumber, highestNumber, alphabetical, reversedAlphabetical
 }
 
-private let buttonSpacing: CGFloat = 20
-private let buttonHeight: CGFloat = 60
-
+// MARK: -
 struct SortView_Previews: PreviewProvider {
     static var previews: some View {
         SortView()
     }
 }
+
+// MARK: - Layout Constants
+
+private let buttonSpacing: CGFloat = 20
+private let buttonHeight: CGFloat = 60

@@ -13,7 +13,7 @@ struct GenerationView: View {
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 35) {
+            VStack(alignment: .leading, spacing: bottomSheetItensVerticalSpacing) {
                 ViewHeader(
                     title: Strings.generationViewTitle,
                     subtitle: Strings.generationViewSubtitle
@@ -33,13 +33,15 @@ struct GenerationView: View {
                         PokemonGenerationToggle(generation: .VIII, isOn: self.$isOn)
                     }
                 }
-                Spacer(minLength: 50)
             }
-            .padding(.top, 30)
-            .padding(.horizontal, 40)
+            .padding(.top, bottomSheetTopPadding)
+            .padding(.bottom, bottomSheetBottomPadding)
+            .padding(.horizontal, bottomSheetHorizontalPadding)
         }
     }
 }
+
+// MARK: -
 
 struct GenerationFilterView_Previews: PreviewProvider {
     static var previews: some View {

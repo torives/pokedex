@@ -15,15 +15,15 @@ struct FilterView: View {
     var body: some View {
         ScrollView(.vertical) {
             
-            VStack(alignment: .leading, spacing: defaultVerticalSpacing) {
+            VStack(alignment: .leading, spacing: bottomSheetItensVerticalSpacing) {
                 
                 ViewHeader(title: Strings.filterViewTitle, subtitle: Strings.filterViewSubtitle)
-                    .padding(.horizontal, defaultHorizontalSpacing)
+                    .padding(.horizontal, bottomSheetHorizontalPadding)
                 
                 VStack(alignment: .leading, spacing: horizontalListVerticalSpacing) {
                     Text(Strings.filterViewTypes)
                         .filterTitleTextStyle()
-                        .padding(.leading, defaultHorizontalSpacing)
+                        .padding(.leading, bottomSheetHorizontalPadding)
                     
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: horizontalListItemSpacing) {
@@ -31,7 +31,7 @@ struct FilterView: View {
                                 PokemonTypeToggle(type: type, isOn: self.$isOn)
                             }
                         }
-                        .padding(.horizontal, defaultHorizontalSpacing)
+                        .padding(.horizontal, bottomSheetHorizontalPadding)
                         .padding(.bottom, shadowVisibilityOffset)
                     }
                 }
@@ -39,7 +39,7 @@ struct FilterView: View {
                 VStack(alignment: .leading, spacing: horizontalListVerticalSpacing) {
                     Text(Strings.filterViewWeaknesses)
                         .filterTitleTextStyle()
-                        .padding(.leading, defaultHorizontalSpacing)
+                        .padding(.leading, bottomSheetHorizontalPadding)
                     
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: horizontalListItemSpacing) {
@@ -47,7 +47,7 @@ struct FilterView: View {
                                 PokemonTypeToggle(type: type, isOn: self.$isOn)
                             }
                         }
-                        .padding(.horizontal, defaultHorizontalSpacing)
+                        .padding(.horizontal, bottomSheetHorizontalPadding)
                         .padding(.bottom, shadowVisibilityOffset)
                     }
                 }
@@ -90,16 +90,24 @@ struct FilterView: View {
                     }
                     .padding(.vertical, buttonVerticalSpacing)
                 }
-                .padding(.horizontal, defaultHorizontalSpacing)
+                .padding(.horizontal, bottomSheetHorizontalPadding)
                 .offset(x: 0, y: -shadowVisibilityOffset * 2)
             }
-            .padding(.top, 30)
+            .padding(.top, bottomSheetTopPadding)
         }
     }
 }
 
-private let defaultHorizontalSpacing: CGFloat = 40
-private let defaultVerticalSpacing: CGFloat = 35
+// MARK: -
+
+struct FilterView_Previews: PreviewProvider {
+    static var previews: some View {
+        FilterView()
+    }
+}
+
+// MARK: - Layout Constants
+
 private let horizontalListVerticalSpacing: CGFloat = 10
 private let horizontalListItemSpacing: CGFloat = 10
 private let shadowVisibilityOffset: CGFloat = 25
@@ -108,9 +116,3 @@ private let buttonHorizontalSpacing: CGFloat = 14
 private let buttonHeight: CGFloat = 60
 private let buttonWidth: CGFloat = 160
 private let sliderVerticalSpacing: CGFloat = 20
-
-struct FilterView_Previews: PreviewProvider {
-    static var previews: some View {
-        FilterView()
-    }
-}
