@@ -41,6 +41,10 @@ struct PokemonEvolutionStageView: View {
 
 struct PokemonEvolutionStage_Previews: PreviewProvider {
     static var previews: some View {
-        PokemonEvolutionStageView(pokemonName: "Bulbassaur", pokemonNumber: "001", pokemonImage: Image("gen-I-grass-starter"))
+        PokemonEvolutionStageView(
+            pokemonName: "Bulbassaur",
+            pokemonNumber: "001",
+            pokemonImage: Image("gen-I-grass-starter")
+        )
     }
 }
