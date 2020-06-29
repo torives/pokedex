@@ -77,29 +77,64 @@ extension Color {
     }
     
     struct Gradients {
+        
+        static let dotPattern = LinearGradient(
+            gradient: Gradient(colors: [
+                Color(red: 1, green: 1, blue: 1, opacity: 0.3),
+                Color(red: 1, green: 1, blue: 1, opacity: 0)
+            ]),
+            startPoint: .top,
+            endPoint: .bottom
+        )
+        
         static let dotPatternGray = LinearGradient(
             gradient: Gradient(colors: [
                 Color(red: 0.899, green: 0.899, blue: 0.899, opacity: 1),
                 Color(red: 0.961, green: 0.961, blue: 0.961, opacity: 0)
-            ]), startPoint: .topLeading, endPoint: .bottomTrailing)
+            ]),
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        )
         
-        static let dotPatternWhite = LinearGradient(gradient:
-            Gradient(colors: [
-                Color(red: 1, green: 1, blue: 1, opacity: 0.3),
-                Color(red: 1, green: 1, blue: 1, opacity: 0)
-            ]), startPoint: .topLeading, endPoint: .bottomTrailing)
+        static let dotPatternWhite = LinearGradient(
+            gradient:
+                Gradient(colors: [
+                    Color(red: 1, green: 1, blue: 1, opacity: 0.3),
+                    Color(red: 1, green: 1, blue: 1, opacity: 0)
+                ]),
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        )
         
-        static let pokeballWhite = LinearGradient(gradient:
-            Gradient(colors: [
-                Color(red: 1, green: 1, blue: 1, opacity: 0.1),
-                Color(red: 1, green: 1, blue: 1, opacity: 0)
-            ]), startPoint: .topLeading, endPoint: .bottomTrailing)
+        static let pokeballWhite = LinearGradient(
+            gradient:
+                Gradient(colors: [
+                    Color(red: 1, green: 1, blue: 1, opacity: 0.1),
+                    Color(red: 1, green: 1, blue: 1, opacity: 0)
+                ]),
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        )
         
-        static let pokeballGray = LinearGradient(gradient:
-            Gradient(colors: [
-                Color(red: 0.925, green: 0.925, blue: 0.925, opacity: 1),
-                Color(red: 0.961, green: 0.961, blue: 0.961, opacity: 1)
-            ]), startPoint: .topLeading, endPoint: .bottomTrailing)
+        static let pokeballGray = LinearGradient(
+            gradient:
+                Gradient(colors: [
+                    Color(red: 0.925, green: 0.925, blue: 0.925, opacity: 1),
+                    Color(red: 0.961, green: 0.961, blue: 0.961, opacity: 1)
+                ]),
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        )
+        
+        static let pokeball = LinearGradient(
+            gradient:
+                Gradient(colors: [
+                    Color(red: 0.961, green: 0.961, blue: 0.961, opacity: 1),
+                    Color(red: 1, green: 1, blue: 1, opacity: 1)
+                ]),
+            startPoint: UnitPoint(x: 0.25, y: 0.5),
+            endPoint: UnitPoint(x: 0.75, y: 0.5)
+        )
     }
     
     static func from(type: PokemonType) -> Color {

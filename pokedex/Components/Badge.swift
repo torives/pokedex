@@ -35,7 +35,7 @@ struct Badge_Previews: PreviewProvider {
     static var previews: some View {
         HStack {
             Spacer()
-            VStack {
+            VStack(spacing: 5) {
                 ForEach(PokemonType.allCases) { type in
                     Badge(type: type, showLabel: false)
                 }
