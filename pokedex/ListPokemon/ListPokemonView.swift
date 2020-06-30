@@ -40,7 +40,7 @@ struct ListPokemonView: View {
                     Text("Pokemon Detail")
                 }
             }
-            .sheet(isPresented: $isPresentingSheet) {
+            .bottomSheet(isPresented: $isPresentingSheet) {
                 switch self.activeSheet {
                     case .generation: GenerationView()
                     case .sort: SortView()
@@ -48,6 +48,14 @@ struct ListPokemonView: View {
                     default: EmptyView()
                 }
             }
+//            .sheet(isPresented: $isPresentingSheet) {
+//                switch self.activeSheet {
+//                    case .generation: GenerationView()
+//                    case .sort: SortView()
+//                    case .filter: FilterView()
+//                    default: EmptyView()
+//                }
+//            }
         }
     }
 }
