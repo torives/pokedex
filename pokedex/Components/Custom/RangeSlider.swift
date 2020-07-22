@@ -38,11 +38,13 @@ struct RangeSlider: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                Track(color: Color.Background.defaultInput)
+                RoundedRectangle(cornerRadius: 2, style: .circular)
+                    .fill(Color.Background.defaultInput)
+                    .padding(.horizontal, 10)
                     .frame(maxHeight: self.lineWidth)
                 
                 HStack(spacing: 0.0) {
-                    self.generateLeftSpacer(with: geometry.size.width)
+                    Spacer(minLength: self.leftSpacerLength)
                     
                     Thumb(
                         accentColor: self.accentColor,
@@ -50,17 +52,20 @@ struct RangeSlider: View {
                         diameter: self.thumbDiameter
                     )
                     .gesture(
-                        DragGesture(
-                            
-                        )
-                        .onChanged { gesture in
+                        DragGesture().onChanged { gesture in
                             let trackWidth = geometry.size.width - self.defaultPadding - self.thumbDiameter/2
+                            
+                            print("Left Translation: \(gesture.translation.width)")
+                            print("Left Location: \(gesture.location.x)")
+                            print("Left Start Location: \(gesture.startLocation.x)")
+                            
                             self.updateLeftThumbPosition(with: gesture.translation.width, trackWidth: trackWidth)
                         }
                     )
                     .zIndex(1)
                     
-                    Track(color: self.accentColor)
+                    RoundedRectangle(cornerRadius: 2, style: .circular)
+                        .fill(self.accentColor)
                         .frame(maxHeight: self.lineWidth)
                         .padding(.horizontal, -10)
                         .zIndex(0)
@@ -71,24 +76,14 @@ struct RangeSlider: View {
                         diameter: self.thumbDiameter
                     )
                     .gesture(
-                        DragGesture(
-                            minimumDistance: 1,
-                            coordinateSpace: .local
-                        )
-                        .onChanged { value in
-                            //                            print("Translado: \(value.translation.width)")
-                            let displacement = value.translation.width
+                        DragGesture().onChanged { gesture in
+                            let trackWidth = geometry.size.width - self.defaultPadding - self.thumbDiameter/2
                             
-                            if displacement.isLess(than: 0) {
-                                self.rightSpacerLength = min(
-                                    self.rightSpacerLength + -displacement,
-                                    (geometry.size.width - self.leftSpacerLength) - (self.thumbDiameter + 60)
-                                )
-                                //                                print("Diminuiu para: \(self.leftSpacerLength)")
-                            } else {
-                                self.rightSpacerLength = max(self.rightSpacerLength - displacement, 0)
-                                //                                print("Cresceu para: \(self.leftSpacerLength)")
-                            }
+                            print("Right Translation: \(gesture.translation.width)")
+                            print("Right Location: \(gesture.location.x)")
+                            print("Right Start Location: \(gesture.startLocation.x)")
+                               
+                            self.updateRightThumbPosition(with: gesture.translation.width, trackWidth: trackWidth)
                         }
                     )
                     .zIndex(1)
@@ -100,18 +95,6 @@ struct RangeSlider: View {
         .padding([.all], defaultPadding)
     }
     
-    private func generateLeftSpacer(with parentWidth: CGFloat) -> some View {
-        let trackWidth = parentWidth - self.defaultPadding - self.thumbDiameter/2
-        //        self.lowerValue
-        //        self.upperValue
-        
-        
-        let lenght = 0
-        
-        
-        return Spacer(minLength: self.leftSpacerLength)
-    }
-    
     private func updateLeftThumbPosition(with xTranslation: CGFloat, trackWidth: CGFloat) {
         let newLenght = self.leftSpacerLength + xTranslation
         let maxLenght = (trackWidth - self.rightSpacerLength) - (self.minimumSpaceBetweenThumbs)
@@ -121,31 +104,16 @@ struct RangeSlider: View {
         } else {
             self.leftSpacerLength = min(newLenght, maxLenght)
         }
-        
-        let leftThumbCenter = max(0, self.leftSpacerLength + self.thumbDiameter/2)
-        let percentage = Float(leftThumbCenter/trackWidth)
-        
-        updateLowerValue(by: percentage)
-        
-        print("\nTrackSize: \(trackWidth)")
-        print("Left thumb position: \(leftThumbCenter)")
-        print("percentage: \(percentage)")
-        print("leftValue: \(self.lowerValue)")
     }
     
-    private func updateLowerValue(by percentage: Float) {
-        let newLowerValue = Int(Float(self.bounds.upperBound) * percentage)
-        
-        self.lowerValue = max(self.bounds.lowerBound, newLowerValue)
-    }
-    
-    private struct Track: View {
-        let color: Color
-        
-        var body: some View {
-            Rectangle()
-                .fill(color)
-                .cornerRadius(2)
+    private func updateRightThumbPosition(with xTranslation: CGFloat, trackWidth: CGFloat) {
+        if xTranslation.isLess(than: 0) {
+            self.rightSpacerLength = min(
+                self.rightSpacerLength + -xTranslation,
+                (trackWidth - self.leftSpacerLength) - (self.thumbDiameter + 60)
+            )
+        } else {
+            self.rightSpacerLength = max(self.rightSpacerLength - xTranslation, 0)
         }
     }
     
