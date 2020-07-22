@@ -13,42 +13,46 @@ struct ListPokemonView: View {
     @State private var isPresentingSheet = false
     @State private var activeSheet: ActiveSheet = .none
     
+    @State var lowerValue = 1
+    @State var upperValue = 890
+    
     var body: some View {
-        NavigationView {
-            HStack {
-                Button {
-                    self.isPresentingSheet.toggle()
-                    self.activeSheet = .generation
-                } label: {
-                    Text("Generation")
-                }
-                Button {
-                    self.isPresentingSheet.toggle()
-                    self.activeSheet = .sort
-                } label: {
-                    Text("Sort")
-                }
-                
-                Button {
-                    self.isPresentingSheet.toggle()
-                    self.activeSheet = .filter
-                } label: {
-                    Text("Filter")
-                }
-                
-                NavigationLink(destination: PokemonDetail()) {
-                    Text("Pokemon Detail")
-                }
-            }
-            .sheet(isPresented: $isPresentingSheet) {
-                switch self.activeSheet {
-                    case .generation: GenerationView()
-                    case .sort: SortView()
-                    case .filter: FilterView()
-                    default: EmptyView()
-                }
-            }
-        }
+        RangeSlider(selectedLowerBound: $lowerValue, selectedUpperBound: $upperValue, in: lowerValue...upperValue)
+//        NavigationView {
+//            HStack {
+//                Button {
+//                    self.isPresentingSheet.toggle()
+//                    self.activeSheet = .generation
+//                } label: {
+//                    Text("Generation")
+//                }
+//                Button {
+//                    self.isPresentingSheet.toggle()
+//                    self.activeSheet = .sort
+//                } label: {
+//                    Text("Sort")
+//                }
+//
+//                Button {
+//                    self.isPresentingSheet.toggle()
+//                    self.activeSheet = .filter
+//                } label: {
+//                    Text("Filter")
+//                }
+//
+//                NavigationLink(destination: PokemonDetail()) {
+//                    Text("Pokemon Detail")
+//                }
+//            }
+//            .sheet(isPresented: $isPresentingSheet) {
+//                switch self.activeSheet {
+//                    case .generation: GenerationView()
+//                    case .sort: SortView()
+//                    case .filter: FilterView()
+//                    default: EmptyView()
+//                }
+//            }
+//        }
     }
 }
 
