@@ -18,8 +18,8 @@ struct RangeSlider: View {
     
     @State private var leftSpacerLength = CGFloat.zero
     @State private var rightSpacerLength = CGFloat.zero
-    @State private var minimumValue: Double = 0
-    @State private var maximumValue: Double = 1.0
+//    @State private var minimumValue: CGFloat = 0
+//    @State private var maximumValue: CGFloat = 1.0
     
     @Binding var lowerBound: Double
     @Binding var upperBound: Double
@@ -48,6 +48,21 @@ struct RangeSlider: View {
                         secondaryColor: self.secondaryColor,
                         diameter: self.thumbDiameter
                     )
+                    .gesture(
+                        DragGesture().onChanged { gesture in
+                            let trackWidth = self.trackWidth(for: geometry.size)
+                            let deltaLocation = min(gesture.translation.width, trackWidth)
+                            
+//                            leftSpacerLength += deltaLocation
+                            
+                            let positionPercentage = deltaLocation / trackWidth
+                            lowerBound = Double(positionPercentage) * maximumRange.upperBound
+                            lowerBound = min(max(lowerBound, maximumRange.lowerBound), upperBound)
+
+                            print("Delta Value: \(positionPercentage)")
+                            print("Lower bound: \(lowerBound)")
+                        }
+                    )
                     .zIndex(1)
                     
                     RoundedRectangle(cornerRadius: 2, style: .circular)
@@ -68,6 +83,15 @@ struct RangeSlider: View {
             }
         }
         .padding([.all], defaultPadding)
+    }
+    
+    private func trackWidth(for geometry: CGSize) -> CGFloat {
+        geometry.width - self.defaultPadding - self.thumbDiameter/2
+    }
+    
+    private func boundValue(_ value: CGFloat, toLowerValue lowerValue: CGFloat,
+                            upperValue: CGFloat) -> Double {
+        return Double(min(max(value, lowerValue), upperValue))
     }
     
     private struct Thumb: View {
