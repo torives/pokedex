@@ -23,15 +23,11 @@ struct RangeSlider: View {
     @Binding var upperValue: Int
     
     let bounds: ClosedRange<Int>
-    let step: Int
     
-    public init(selectedLowerBound: Binding<Int>, selectedUpperBound: Binding<Int>, in bounds: ClosedRange<Int>, step: Int = 1) {
+    public init(selectedLowerBound: Binding<Int>, selectedUpperBound: Binding<Int>, in bounds: ClosedRange<Int>) {
         self._lowerValue = selectedLowerBound
         self._upperValue = selectedUpperBound
         self.bounds = bounds
-        self.step = step
-        
-        minimumSpaceBetweenThumbs = self.thumbDiameter + self.defaultPadding * 2
     }
     
     var body: some View {
