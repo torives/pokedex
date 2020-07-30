@@ -16,18 +16,20 @@ struct RangeSlider: View {
     let thumbDiameter: CGFloat = 20
     let defaultPadding: CGFloat = 8
     
-    @State var leftSpacerLength = CGFloat.zero
-    @State var rightSpacerLength = CGFloat.zero
+    @State private var leftSpacerLength = CGFloat.zero
+    @State private var rightSpacerLength = CGFloat.zero
+    @State private var minimalValue: Double = 0
+    @State private var maximumValue: Double = 1.0
     
-    @Binding var lowerValue: Double
-    @Binding var upperValue: Double
+    @Binding var lowerBound: Double
+    @Binding var upperBound: Double
     
-    let bounds: ClosedRange<Double>
+    let maximumRange: ClosedRange<Double>
     
-    public init(selectedLowerBound: Binding<Double>, selectedUpperBound: Binding<Double>, in bounds: ClosedRange<Double>) {
-        self._lowerValue = selectedLowerBound
-        self._upperValue = selectedUpperBound
-        self.bounds = bounds
+    public init(lowerBound: Binding<Double>, upperBound: Binding<Double>, in maximumRange: ClosedRange<Double>) {
+        self._lowerBound = lowerBound
+        self._upperBound = upperBound
+        self.maximumRange = maximumRange
     }
     
     var body: some View {
@@ -89,7 +91,7 @@ struct RangeSlider: View {
 #if DEBUG
 struct RangeSlider_Previews: PreviewProvider {
     static var previews: some View {
-        RangeSlider(selectedLowerBound: .constant(1.0), selectedUpperBound: .constant(890.0), in: 1.0...890.0)
+        RangeSlider(lowerBound: .constant(1.0), upperBound: .constant(890.0), in: 1.0...890.0)
             .previewLayout(.fixed(width: 500, height: 40))
     }
 }
