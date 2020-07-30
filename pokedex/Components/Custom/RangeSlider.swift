@@ -15,7 +15,6 @@ struct RangeSlider: View {
     let secondaryColor: Color = Color.Background.white
     let thumbDiameter: CGFloat = 20
     let defaultPadding: CGFloat = 8
-    let minimumSpaceBetweenThumbs: CGFloat
     
     @State var leftSpacerLength = CGFloat.zero
     @State var rightSpacerLength = CGFloat.zero
@@ -51,17 +50,6 @@ struct RangeSlider: View {
                         secondaryColor: self.secondaryColor,
                         diameter: self.thumbDiameter
                     )
-                    .gesture(
-                        DragGesture().onChanged { gesture in
-                            let trackWidth = geometry.size.width - self.defaultPadding - self.thumbDiameter/2
-                            
-                            print("Left Translation: \(gesture.translation.width)")
-                            print("Left Location: \(gesture.location.x)")
-                            print("Left Start Location: \(gesture.startLocation.x)")
-                            
-                            self.updateLeftThumbPosition(with: gesture.translation.width, trackWidth: trackWidth)
-                        }
-                    )
                     .zIndex(1)
                     
                     RoundedRectangle(cornerRadius: 2, style: .circular)
@@ -75,17 +63,6 @@ struct RangeSlider: View {
                         secondaryColor: self.secondaryColor,
                         diameter: self.thumbDiameter
                     )
-                    .gesture(
-                        DragGesture().onChanged { gesture in
-                            let trackWidth = geometry.size.width - self.defaultPadding - self.thumbDiameter/2
-                            
-                            print("Right Translation: \(gesture.translation.width)")
-                            print("Right Location: \(gesture.location.x)")
-                            print("Right Start Location: \(gesture.startLocation.x)")
-                               
-                            self.updateRightThumbPosition(with: gesture.translation.width, trackWidth: trackWidth)
-                        }
-                    )
                     .zIndex(1)
                     
                     Spacer(minLength: self.rightSpacerLength)
@@ -93,28 +70,6 @@ struct RangeSlider: View {
             }
         }
         .padding([.all], defaultPadding)
-    }
-    
-    private func updateLeftThumbPosition(with xTranslation: CGFloat, trackWidth: CGFloat) {
-        let newLenght = self.leftSpacerLength + xTranslation
-        let maxLenght = (trackWidth - self.rightSpacerLength) - (self.minimumSpaceBetweenThumbs)
-        
-        if xTranslation.isLess(than: 0) {
-            self.leftSpacerLength = max(0, newLenght)
-        } else {
-            self.leftSpacerLength = min(newLenght, maxLenght)
-        }
-    }
-    
-    private func updateRightThumbPosition(with xTranslation: CGFloat, trackWidth: CGFloat) {
-        if xTranslation.isLess(than: 0) {
-            self.rightSpacerLength = min(
-                self.rightSpacerLength + -xTranslation,
-                (trackWidth - self.leftSpacerLength) - (self.thumbDiameter + 60)
-            )
-        } else {
-            self.rightSpacerLength = max(self.rightSpacerLength - xTranslation, 0)
-        }
     }
     
     private struct Thumb: View {
@@ -143,7 +98,7 @@ struct RangeSlider_Previews: PreviewProvider {
     
     static var previews: some View {
         RangeSlider(selectedLowerBound: $lowerValue, selectedUpperBound: $upperValue, in: lowerValue...upperValue)
-            .previewLayout(.fixed(width: 500, height: 300))
+            .previewLayout(.fixed(width: 500, height: 40))
     }
 }
 #endif
