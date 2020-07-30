@@ -18,7 +18,7 @@ struct RangeSlider: View {
     
     @State private var leftSpacerLength = CGFloat.zero
     @State private var rightSpacerLength = CGFloat.zero
-    @State private var minimalValue: Double = 0
+    @State private var minimumValue: Double = 0
     @State private var maximumValue: Double = 1.0
     
     @Binding var lowerBound: Double
