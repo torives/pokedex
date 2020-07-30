@@ -13,8 +13,8 @@ struct ListPokemonView: View {
     @State private var isPresentingSheet = false
     @State private var activeSheet: ActiveSheet = .none
     
-    @State var lowerValue = 1
-    @State var upperValue = 890
+    @State var lowerValue = 1.0
+    @State var upperValue = 890.0
     
     var body: some View {
         RangeSlider(selectedLowerBound: $lowerValue, selectedUpperBound: $upperValue, in: lowerValue...upperValue)

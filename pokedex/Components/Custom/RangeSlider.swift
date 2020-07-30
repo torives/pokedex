@@ -19,12 +19,12 @@ struct RangeSlider: View {
     @State var leftSpacerLength = CGFloat.zero
     @State var rightSpacerLength = CGFloat.zero
     
-    @Binding var lowerValue: Int
-    @Binding var upperValue: Int
+    @Binding var lowerValue: Double
+    @Binding var upperValue: Double
     
-    let bounds: ClosedRange<Int>
+    let bounds: ClosedRange<Double>
     
-    public init(selectedLowerBound: Binding<Int>, selectedUpperBound: Binding<Int>, in bounds: ClosedRange<Int>) {
+    public init(selectedLowerBound: Binding<Double>, selectedUpperBound: Binding<Double>, in bounds: ClosedRange<Double>) {
         self._lowerValue = selectedLowerBound
         self._upperValue = selectedUpperBound
         self.bounds = bounds
@@ -88,12 +88,8 @@ struct RangeSlider: View {
 
 #if DEBUG
 struct RangeSlider_Previews: PreviewProvider {
-    
-    @State static var lowerValue = 1
-    @State static var upperValue = 890
-    
     static var previews: some View {
-        RangeSlider(selectedLowerBound: $lowerValue, selectedUpperBound: $upperValue, in: lowerValue...upperValue)
+        RangeSlider(selectedLowerBound: .constant(1.0), selectedUpperBound: .constant(890.0), in: 1.0...890.0)
             .previewLayout(.fixed(width: 500, height: 40))
     }
 }
