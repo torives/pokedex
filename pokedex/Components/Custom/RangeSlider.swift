@@ -18,6 +18,7 @@ struct RangeSlider: View {
     
     @State private var leftSpacerLength = CGFloat.zero
     @State private var rightSpacerLength = CGFloat.zero
+    @State private var offset = CGFloat.zero
 //    @State private var minimumValue: CGFloat = 0
 //    @State private var maximumValue: CGFloat = 1.0
     
@@ -48,18 +49,32 @@ struct RangeSlider: View {
                         secondaryColor: self.secondaryColor,
                         diameter: self.thumbDiameter
                     )
+                    .border(Color.pink)
+                    .padding(.leading, offset) //TODO: try offset or position?
                     .gesture(
                         DragGesture().onChanged { gesture in
+                            print("===============================")
                             let trackWidth = self.trackWidth(for: geometry.size)
+                            
+                            print("startLocation: \(gesture.startLocation.x)")
+                            print("location: \(gesture.location.x)")
+                            
                             let deltaLocation = min(gesture.translation.width, trackWidth)
                             
-//                            leftSpacerLength += deltaLocation
-                            
+                            print("Delta location: \(deltaLocation)")
+//
                             let positionPercentage = deltaLocation / trackWidth
                             lowerBound = Double(positionPercentage) * maximumRange.upperBound
                             lowerBound = min(max(lowerBound, maximumRange.lowerBound), upperBound)
+                            
+                            //TODO: use ABS? 
+//                            print("Left Spacer length 1: \(offset)")
+//                            offset = positionPercentage * trackWidth
+//                            offset = min(max(offset, 0), trackWidth - self.thumbDiameter)
+//                            print("Left Spacer length 2: \(offset)")
+//
 
-                            print("Delta Value: \(positionPercentage)")
+                            print("Percentage: \(positionPercentage)")
                             print("Lower bound: \(lowerBound)")
                         }
                     )
