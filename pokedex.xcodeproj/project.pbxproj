@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -36,6 +36,7 @@
 		A396A0F6245BBDF1004384F8 /* PokemonGenerationToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A396A0F5245BBDF1004384F8 /* PokemonGenerationToggle.swift */; };
 		A396A0F8245C67BD004384F8 /* PokemonGeneration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A396A0F7245C67BD004384F8 /* PokemonGeneration.swift */; };
 		A396A0FA245C6AF8004384F8 /* Typography.swift in Sources */ = {isa = PBXBuildFile; fileRef = A396A0F9245C6AF8004384F8 /* Typography.swift */; };
+		A397BB9324E351EF002A7A09 /* Sliders in Frameworks */ = {isa = PBXBuildFile; productRef = A397BB9224E351EF002A7A09 /* Sliders */; };
 		A3A6DB48249ABDA1001C5375 /* PokedexButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A6DB47249ABDA1001C5375 /* PokedexButtonStyles.swift */; };
 		A3B49949249A9F3D00BDBF3D /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B49948249A9F3D00BDBF3D /* FilterView.swift */; };
 		A3B4994B249AB6C200BDBF3D /* ColoredBackgroundButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B4994A249AB6C200BDBF3D /* ColoredBackgroundButtonStyle.swift */; };
@@ -116,6 +117,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4604BB1C54F282D6A84D21A /* Pods_pokedex.framework in Frameworks */,
+				A397BB9324E351EF002A7A09 /* Sliders in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,6 +323,9 @@
 			dependencies = (
 			);
 			name = pokedex;
+			packageProductDependencies = (
+				A397BB9224E351EF002A7A09 /* Sliders */,
+			);
 			productName = pokedex;
 			productReference = A369268924536343003C1784 /* pokedex.app */;
 			productType = "com.apple.product-type.application";
@@ -373,6 +378,9 @@
 				"pt-BR",
 			);
 			mainGroup = A369268024536343003C1784;
+			packageReferences = (
+				A397BB9124E351EF002A7A09 /* XCRemoteSwiftPackageReference "swiftui-sliders" */,
+			);
 			productRefGroup = A369268A24536343003C1784 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -785,6 +793,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A397BB9124E351EF002A7A09 /* XCRemoteSwiftPackageReference "swiftui-sliders" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:spacenation/swiftui-sliders.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A397BB9224E351EF002A7A09 /* Sliders */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A397BB9124E351EF002A7A09 /* XCRemoteSwiftPackageReference "swiftui-sliders" */;
+			productName = Sliders;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A369268124536343003C1784 /* Project object */;
 }
