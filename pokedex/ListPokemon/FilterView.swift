@@ -7,10 +7,12 @@
 //
 
 import SwiftUI
+import Sliders
 
 struct FilterView: View {
     @State private var isOn = true
     @State private var number = 0.0
+    @State var range = 0.2...0.8
     
     var body: some View {
         ScrollView(.vertical) {
@@ -77,7 +79,7 @@ struct FilterView: View {
                     VStack(alignment: .leading, spacing: sliderVerticalSpacing) {
                         Text(Strings.filterViewNumberRange)
                             .filterTitleTextStyle()
-                        Slider(value: $number)
+                        RangeSlider(range: $range)
                     }
                     
                     HStack(alignment: .center, spacing: buttonHorizontalSpacing) {
